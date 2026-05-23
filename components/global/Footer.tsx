@@ -14,7 +14,7 @@ const companyLinks = [
 export default function Footer() {
   return (
     <footer style={{ padding: "60px 5vw 60px", borderTop: "1px solid var(--color-border-subtle)" }}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-16 mb-20" style={{ maxWidth: 900, margin: "0 auto", textAlign: "center", justifyItems: "center" }}>
+      <div className="grid grid-cols-1 min-[640px]:grid-cols-2 gap-10 min-[640px]:gap-16 mb-12 min-[640px]:mb-20" style={{ maxWidth: 900, margin: "0 auto", textAlign: "center", justifyItems: "center" }}>
         {/* Col 1 — Brand + Contact + Social */}
         <div className="flex flex-col gap-5 items-center">
           <div className="flex items-center gap-3">

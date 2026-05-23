@@ -29,13 +29,13 @@ export default function Header() {
       >
         {/* Logo — S1: 40×40px */}
         <Link href="/" className="flex items-center gap-3.5">
-          <Image src="/logo.png" alt="Auxilifiers logo" width={48} height={48} priority />
+          <Image src="/logo.png" alt="Auxilifiers logo" width={48} height={48} priority className="w-8 h-8 min-[480px]:w-10 min-[480px]:h-10 min-[768px]:w-12 min-[768px]:h-12" />
           <span
-            className="text-white"
+            className="text-white hidden min-[360px]:inline"
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 500,
-              fontSize: 20,
+              fontSize: "clamp(14px, 3.5vw, 20px)",
               letterSpacing: "-0.02em",
             }}
           >
@@ -73,16 +73,17 @@ export default function Header() {
           className="flex items-center text-black"
           style={{
             fontFamily: "var(--font-body)",
-            fontSize: 16,
+            fontSize: "clamp(12px, 3vw, 16px)",
             fontWeight: 500,
-            padding: "12px 26px",
+            padding: "10px clamp(14px, 3vw, 26px)",
             borderRadius: "var(--radius-pill)",
             background: "var(--gradient)",
             border: "none",
             cursor: "none",
           }}
         >
-          Get in touch&nbsp;→
+          <span className="hidden min-[480px]:inline">Get in touch&nbsp;→</span>
+          <span className="inline min-[480px]:hidden">Contact</span>
         </button>
       </header>
 

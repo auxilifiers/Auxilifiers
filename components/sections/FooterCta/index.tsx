@@ -50,19 +50,19 @@ export default function FooterCta() {
       <h2 className="mb-8" style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.1, perspective: 800 }}>
         <span className="cta-word inline-block opacity-0" style={{
           fontFamily: "var(--font-display)", fontWeight: 300,
-          fontSize: "clamp(36px, 7vw, 96px)", letterSpacing: "-0.035em", color: "white", marginRight: "0.2em",
+          fontSize: "clamp(28px, 7vw, 96px)", letterSpacing: "-0.035em", color: "white", marginRight: "0.2em",
         }}>
           Ready
         </span>
         <span className="cta-word inline-block opacity-0" style={{
           fontFamily: "var(--font-display)", fontWeight: 300,
-          fontSize: "clamp(36px, 7vw, 96px)", letterSpacing: "-0.035em", color: "white", marginRight: "0.2em",
+          fontSize: "clamp(28px, 7vw, 96px)", letterSpacing: "-0.035em", color: "white", marginRight: "0.2em",
         }}>
           to
         </span>
         <span className="cta-word inline-block opacity-0" style={{
           fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
-          fontSize: "clamp(36px, 7vw, 96px)",
+          fontSize: "clamp(28px, 7vw, 96px)",
           background: "var(--gradient-soft)", WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent", backgroundClip: "text",
         }}>
@@ -78,7 +78,7 @@ export default function FooterCta() {
         </span>
         <span className="cta-word inline-block opacity-0" style={{
           fontFamily: "var(--font-display)", fontWeight: 300,
-          fontSize: "clamp(36px, 7vw, 96px)", letterSpacing: "-0.035em", color: "white",
+          fontSize: "clamp(28px, 7vw, 96px)", letterSpacing: "-0.035em", color: "white",
         }}>
           scaling?
         </span>

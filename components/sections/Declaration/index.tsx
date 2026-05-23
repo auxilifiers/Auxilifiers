@@ -32,7 +32,7 @@ export default function Declaration() {
     init();
   }, []);
 
-  const base = "clamp(28px, 4.5vw, 64px)";
+  const base = "clamp(28px, 6vw, 64px)";
 
   return (
     <section id="about" ref={sectionRef} style={{ minHeight: "100vh", padding: "60px 5vw", maxWidth: 1400, margin: "0 auto", scrollMarginTop: 68, display: "flex", flexDirection: "column", justifyContent: "center" }}>
@@ -45,7 +45,7 @@ export default function Declaration() {
         <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
       </div>
 
-      <div className="grid grid-cols-1 min-[900px]:grid-cols-2 gap-16 items-stretch">
+      <div className="grid grid-cols-1 min-[900px]:grid-cols-2 gap-10 min-[900px]:gap-16 items-stretch">
         {/* Left — Philosophy */}
         <div style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.15, display: "flex", flexDirection: "column", justifyContent: "center" }}>
           <div className="word-anim opacity-0" style={{

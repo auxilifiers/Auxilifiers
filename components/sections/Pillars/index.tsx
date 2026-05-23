@@ -80,20 +80,20 @@ function PillarCard({ pillar }: { pillar: PillarData }) {
           <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, letterSpacing: "0.18em", color: "var(--color-text-muted)", textTransform: "uppercase", marginBottom: 12 }}>
             {pillar.label}
           </span>
-          <h3 className="mb-4" style={{ fontFamily: "var(--font-display)", fontSize: 44, fontWeight: 400, letterSpacing: "-0.025em", lineHeight: 1, color: "white" }}>
+          <h3 className="mb-4" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(28px, 5vw, 44px)", fontWeight: 400, letterSpacing: "-0.025em", lineHeight: 1, color: "white" }}>
             {pillar.title}
           </h3>
-          <p className="mb-5" style={{ fontFamily: "var(--font-body)", fontSize: 18, lineHeight: 1.65, color: "var(--color-text-muted)" }}>
+          <p className="mb-5" style={{ fontFamily: "var(--font-body)", fontSize: "clamp(14px, 3vw, 18px)", lineHeight: 1.65, color: "var(--color-text-muted)" }}>
             {pillar.description}
           </p>
           {/* Viz — bigger */}
-          <div className="flex-1 flex items-center justify-center mb-5" style={{ minHeight: 140, transform: "scale(1.3)", transformOrigin: "center" }}>
+          <div className="flex-1 flex items-center justify-center mb-5" style={{ minHeight: 100, transform: "scale(1.15)", transformOrigin: "center" }}>
             {pillar.viz}
           </div>
           <div className="flex flex-wrap gap-2.5">
             {pillar.tags.map((tag) => (
               <button key={tag.id} className="tag flex items-center gap-1.5 transition-all duration-200" data-service={tag.id} onClick={() => flipTo(tag.id)}
-                style={{ fontFamily: "var(--font-mono)", fontSize: 15, padding: "9px 18px", borderRadius: "var(--radius-pill)", border: "1px solid var(--color-border-strong)", color: "var(--color-cyan)", background: "rgba(0, 245, 255, 0.06)", letterSpacing: "0.04em", cursor: "none" }}>
+                style={{ fontFamily: "var(--font-mono)", fontSize: "clamp(11px, 2.5vw, 15px)", padding: "clamp(6px, 1.5vw, 9px) clamp(10px, 2.5vw, 18px)", borderRadius: "var(--radius-pill)", border: "1px solid var(--color-border-strong)", color: "var(--color-cyan)", background: "rgba(0, 245, 255, 0.06)", letterSpacing: "0.04em", cursor: "none" }}>
                 {tag.label}<span style={{ fontSize: 12, opacity: 0.6 }}>↗</span>
               </button>
             ))}
