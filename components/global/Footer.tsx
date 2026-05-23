@@ -5,10 +5,9 @@ import Link from "next/link";
 
 const companyLinks = [
   { label: "About", href: "#about" },
-  { label: "Process", href: "#process" },
-  { label: "Case Studies", href: "#cases" },
+  { label: "Services", href: "#services" },
+  { label: "How We Work", href: "#pillars" },
   { label: "Contact", href: "#contact" },
-  { label: "Careers", href: "#careers" },
 ];
 
 export default function Footer() {
@@ -75,13 +74,8 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Divider line — centered */}
-      <div style={{ maxWidth: 600, margin: "0 auto", padding: "0 6vw" }}>
-        <div style={{ height: 1, background: "var(--color-border-subtle)" }} />
-      </div>
-
       {/* Copyright — centered */}
-      <div className="text-center" style={{ paddingTop: 32 }}>
+      <div className="text-center" style={{ paddingTop: 40 }}>
         <span style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--color-text-muted)" }}>
           © 2026 Auxilifiers. All rights reserved.
         </span>

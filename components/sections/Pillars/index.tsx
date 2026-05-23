@@ -168,7 +168,7 @@ export default function Pillars() {
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ padding: "160px 6vw", maxWidth: 1400, margin: "0 auto" }}>
+    <section id="pillars" ref={sectionRef} style={{ padding: "160px 6vw", maxWidth: 1400, margin: "0 auto", scrollMarginTop: 68 }}>
       <div className="pillars-eyebrow flex items-center justify-center gap-4 mb-6 opacity-0" style={{
         fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
       }}>

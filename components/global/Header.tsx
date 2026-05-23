@@ -6,9 +6,9 @@ import Link from "next/link";
 import ContactModal from "./ContactModal";
 
 const navLinks = [
-  { label: "Work", href: "#work" },
+  { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
+  { label: "How We Work", href: "#pillars" },
   { label: "Contact", href: "#contact" },
 ];
 
