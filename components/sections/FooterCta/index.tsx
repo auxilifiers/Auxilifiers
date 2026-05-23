@@ -28,7 +28,7 @@ export default function FooterCta() {
     <section
       id="contact"
       ref={sectionRef}
-      style={{ padding: "100px 6vw 120px", borderTop: "1px solid var(--color-border-subtle)", maxWidth: 1400, margin: "0 auto", textAlign: "center" }}
+      style={{ minHeight: "100vh", padding: "0 6vw", maxWidth: 1400, margin: "0 auto", textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", scrollMarginTop: 68 }}
     >
       <div className="cta-anim flex items-center justify-center gap-4 mb-5 opacity-0" style={{
         fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
