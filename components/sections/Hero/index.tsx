@@ -120,8 +120,8 @@ export default function Hero() {
             <span className="char inline-block" style={{ willChange: "transform, opacity" }}>
               <span className="relative inline-block">
                 <span style={{ fontFamily: "var(--font-display)" }}>ı</span>
-                <span className="absolute" style={{ top: "-0.3em", left: "50%", transform: "translateX(-50%)" }}>
-                  <OrbitDot size={12} />
+                <span className="absolute" style={{ top: "-0.18em", left: "50%", transform: "translateX(-50%)" }}>
+                  <OrbitDot size={18} />
                 </span>
               </span>
             </span>
