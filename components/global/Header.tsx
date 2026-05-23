@@ -15,27 +15,28 @@ const navLinks = [
 
 export default function Header() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
       <header
         className="sticky top-0 z-50 flex w-full items-center justify-between"
         style={{
-          padding: "12px 5vw",
+          padding: "10px 5vw",
           background: "rgba(0, 0, 0, 0.55)",
           backdropFilter: "blur(24px) saturate(140%)",
           borderBottom: "1px solid var(--color-border-subtle)",
         }}
       >
-        {/* Logo — S1: 40×40px */}
-        <Link href="/" className="flex items-center gap-3.5">
-          <Image src="/logo.png" alt="Auxilifiers logo" width={40} height={40} priority className="w-8 h-8 min-[768px]:w-10 min-[768px]:h-10" />
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2">
+          <Image src="/logo.png" alt="Auxilifiers" width={28} height={28} priority style={{ width: 28, height: 28 }} />
           <span
-            className="text-white hidden min-[360px]:inline"
+            className="text-white"
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 500,
-              fontSize: "clamp(14px, 3.5vw, 20px)",
+              fontSize: "clamp(13px, 3.5vw, 18px)",
               letterSpacing: "-0.02em",
             }}
           >
@@ -43,7 +44,7 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* Nav links — hidden below 800px */}
+        {/* Desktop nav */}
         <nav className="hidden min-[800px]:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
@@ -52,40 +53,109 @@ export default function Header() {
               className="transition-colors duration-200"
               style={{
                 fontFamily: "var(--font-body)",
-                fontSize: 16,
+                fontSize: 15,
                 color: "var(--color-text-muted)",
               }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "var(--color-text)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.color = "var(--color-text-muted)")
-              }
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* CTA — G3: "Get in touch" opens modal */}
-        <button
-          onClick={() => setModalOpen(true)}
-          className="flex items-center text-black"
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "clamp(12px, 3vw, 16px)",
-            fontWeight: 500,
-            padding: "10px clamp(14px, 3vw, 26px)",
-            borderRadius: "var(--radius-pill)",
-            background: "var(--gradient)",
-            border: "none",
-            cursor: "none",
-          }}
-        >
-          <span className="hidden min-[480px]:inline">Get in touch&nbsp;→</span>
-          <span className="inline min-[480px]:hidden">Contact</span>
-        </button>
+        <div className="flex items-center gap-3">
+          {/* CTA — desktop only */}
+          <button
+            onClick={() => setModalOpen(true)}
+            className="hidden min-[800px]:flex items-center text-black"
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 15,
+              fontWeight: 500,
+              padding: "10px 24px",
+              borderRadius: "var(--radius-pill)",
+              background: "var(--gradient)",
+              border: "none",
+              cursor: "none",
+            }}
+          >
+            Get in touch&nbsp;→
+          </button>
+
+          {/* Hamburger — mobile only */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="flex min-[800px]:hidden items-center justify-center"
+            style={{
+              width: 40,
+              height: 40,
+              background: "transparent",
+              border: "1px solid var(--color-border-default)",
+              borderRadius: "var(--radius-sm)",
+              color: "white",
+              cursor: "none",
+            }}
+            aria-label="Menu"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+              {menuOpen ? (
+                <>
+                  <line x1="4" y1="4" x2="16" y2="16" />
+                  <line x1="16" y1="4" x2="4" y2="16" />
+                </>
+              ) : (
+                <>
+                  <line x1="3" y1="5" x2="17" y2="5" />
+                  <line x1="3" y1="10" x2="17" y2="10" />
+                  <line x1="3" y1="15" x2="17" y2="15" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       </header>
+
+      {/* Mobile menu dropdown */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 z-40 min-[800px]:hidden"
+          style={{ top: 58, background: "rgba(0,0,0,0.92)", backdropFilter: "blur(16px)" }}
+          onClick={() => setMenuOpen(false)}
+        >
+          <nav className="flex flex-col items-center gap-6 pt-12">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 20,
+                  color: "var(--color-text-muted)",
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <button
+              onClick={() => { setMenuOpen(false); setModalOpen(true); }}
+              className="flex items-center text-black mt-4"
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 16,
+                fontWeight: 500,
+                padding: "12px 28px",
+                borderRadius: "var(--radius-pill)",
+                background: "var(--gradient)",
+                border: "none",
+              }}
+            >
+              Get in touch&nbsp;→
+            </button>
+          </nav>
+        </div>
+      )}
 
       <ContactModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </>
