@@ -13,9 +13,11 @@ export default function CustomCursor() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Show cursor on first mouse move (proves it's not touch-only)
+    // Show cursor only on desktop (768px+) on first mouse move
     const onFirstMove = () => {
-      setVisible(true);
+      if (window.innerWidth >= 768) {
+        setVisible(true);
+      }
       window.removeEventListener("mousemove", onFirstMove);
     };
     window.addEventListener("mousemove", onFirstMove);
