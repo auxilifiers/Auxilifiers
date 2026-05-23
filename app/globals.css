@@ -133,25 +133,30 @@ body {
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
-  /* Hero */
+  /* Hero: remove rotations */
   .hero-line1, .hero-line2, .hero-line3 {
     transform: none !important;
   }
 
-  /* Stats wrap properly */
-  .hero-stat {
+  /* Hero stats: vertical stack, each stat on its own row */
+  .hero-stats-row {
     flex-direction: column !important;
-    gap: 2px !important;
-    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  .hero-stat {
+    flex-direction: row !important;
+    gap: 10px !important;
+    align-items: center !important;
   }
   .hero-stat span:first-child {
-    font-size: 28px !important;
+    font-size: 24px !important;
+    min-width: 50px;
   }
   .hero-stat span:last-child {
-    font-size: 9px !important;
+    font-size: 11px !important;
   }
 
-  /* Pillar cards stack */
+  /* Pillar cards: no rotation on mobile */
   .pillar {
     transform: none !important;
   }
@@ -159,15 +164,26 @@ body {
     transform: none !important;
   }
 
-  /* Contact modal */
-  .cta-form form {
-    max-width: 100% !important;
+  /* Pillars eyebrow: smaller on mobile */
+  .pillars-eyebrow {
+    font-size: 10px !important;
+    letter-spacing: 0.12em !important;
   }
-}
 
-@media (max-width: 480px) {
-  body {
-    font-size: 14px;
+  /* About section: kill all the big gaps */
+  #about .decl-eyebrow {
+    margin-bottom: 20px !important;
+  }
+  #about .about-right {
+    gap: 0 !important;
+  }
+  #about .about-right > div:first-child {
+    margin-bottom: 16px !important;
+  }
+
+  /* Footer: reduce gaps */
+  footer .grid {
+    gap: 24px !important;
   }
 }
 

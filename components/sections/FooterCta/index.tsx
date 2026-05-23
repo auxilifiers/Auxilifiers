@@ -37,7 +37,7 @@ export default function FooterCta() {
     <section
       id="contact"
       ref={sectionRef}
-      style={{ padding: "100px 5vw", maxWidth: 1400, margin: "0 auto", textAlign: "center", scrollMarginTop: 68 }}
+      style={{ padding: "clamp(60px, 10vw, 100px) 5vw", maxWidth: 1400, margin: "0 auto", textAlign: "center", scrollMarginTop: 56 }}
     >
       <div className="cta-eyebrow flex items-center justify-center gap-4 mb-5 opacity-0" style={{
         fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",

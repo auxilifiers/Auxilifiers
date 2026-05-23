@@ -35,8 +35,8 @@ export default function Declaration() {
   const base = "clamp(28px, 6vw, 64px)";
 
   return (
-    <section id="about" ref={sectionRef} style={{ padding: "100px 5vw", maxWidth: 1400, margin: "0 auto", scrollMarginTop: 68 }}>
-      <div className="decl-eyebrow flex items-center justify-center gap-4 mb-10 opacity-0" style={{
+    <section id="about" ref={sectionRef} style={{ padding: "clamp(50px, 10vw, 100px) 5vw", maxWidth: 1400, margin: "0 auto", scrollMarginTop: 56, marginTop: "clamp(20px, 4vw, 40px)" }}>
+      <div className="decl-eyebrow flex items-center justify-center gap-4 mb-6 min-[768px]:mb-10 opacity-0" style={{
         fontFamily: "var(--font-mono)", fontSize: 14,
         letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
       }}>
@@ -45,7 +45,7 @@ export default function Declaration() {
         <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
       </div>
 
-      <div className="grid grid-cols-1 min-[900px]:grid-cols-2 gap-10 min-[900px]:gap-16 items-stretch">
+      <div className="grid grid-cols-1 min-[900px]:grid-cols-2 gap-8 min-[900px]:gap-16 items-stretch">
         {/* Left — Philosophy */}
         <div style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.15, display: "flex", flexDirection: "column", justifyContent: "center" }}>
           <div className="word-anim opacity-0" style={{
@@ -78,7 +78,7 @@ export default function Declaration() {
         {/* Right — About details */}
         <div className="about-right opacity-0" style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
           {/* Quick stats — on top */}
-          <div className="flex gap-10 flex-wrap mb-8">
+          <div className="flex gap-6 min-[768px]:gap-10 mb-6 min-[768px]:mb-8">
             {[
               { num: "15+", label: "Services" },
               { num: "4", label: "Continents" },
@@ -86,7 +86,7 @@ export default function Declaration() {
             ].map((s, i) => (
               <div key={i} className="flex flex-col">
                 <span style={{
-                  fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 400,
+                  fontFamily: "var(--font-display)", fontSize: "clamp(24px, 5vw, 32px)", fontWeight: 400,
                   color: "var(--color-cyan)", letterSpacing: "-0.03em", lineHeight: 1,
                 }}>{s.num}</span>
                 <span style={{
@@ -98,8 +98,8 @@ export default function Declaration() {
           </div>
 
           <h3 style={{
-            fontFamily: "var(--font-display)", fontWeight: 400, fontSize: 24,
-            color: "white", marginBottom: 14, letterSpacing: "-0.02em",
+            fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "clamp(20px, 4vw, 24px)",
+            color: "white", marginBottom: 10, letterSpacing: "-0.02em",
           }}>
             Who we are
           </h3>

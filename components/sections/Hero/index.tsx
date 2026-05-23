@@ -105,7 +105,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       className="relative"
-      style={{ height: "calc(100dvh - 60px)", padding: "0 5vw", overflowX: "clip", display: "flex", alignItems: "center" }}
+      style={{ minHeight: "calc(100dvh - 56px)", padding: "20px 5vw", overflowX: "clip", display: "flex", alignItems: "center" }}
     >
       <div className="relative z-10 max-w-[1400px] h-full flex flex-col justify-center">
         {/* Headline */}
@@ -183,7 +183,7 @@ export default function Hero() {
         </a>
 
         {/* Stats row */}
-        <div className="flex flex-wrap gap-x-6 gap-y-3 min-[768px]:gap-x-10">
+        <div className="hero-stats-row flex flex-wrap gap-x-6 gap-y-3 min-[768px]:gap-x-10">
           {stats.map((stat, i) => (
             <div key={i} className="hero-stat opacity-0 flex items-baseline gap-2 min-[768px]:gap-3">
               <span ref={stat.counter.ref} style={{

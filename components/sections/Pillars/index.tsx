@@ -174,9 +174,9 @@ export default function Pillars() {
   }, []);
 
   return (
-    <section id="pillars" ref={sectionRef} style={{ padding: "80px 5vw", maxWidth: 1600, margin: "0 auto", scrollMarginTop: 68 }}>
-      <div className="pillars-eyebrow flex items-center justify-center gap-4 mb-6 opacity-0" style={{
-        fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
+    <section id="pillars" ref={sectionRef} style={{ padding: "clamp(40px, 8vw, 80px) 5vw", maxWidth: 1600, margin: "0 auto", scrollMarginTop: 56 }}>
+      <div className="pillars-eyebrow flex items-center justify-center gap-3 mb-6 opacity-0" style={{
+        fontFamily: "var(--font-mono)", fontSize: "clamp(9px, 2.2vw, 14px)", letterSpacing: "clamp(0.08em, 1vw, 0.18em)", textTransform: "uppercase", color: "var(--color-cyan)",
       }}>
         <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
         How we work · three pillars
