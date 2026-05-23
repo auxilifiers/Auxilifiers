@@ -166,9 +166,9 @@ export default function Hero() {
 
         {/* Sub paragraph */}
         <p className="hero-sub opacity-0" style={{
-          fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.5,
+          fontFamily: "var(--font-body)", fontSize: 18, lineHeight: 1.55,
           color: "var(--color-text-dim)", textShadow: "var(--text-shadow-safety)",
-          maxWidth: 500, marginBottom: 20,
+          maxWidth: 540, marginBottom: 24,
         }}>
           We{" "}
           <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>build</em>{" "}
@@ -184,8 +184,8 @@ export default function Hero() {
           href="#services"
           className="hero-cta opacity-0 inline-flex items-center text-black self-start"
           style={{
-            fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 500,
-            padding: "12px 24px", borderRadius: "var(--radius-pill)",
+            fontFamily: "var(--font-body)", fontSize: 16, fontWeight: 500,
+            padding: "14px 28px", borderRadius: "var(--radius-pill)",
             background: "var(--gradient)", transition: "box-shadow 0.2s",
             marginBottom: 28,
           }}
@@ -195,19 +195,18 @@ export default function Hero() {
           See what services we offer&nbsp;→
         </a>
 
-        {/* Stats — horizontal row below CTA */}
-        <div className="flex flex-wrap justify-between gap-6" style={{ maxWidth: 700 }}>
+        {/* Stats — horizontal row below CTA, all 3 in one line */}
+        <div className="flex items-baseline gap-10" style={{ flexWrap: "nowrap" }}>
           {stats.map((stat, i) => (
-            <div key={i} className="hero-stat opacity-0 flex items-baseline gap-3">
+            <div key={i} className="hero-stat opacity-0 flex items-baseline gap-3 shrink-0">
               <span ref={stat.counter.ref} style={{
-                fontFamily: "var(--font-display)", fontSize: "clamp(28px, 3.5vw, 44px)",
+                fontFamily: "var(--font-display)", fontSize: 40,
                 fontWeight: 400, color: "white", letterSpacing: "-0.03em",
                 lineHeight: 1, textShadow: "var(--text-shadow-safety)",
               }}>{stat.counter.value}</span>
               <span style={{
-                fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.12em",
+                fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.12em",
                 color: "var(--color-text-dim)", textTransform: "uppercase",
-                maxWidth: 130,
               }}>{stat.label}</span>
             </div>
           ))}
