@@ -27,14 +27,14 @@ export default function Header() {
         }}
       >
         {/* Logo — S1: 40×40px */}
-        <Link href="/" className="flex items-center gap-2.5">
-          <Image src="/logo.png" alt="Auxilifiers" width={40} height={40} />
+        <Link href="/" className="flex items-center gap-3.5">
+          <Image src="/logo.png" alt="Auxilifiers logo" width={44} height={44} priority />
           <span
             className="text-white"
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 500,
-              fontSize: 15,
+              fontSize: 18,
               letterSpacing: "-0.02em",
             }}
           >

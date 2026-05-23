@@ -28,9 +28,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Auxilifiers — Orbiting Around Your Success",
+  title: "Auxilifiers — Orbiting around your success.",
   description:
-    "We build the tech, automate the operations, and grow the reach — for businesses ready to scale beyond what their team alone can carry.",
+    "We build the tech, automate the operations, and grow the reach — for businesses ready to scale.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({

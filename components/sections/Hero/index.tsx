@@ -41,14 +41,10 @@ export default function Hero() {
 
       const tl = gsap.timeline({ delay: 0.3 });
 
-      // S2: Meta row removed — timeline starts with Line 1
       tl.fromTo(
         ".hero-line1 .char",
         { opacity: 0, y: -50, rotation: -8 },
-        {
-          opacity: 1, y: 0, rotation: 0,
-          duration: 0.9, ease: "back.out(1.4)", stagger: 0.04,
-        },
+        { opacity: 1, y: 0, rotation: 0, duration: 0.9, ease: "back.out(1.4)", stagger: 0.04 },
         0
       );
 
@@ -130,116 +126,143 @@ export default function Hero() {
     ));
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen overflow-hidden" style={{ padding: "60px 6vw 80px" }}>
-      <div className="relative z-10 max-w-[1400px]">
-        {/* S2: Meta row REMOVED */}
-
-        {/* Headline — S3: All lines left-aligned to same edge */}
-        <div className="mb-12 mt-8">
-          <div className="hero-line1" style={{
-            fontFamily: "var(--font-display)", fontWeight: 400,
-            fontSize: "clamp(56px, 11vw, 168px)", lineHeight: 0.95,
-            letterSpacing: "-0.045em", color: "white",
-            transform: "rotate(-0.5deg)", textShadow: "var(--text-shadow-safety)",
-          }}>
-            {splitChars("Orbit")}
-            <span className="char inline-block" style={{ willChange: "transform, opacity" }}>
-              <span className="relative inline-block">
-                <span style={{ fontFamily: "var(--font-display)" }}>ı</span>
-                <span className="absolute" style={{ top: "-0.15em", left: "50%", transform: "translateX(-50%)" }}>
-                  <OrbitDot size={12} />
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden flex items-center"
+      style={{ minHeight: "100vh", padding: "6vh 6vw" }}
+    >
+      <div
+        className="relative z-10 w-full grid gap-[60px]"
+        style={{ gridTemplateColumns: "1fr 280px", alignItems: "end" }}
+      >
+        {/* Left column: headline + sub + CTA */}
+        <div className="flex flex-col">
+          {/* Headline */}
+          <div style={{ marginBottom: 28 }}>
+            <div className="hero-line1" style={{
+              fontFamily: "var(--font-display)", fontWeight: 400,
+              fontSize: "clamp(48px, 8vw, 120px)", lineHeight: 0.95,
+              letterSpacing: "-0.045em", color: "white",
+              transform: "rotate(-0.5deg)", textShadow: "var(--text-shadow-safety)",
+            }}>
+              {splitChars("Orbit")}
+              <span className="char inline-block" style={{ willChange: "transform, opacity" }}>
+                <span className="relative inline-block">
+                  <span style={{ fontFamily: "var(--font-display)" }}>ı</span>
+                  <span className="absolute" style={{ top: "-0.15em", left: "50%", transform: "translateX(-50%)" }}>
+                    <OrbitDot size={12} />
+                  </span>
                 </span>
               </span>
-            </span>
-            {splitChars("ng")}
-          </div>
+              {splitChars("ng")}
+            </div>
 
-          {/* S3: margin-left removed */}
-          <div className="hero-line2" style={{
-            fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
-            fontSize: "clamp(36px, 7vw, 104px)", lineHeight: 1.1,
-            color: "var(--color-text-dim)", letterSpacing: "-0.02em",
-            textShadow: "var(--text-shadow-safety)",
-          }}>
-            {splitChars("around")}
-          </div>
-
-          <div className="hero-line3 opacity-0" style={{
-            fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
-            fontSize: "clamp(72px, 14vw, 220px)", lineHeight: 0.95,
-            letterSpacing: "-0.02em", transform: "rotate(0.5deg)",
-            textShadow: "var(--text-shadow-safety)",
-            background: "var(--gradient-soft)", WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent", backgroundClip: "text",
-          }}>
-            <span className="scramble-text">your success</span>
-            <span className="hero-period" style={{
-              fontFamily: "var(--font-display)", color: "#00F5FF", fontSize: "0.7em",
-              verticalAlign: "-0.05em", display: "inline-block", WebkitTextFillColor: "#00F5FF",
-            }}>.</span>
-          </div>
-        </div>
-
-        {/* Bottom row */}
-        <div className="flex flex-col lg:flex-row justify-between gap-12">
-          <div className="max-w-[460px]">
-            <p className="hero-sub opacity-0 mb-8" style={{
-              fontFamily: "var(--font-body)", fontSize: 17, lineHeight: 1.55,
-              color: "var(--color-text-dim)", textShadow: "var(--text-shadow-safety)",
+            <div className="hero-line2" style={{
+              fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
+              fontSize: "clamp(32px, 5vw, 72px)", lineHeight: 1.1,
+              color: "var(--color-text-dim)", letterSpacing: "-0.02em",
+              textShadow: "var(--text-shadow-safety)",
             }}>
-              We{" "}
-              <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>build</em>{" "}
-              the tech,{" "}
-              <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>automate</em>{" "}
-              the operations, and{" "}
-              <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>grow</em>{" "}
-              the reach — for businesses ready to scale beyond what their team alone can carry.
-            </p>
+              {splitChars("around")}
+            </div>
 
-            {/* G2: "Talk to our AI" removed. Only primary CTA remains */}
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="#services"
-                className="hero-cta opacity-0 inline-flex items-center text-black"
-                style={{
-                  fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 500,
-                  padding: "14px 28px", borderRadius: "var(--radius-pill)",
-                  background: "var(--gradient)", transition: "box-shadow 0.2s",
-                }}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-              >
-                See how we orbit&nbsp;→
-              </a>
+            <div className="hero-line3 opacity-0" style={{
+              fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
+              fontSize: "clamp(56px, 10vw, 156px)", lineHeight: 0.95,
+              letterSpacing: "-0.02em", transform: "rotate(0.5deg)",
+              textShadow: "var(--text-shadow-safety)",
+              background: "var(--gradient-soft)", WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent", backgroundClip: "text",
+            }}>
+              <span className="scramble-text">your success</span>
+              <span className="hero-period" style={{
+                fontFamily: "var(--font-display)", color: "#00F5FF", fontSize: "0.7em",
+                verticalAlign: "-0.05em", display: "inline-block", WebkitTextFillColor: "#00F5FF",
+              }}>.</span>
             </div>
           </div>
 
-          {/* Stats — kept */}
-          <div className="flex flex-col gap-6">
-            {[
-              { counter: stat1, label: "Live projects in orbit" },
-              { counter: stat2, label: "Avg hrs/week saved per client" },
-              { counter: stat3, label: "Of pitches we win on outcomes" },
-            ].map((stat, i) => (
-              <div key={i} className="hero-stat opacity-0 flex flex-col">
-                <span ref={stat.counter.ref} style={{
-                  fontFamily: "var(--font-display)", fontSize: "clamp(28px, 3vw, 36px)",
-                  fontWeight: 400, color: "white", letterSpacing: "-0.035em",
-                  textShadow: "var(--text-shadow-safety)",
-                }}>{stat.counter.value}</span>
-                <span style={{
-                  fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.18em",
-                  color: "var(--color-text-muted)", textTransform: "uppercase",
-                }}>{stat.label}</span>
-              </div>
-            ))}
+          {/* Sub paragraph */}
+          <p className="hero-sub opacity-0" style={{
+            fontFamily: "var(--font-body)", fontSize: 17, lineHeight: 1.55,
+            color: "var(--color-text-dim)", textShadow: "var(--text-shadow-safety)",
+            maxWidth: 520, marginBottom: 32,
+          }}>
+            We{" "}
+            <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>build</em>{" "}
+            the tech,{" "}
+            <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>automate</em>{" "}
+            the operations, and{" "}
+            <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>grow</em>{" "}
+            the reach — for businesses ready to scale beyond what their team alone can carry.
+          </p>
+
+          {/* CTA */}
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="#services"
+              className="hero-cta opacity-0 inline-flex items-center text-black"
+              style={{
+                fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 500,
+                padding: "14px 28px", borderRadius: "var(--radius-pill)",
+                background: "var(--gradient)", transition: "box-shadow 0.2s",
+              }}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              See how we work&nbsp;→
+            </a>
           </div>
+        </div>
+
+        {/* Right column: stats */}
+        <div className="flex flex-col gap-7" style={{ textAlign: "right", paddingBottom: 8 }}>
+          {[
+            { counter: stat1, label: "Live projects right now" },
+            { counter: stat2, label: "Avg hrs/week saved per client" },
+            { counter: stat3, label: "Of pitches we win on outcomes" },
+          ].map((stat, i) => (
+            <div key={i} className="hero-stat opacity-0 flex flex-col items-end">
+              <span ref={stat.counter.ref} style={{
+                fontFamily: "var(--font-display)", fontSize: 44,
+                fontWeight: 400, color: "white", letterSpacing: "-0.03em",
+                lineHeight: 1, textShadow: "var(--text-shadow-safety)",
+              }}>{stat.counter.value}</span>
+              <span style={{
+                fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.15em",
+                color: "var(--color-text-dim)", textTransform: "uppercase",
+                marginTop: 6, maxWidth: 180,
+              }}>{stat.label}</span>
+            </div>
+          ))}
         </div>
       </div>
 
       <div ref={drifterRef} className="opacity-0">
         <Drifter />
       </div>
+
+      {/* Mobile override: stack columns */}
+      <style>{`
+        @media (max-width: 900px) {
+          .hero > div:first-child {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+          .hero > div:first-child > div:last-child {
+            text-align: left !important;
+          }
+          .hero-stat {
+            align-items: flex-start !important;
+            flex-direction: row !important;
+            gap: 14px !important;
+            align-items: baseline !important;
+          }
+          .hero-stat span:first-child {
+            font-size: 36px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

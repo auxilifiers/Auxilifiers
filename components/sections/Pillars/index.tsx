@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import OrbitDot from "../Hero/OrbitDot";
 import BuildViz from "./viz/BuildViz";
 import AutomateViz from "./viz/AutomateViz";
 import GrowViz from "./viz/GrowViz";
@@ -298,19 +297,12 @@ export default function Pillars() {
         fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
       }}>
         <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
-        How we orbit · three pillars
+        How we work · three pillars
       </div>
 
       <h2 className="pillars-headline mb-16 opacity-0" style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.05 }}>
         <span style={{ fontFamily: "var(--font-display)", fontWeight: 300, fontSize: "clamp(40px, 6.5vw, 96px)", letterSpacing: "-0.035em", color: "white" }}>
-          Three orb
-          <span className="relative inline-block">
-            <span style={{ fontFamily: "var(--font-display)" }}>ı</span>
-            <span className="absolute" style={{ top: "-0.15em", left: "50%", transform: "translateX(-50%)" }}>
-              <OrbitDot size={10} />
-            </span>
-          </span>
-          ts.{" "}
+          Three pillars.{" "}
         </span>
         <span style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(40px, 6.5vw, 96px)", background: "var(--gradient-soft)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
           One

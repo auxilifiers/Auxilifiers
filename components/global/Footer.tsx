@@ -149,7 +149,7 @@ export default function Footer() {
         {/* Col 4 — Newsletter */}
         <div>
           <h4 className="mb-1" style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: 20, color: "white" }}>
-            Stay in orbit.
+            Stay in the loop.
           </h4>
           <p className="mb-4" style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--color-text-muted)" }}>
             Monthly. Tactical. No fluff.

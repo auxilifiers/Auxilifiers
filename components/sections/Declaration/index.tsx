@@ -67,7 +67,7 @@ export default function Declaration() {
           fontFamily: "var(--font-display)", fontWeight: 400,
           fontSize: `calc(${base} * 1.15)`, color: "white", marginBottom: "0.15em",
         }}>
-          We orbit{" "}
+          We support{" "}
           <span style={{
             fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
             background: "var(--gradient-soft)", WebkitBackgroundClip: "text",

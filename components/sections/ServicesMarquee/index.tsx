@@ -13,7 +13,7 @@ const items = [
   { text: "SEO", italic: true },
   { text: "Google Ads", italic: false },
   { text: "Meta Ads", italic: true },
-  { text: "Social Handling", italic: false },
+  { text: "Social Media Handling", italic: false },
   { text: "Content Strategy", italic: true },
   { text: "Integrations", italic: false },
   { text: "CRM Sync", italic: true },
@@ -119,7 +119,7 @@ export default function ServicesMarquee() {
           fontSize: "clamp(36px, 5vw, 64px)", letterSpacing: "-0.025em",
           lineHeight: 1.05, color: "white", textShadow: "var(--text-shadow-safety)", marginBottom: 12,
         }}>
-          Everything you need, in one orbit.
+          Everything you need, under one roof.
         </h2>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.55,

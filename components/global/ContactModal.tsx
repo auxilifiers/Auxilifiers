@@ -4,8 +4,8 @@ import { useState, useEffect, useRef } from "react";
 
 const inputStyle = {
   fontFamily: "var(--font-body)",
-  fontSize: 14,
-  padding: "12px 14px",
+  fontSize: 16,
+  padding: "14px 16px",
   borderRadius: "var(--radius-md)",
   border: "1px solid var(--color-border-default)",
   background: "rgba(255,255,255,0.04)",
@@ -17,7 +17,7 @@ const inputStyle = {
 
 const labelStyle = {
   fontFamily: "var(--font-mono)",
-  fontSize: 10,
+  fontSize: 12,
   letterSpacing: "0.18em",
   textTransform: "uppercase" as const,
   color: "var(--color-text-muted)",
@@ -180,7 +180,7 @@ export function ContactForm({ variant = "modal" }: { variant?: "modal" | "inline
         className="mt-5 inline-flex items-center"
         style={{
           fontFamily: "var(--font-body)",
-          fontSize: 14,
+          fontSize: 16,
           fontWeight: 500,
           padding: "14px 28px",
           borderRadius: "var(--radius-pill)",
@@ -279,7 +279,7 @@ export default function ContactModal({
           style={{
             fontFamily: "var(--font-display)",
             fontWeight: 500,
-            fontSize: 32,
+            fontSize: 36,
             color: "white",
           }}
         >
@@ -291,7 +291,7 @@ export default function ContactModal({
           className="mb-8"
           style={{
             fontFamily: "var(--font-body)",
-            fontSize: 14,
+            fontSize: 15,
             color: "var(--color-text-muted)",
             lineHeight: 1.55,
           }}

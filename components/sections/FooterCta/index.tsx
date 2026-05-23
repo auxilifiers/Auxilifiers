@@ -64,7 +64,7 @@ export default function FooterCta() {
           fontFamily: "var(--font-display)", fontWeight: 300,
           fontSize: "clamp(56px, 12vw, 200px)", letterSpacing: "-0.035em", color: "white",
         }}>
-          orbiting?
+          scaling?
         </span>
       </h2>
 
