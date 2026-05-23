@@ -29,7 +29,7 @@ export default function Header() {
       >
         {/* Logo — S1: 40×40px */}
         <Link href="/" className="flex items-center gap-3.5">
-          <Image src="/logo.png" alt="Auxilifiers logo" width={48} height={48} priority className="w-8 h-8 min-[480px]:w-10 min-[480px]:h-10 min-[768px]:w-12 min-[768px]:h-12" />
+          <Image src="/logo.png" alt="Auxilifiers logo" width={40} height={40} priority className="w-8 h-8 min-[768px]:w-10 min-[768px]:h-10" />
           <span
             className="text-white hidden min-[360px]:inline"
             style={{
