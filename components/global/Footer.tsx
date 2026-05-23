@@ -75,8 +75,13 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Divider line — centered */}
+      <div style={{ maxWidth: 600, margin: "0 auto", padding: "0 6vw" }}>
+        <div style={{ height: 1, background: "var(--color-border-subtle)" }} />
+      </div>
+
       {/* Copyright — centered */}
-      <div className="text-center pt-10 mt-4" style={{ borderTop: "1px solid var(--color-border-subtle)", maxWidth: 1400, margin: "0 auto" }}>
+      <div className="text-center" style={{ paddingTop: 32 }}>
         <span style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--color-text-muted)" }}>
           © 2026 Auxilifiers. All rights reserved.
         </span>
