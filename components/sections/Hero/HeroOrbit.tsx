@@ -5,12 +5,12 @@ export default function HeroOrbit() {
     <div
       className="absolute pointer-events-none hidden min-[768px]:block"
       style={{
-        right: "3vw",
+        right: "6vw",
         top: "50%",
         transform: "translateY(-50%)",
-        width: "clamp(280px, 32vw, 450px)",
-        height: "clamp(280px, 32vw, 450px)",
-        opacity: 0.6,
+        width: "clamp(250px, 28vw, 380px)",
+        height: "clamp(250px, 28vw, 380px)",
+        opacity: 0.55,
         zIndex: 0,
       }}
       aria-hidden="true"

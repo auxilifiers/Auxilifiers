@@ -105,19 +105,19 @@ export default function Declaration() {
           </h3>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.6,
-            color: "var(--color-text-dim)", marginBottom: 16,
+            color: "var(--color-text-dim)", marginBottom: 16, textAlign: "justify",
           }}>
             Auxilifiers is a tech and growth agency that works as your extended team. We build the products your customers use, automate the operations that drain your time, and grow the channels that bring in revenue.
           </p>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.6,
-            color: "var(--color-text-dim)", marginBottom: 16,
+            color: "var(--color-text-dim)", marginBottom: 16, textAlign: "justify",
           }}>
             We&apos;re not here to take over. We&apos;re here to amplify. Your brand, your vision, your growth. We just make it happen faster.
           </p>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.6,
-            color: "var(--color-text-dim)",
+            color: "var(--color-text-dim)", textAlign: "justify",
           }}>
             From custom websites and mobile apps to AI-powered workflows and full-scale digital marketing, we handle the entire stack so you can focus on what you do best: running your business.
           </p>

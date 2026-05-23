@@ -49,12 +49,7 @@
   --text-shadow-safety: 0 0 24px rgba(0, 0, 0, 0.55);
 }
 
-/* Hide native cursor only on devices with mouse */
-@media (hover: hover) and (pointer: fine) {
-  * {
-    cursor: none;
-  }
-}
+/* Native cursor hidden via JS in CustomCursor component */
 
 html {
   scroll-behavior: smooth;

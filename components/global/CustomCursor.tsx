@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const INTERACTIVE_SELECTORS = "a, button, .tag, .pillar, .marquee-item";
 
@@ -10,22 +10,30 @@ export default function CustomCursor() {
   const mouse = useRef({ x: 0, y: 0 });
   const ringPos = useRef({ x: 0, y: 0 });
   const isHovering = useRef(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const hasHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (!hasHover) return;
+    // Show cursor on first mouse move (proves it's not touch-only)
+    const onFirstMove = () => {
+      setVisible(true);
+      window.removeEventListener("mousemove", onFirstMove);
+    };
+    window.addEventListener("mousemove", onFirstMove);
+
+    return () => window.removeEventListener("mousemove", onFirstMove);
+  }, []);
+
+  useEffect(() => {
+    if (!visible) return;
 
     const dot = dotRef.current;
     const ring = ringRef.current;
     if (!dot || !ring) return;
 
-    dot.style.display = "block";
-    ring.style.display = "block";
-
     const onMouseMove = (e: MouseEvent) => {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
-      dot.style.transform = `translate3d(${e.clientX - 3}px, ${e.clientY - 3}px, 0)`;
+      dot.style.transform = `translate3d(${e.clientX - 4}px, ${e.clientY - 4}px, 0)`;
     };
 
     const onEnter = () => {
@@ -45,9 +53,9 @@ export default function CustomCursor() {
     const onLeave = () => {
       isHovering.current = false;
       if (ring) {
-        ring.style.width = "36px";
-        ring.style.height = "36px";
-        ring.style.borderColor = "rgba(0, 245, 255, 0.6)";
+        ring.style.width = "40px";
+        ring.style.height = "40px";
+        ring.style.borderColor = "rgba(0, 245, 255, 0.5)";
         ring.style.backgroundColor = "transparent";
       }
       if (dot) {
@@ -69,15 +77,20 @@ export default function CustomCursor() {
     bindListeners();
 
     let rafId: number;
-    const lerp = 0.18;
     const animate = () => {
-      ringPos.current.x += (mouse.current.x - ringPos.current.x) * lerp;
-      ringPos.current.y += (mouse.current.y - ringPos.current.y) * lerp;
-      const size = isHovering.current ? 35 : 18;
+      ringPos.current.x += (mouse.current.x - ringPos.current.x) * 0.15;
+      ringPos.current.y += (mouse.current.y - ringPos.current.y) * 0.15;
+      const size = isHovering.current ? 35 : 20;
       ring.style.transform = `translate3d(${ringPos.current.x - size}px, ${ringPos.current.y - size}px, 0)`;
       rafId = requestAnimationFrame(animate);
     };
     rafId = requestAnimationFrame(animate);
+
+    // Hide native cursor
+    document.body.style.cursor = "none";
+    document.querySelectorAll("*").forEach((el) => {
+      (el as HTMLElement).style.cursor = "none";
+    });
 
     return () => {
       document.removeEventListener("mousemove", onMouseMove);
@@ -87,35 +100,34 @@ export default function CustomCursor() {
       });
       observer.disconnect();
       cancelAnimationFrame(rafId);
+      document.body.style.cursor = "";
     };
-  }, []);
+  }, [visible]);
+
+  if (!visible) return null;
 
   return (
     <>
       <div
         ref={dotRef}
         className="pointer-events-none fixed top-0 left-0 z-[9999]"
-        data-custom-cursor
         style={{
-          display: "none",
-          width: 6,
-          height: 6,
+          width: 8,
+          height: 8,
           borderRadius: "50%",
           background: "#00F5FF",
-          boxShadow: "var(--glow-cyan-soft)",
+          boxShadow: "0 0 12px rgba(0, 245, 255, 0.7)",
           transition: "opacity 0.2s",
         }}
       />
       <div
         ref={ringRef}
         className="pointer-events-none fixed top-0 left-0 z-[9999]"
-        data-custom-cursor
         style={{
-          display: "none",
-          width: 36,
-          height: 36,
+          width: 40,
+          height: 40,
           borderRadius: "50%",
-          border: "1.5px solid rgba(0, 245, 255, 0.6)",
+          border: "1.5px solid rgba(0, 245, 255, 0.5)",
           transition: "width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s",
         }}
       />
