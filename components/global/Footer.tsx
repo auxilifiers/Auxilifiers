@@ -3,30 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const serviceLinks = {
-  Build: [
-    { label: "Web Dev", href: "#web-dev" },
-    { label: "Mobile Apps", href: "#mobile-apps" },
-    { label: "Shopify", href: "#shopify" },
-    { label: "Integrations", href: "#integrations" },
-  ],
-  Automate: [
-    { label: "AI Workflows", href: "#ai-workflows" },
-    { label: "Chatbots", href: "#chatbots" },
-    { label: "Voice Agents", href: "#voice-agents" },
-    { label: "Voice-on-Site", href: "#voice-on-site" },
-    { label: "CRM Sync", href: "#crm-sync" },
-    { label: "Email Assistant", href: "#inbox-triage" },
-  ],
-  Grow: [
-    { label: "SEO", href: "#seo" },
-    { label: "Google Ads", href: "#google-ads" },
-    { label: "Meta Ads", href: "#meta-ads" },
-    { label: "Social", href: "#social" },
-    { label: "Content", href: "#content" },
-  ],
-};
-
 const companyLinks = [
   { label: "About", href: "#about" },
   { label: "Process", href: "#process" },
@@ -38,9 +14,9 @@ const companyLinks = [
 export default function Footer() {
   return (
     <footer style={{ padding: "100px 6vw 100px", borderTop: "1px solid var(--color-border-subtle)" }}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 mb-20" style={{ maxWidth: 1400, margin: "0 auto" }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-16 mb-20" style={{ maxWidth: 900, margin: "0 auto", textAlign: "center", justifyItems: "center" }}>
         {/* Col 1 — Brand + Contact + Social */}
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 items-center">
           <div className="flex items-center gap-3">
             <Image src="/logo.png" alt="Auxilifiers" width={36} height={36} />
             <span style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 18, color: "white" }}>
@@ -51,31 +27,21 @@ export default function Footer() {
             Orbiting around your success.
           </p>
 
-          {/* Contact info */}
-          <div className="flex flex-col gap-3 mt-2">
-            <a href="https://wa.me/923324619441" target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-3 transition-colors duration-200 hover:text-white"
-              style={{ fontFamily: "var(--font-body)", fontSize: 16, color: "var(--color-text-muted)" }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: "var(--color-cyan)", flexShrink: 0 }}>
-                <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-                <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
-              </svg>
-              +92 332 4619441
-            </a>
-            <a href="mailto:info@auxilifiers.com"
-              className="flex items-center gap-3 transition-colors duration-200 hover:text-white"
-              style={{ fontFamily: "var(--font-body)", fontSize: 16, color: "var(--color-text-muted)" }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: "var(--color-cyan)", flexShrink: 0 }}>
-                <rect width="20" height="16" x="2" y="4" rx="2" />
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-              </svg>
-              info@auxilifiers.com
-            </a>
-          </div>
+          {/* Contact — email only */}
+          <a href="mailto:info@auxilifiers.com"
+            className="flex items-center gap-3 mt-2 transition-colors duration-200 hover:text-white"
+            style={{ fontFamily: "var(--font-body)", fontSize: 16, color: "var(--color-text-muted)" }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: "var(--color-cyan)", flexShrink: 0 }}>
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            info@auxilifiers.com
+          </a>
 
           {/* Social icons — bigger, + YouTube */}
-          <div className="flex gap-4 mt-4">
+          <div className="flex gap-4 mt-4 justify-center">
             {[
+              { label: "WhatsApp", href: "https://wa.me/923324619441", icon: <><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" /><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" /></> },
               { label: "Instagram", href: "#", icon: <><path d="M16 4H8a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V8a4 4 0 0 0-4-4Z" /><circle cx="12" cy="12" r="3" /><circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></> },
               { label: "Facebook", href: "#", icon: <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /> },
               { label: "LinkedIn", href: "#", icon: <><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></> },
@@ -94,30 +60,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Col 2 — Services */}
-        <div>
-          <h4 className="mb-5" style={{ fontFamily: "var(--font-mono)", fontSize: 15, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-text-muted)" }}>
-            Services
-          </h4>
-          <div className="flex flex-col gap-4">
-            {Object.entries(serviceLinks).map(([category, links]) => (
-              <div key={category}>
-                <span className="block mb-2" style={{ fontFamily: "var(--font-mono)", fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--color-cyan)", opacity: 0.7 }}>
-                  {category}
-                </span>
-                <div className="flex flex-wrap gap-x-4 gap-y-1.5">
-                  {links.map((link) => (
-                    <Link key={link.href} href={link.href} className="transition-colors duration-200 hover:text-white" style={{ fontFamily: "var(--font-body)", fontSize: 16, color: "var(--color-text-muted)" }}>
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Col 3 — Company */}
+        {/* Col 2 — Company */}
         <div>
           <h4 className="mb-5" style={{ fontFamily: "var(--font-mono)", fontSize: 15, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-text-muted)" }}>
             Company
@@ -132,19 +75,11 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Copyright */}
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8" style={{ borderTop: "1px solid var(--color-border-subtle)", maxWidth: 1400, margin: "0 auto" }}>
+      {/* Copyright — centered */}
+      <div className="text-center pt-10 mt-4" style={{ borderTop: "1px solid var(--color-border-subtle)", maxWidth: 1400, margin: "0 auto" }}>
         <span style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--color-text-muted)" }}>
           © 2026 Auxilifiers. All rights reserved.
         </span>
-        <div className="flex gap-6">
-          <Link href="#privacy" className="transition-colors duration-200 hover:text-white" style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--color-text-muted)" }}>
-            Privacy Policy
-          </Link>
-          <Link href="#terms" className="transition-colors duration-200 hover:text-white" style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--color-text-muted)" }}>
-            Terms of Service
-          </Link>
-        </div>
       </div>
     </footer>
   );
