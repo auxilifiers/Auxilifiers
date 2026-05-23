@@ -73,7 +73,7 @@ export default function Hero() {
 
       tl.fromTo(".hero-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 1.4);
       tl.fromTo(".hero-cta", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.6);
-      tl.fromTo(".hero-stat", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 1.8);
+      tl.fromTo(".hero-stat", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 2.0);
 
       if (drifterRef.current) {
         gsap.fromTo(drifterRef.current, { opacity: 0 }, { opacity: 1, duration: 0.4, delay: 2.2 });
@@ -117,105 +117,97 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="hero-section relative"
+      className="relative"
       style={{ height: "calc(100dvh - 68px)", padding: "0 6vw", overflow: "hidden" }}
     >
-      {/* 2-column grid: left = headline+sub+CTA, right = stats */}
-      <div
-        className="hero-grid relative z-10 max-w-[1400px] h-full"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 260px",
-          gap: "48px",
-          alignItems: "center",
-        }}
-      >
-        {/* Left column */}
-        <div className="flex flex-col">
-          <div style={{ marginBottom: 20 }}>
-            <div className="hero-line1" style={{
-              fontFamily: "var(--font-display)", fontWeight: 400,
-              fontSize: "clamp(44px, 7vw, 100px)", lineHeight: 0.95,
-              letterSpacing: "-0.045em", color: "white",
-              transform: "rotate(-0.5deg)", textShadow: "var(--text-shadow-safety)",
-            }}>
-              {splitChars("Orbit")}
-              <span className="char inline-block" style={{ willChange: "transform, opacity" }}>
-                <span className="relative inline-block">
-                  <span style={{ fontFamily: "var(--font-display)" }}>ı</span>
-                  <span className="absolute" style={{ top: "-0.15em", left: "50%", transform: "translateX(-50%)" }}>
-                    <OrbitDot size={12} />
-                  </span>
+      <div className="relative z-10 max-w-[1400px] h-full flex flex-col justify-center">
+        {/* Headline */}
+        <div style={{ marginBottom: 20 }}>
+          <div className="hero-line1" style={{
+            fontFamily: "var(--font-display)", fontWeight: 400,
+            fontSize: "clamp(44px, 7vw, 100px)", lineHeight: 0.95,
+            letterSpacing: "-0.045em", color: "white",
+            transform: "rotate(-0.5deg)", textShadow: "var(--text-shadow-safety)",
+          }}>
+            {splitChars("Orbit")}
+            <span className="char inline-block" style={{ willChange: "transform, opacity" }}>
+              <span className="relative inline-block">
+                <span style={{ fontFamily: "var(--font-display)" }}>ı</span>
+                <span className="absolute" style={{ top: "-0.15em", left: "50%", transform: "translateX(-50%)" }}>
+                  <OrbitDot size={12} />
                 </span>
               </span>
-              {splitChars("ng")}
-            </div>
-            <div className="hero-line2" style={{
-              fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
-              fontSize: "clamp(28px, 4.5vw, 64px)", lineHeight: 1.1,
-              color: "var(--color-text-dim)", letterSpacing: "-0.02em",
-              textShadow: "var(--text-shadow-safety)",
-            }}>
-              {splitChars("around")}
-            </div>
-            <div className="hero-line3 opacity-0" style={{
-              fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
-              fontSize: "clamp(48px, 9vw, 128px)", lineHeight: 0.95,
-              letterSpacing: "-0.02em", transform: "rotate(0.5deg)",
-              textShadow: "var(--text-shadow-safety)",
-              background: "var(--gradient-soft)", WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent", backgroundClip: "text",
-            }}>
-              <span className="scramble-text">your success</span>
-              <span className="hero-period" style={{
-                fontFamily: "var(--font-display)", color: "#00F5FF", fontSize: "0.7em",
-                verticalAlign: "-0.05em", display: "inline-block", WebkitTextFillColor: "#00F5FF",
-              }}>.</span>
-            </div>
+            </span>
+            {splitChars("ng")}
           </div>
-
-          <p className="hero-sub opacity-0" style={{
-            fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.5,
-            color: "var(--color-text-dim)", textShadow: "var(--text-shadow-safety)",
-            maxWidth: 500, marginBottom: 20,
+          <div className="hero-line2" style={{
+            fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
+            fontSize: "clamp(28px, 4.5vw, 64px)", lineHeight: 1.1,
+            color: "var(--color-text-dim)", letterSpacing: "-0.02em",
+            textShadow: "var(--text-shadow-safety)",
           }}>
-            We{" "}
-            <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>build</em>{" "}
-            the tech,{" "}
-            <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>automate</em>{" "}
-            the operations, and{" "}
-            <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>grow</em>{" "}
-            the reach — for businesses ready to scale beyond what their team alone can carry.
-          </p>
-
-          <a
-            href="#services"
-            className="hero-cta opacity-0 inline-flex items-center text-black self-start"
-            style={{
-              fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 500,
-              padding: "12px 24px", borderRadius: "var(--radius-pill)",
-              background: "var(--gradient)", transition: "box-shadow 0.2s",
-            }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-          >
-            See how we work&nbsp;→
-          </a>
+            {splitChars("around")}
+          </div>
+          <div className="hero-line3 opacity-0" style={{
+            fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
+            fontSize: "clamp(48px, 9vw, 128px)", lineHeight: 0.95,
+            letterSpacing: "-0.02em", transform: "rotate(0.5deg)",
+            textShadow: "var(--text-shadow-safety)",
+            background: "var(--gradient-soft)", WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent", backgroundClip: "text",
+          }}>
+            <span className="scramble-text">your success</span>
+            <span className="hero-period" style={{
+              fontFamily: "var(--font-display)", color: "#00F5FF", fontSize: "0.7em",
+              verticalAlign: "-0.05em", display: "inline-block", WebkitTextFillColor: "#00F5FF",
+            }}>.</span>
+          </div>
         </div>
 
-        {/* Right column: stats vertical, top-aligned, right-aligned text */}
-        <div className="flex flex-col gap-8" style={{ textAlign: "right" }}>
+        {/* Sub paragraph */}
+        <p className="hero-sub opacity-0" style={{
+          fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.5,
+          color: "var(--color-text-dim)", textShadow: "var(--text-shadow-safety)",
+          maxWidth: 500, marginBottom: 20,
+        }}>
+          We{" "}
+          <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>build</em>{" "}
+          the tech,{" "}
+          <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>automate</em>{" "}
+          the operations, and{" "}
+          <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>grow</em>{" "}
+          the reach — for businesses ready to scale beyond what their team alone can carry.
+        </p>
+
+        {/* CTA */}
+        <a
+          href="#services"
+          className="hero-cta opacity-0 inline-flex items-center text-black self-start"
+          style={{
+            fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 500,
+            padding: "12px 24px", borderRadius: "var(--radius-pill)",
+            background: "var(--gradient)", transition: "box-shadow 0.2s",
+            marginBottom: 28,
+          }}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
+          See what services we offer&nbsp;→
+        </a>
+
+        {/* Stats — horizontal row below CTA */}
+        <div className="flex flex-wrap justify-between gap-6" style={{ maxWidth: 700 }}>
           {stats.map((stat, i) => (
-            <div key={i} className="hero-stat opacity-0 flex flex-col items-end">
+            <div key={i} className="hero-stat opacity-0 flex items-baseline gap-3">
               <span ref={stat.counter.ref} style={{
-                fontFamily: "var(--font-display)", fontSize: 44,
+                fontFamily: "var(--font-display)", fontSize: "clamp(28px, 3.5vw, 44px)",
                 fontWeight: 400, color: "white", letterSpacing: "-0.03em",
                 lineHeight: 1, textShadow: "var(--text-shadow-safety)",
               }}>{stat.counter.value}</span>
               <span style={{
-                fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.15em",
+                fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.12em",
                 color: "var(--color-text-dim)", textTransform: "uppercase",
-                marginTop: 6, maxWidth: 180,
+                maxWidth: 130,
               }}>{stat.label}</span>
             </div>
           ))}
@@ -226,29 +218,6 @@ export default function Hero() {
       <div ref={drifterRef} className="opacity-0 absolute" style={{ top: 0, left: 0 }}>
         <Drifter />
       </div>
-
-      {/* Mobile: stack columns */}
-      <style>{`
-        @media (max-width: 900px) {
-          .hero-grid {
-            grid-template-columns: 1fr !important;
-            gap: 32px !important;
-            align-items: start !important;
-          }
-          .hero-grid > div:last-child {
-            flex-direction: row !important;
-            text-align: left !important;
-            gap: 24px !important;
-            flex-wrap: wrap;
-          }
-          .hero-stat {
-            align-items: flex-start !important;
-          }
-          .hero-stat span:first-child {
-            font-size: 32px !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
