@@ -21,7 +21,7 @@ export default function Header() {
       <header
         className="sticky top-0 z-50 flex w-full items-center justify-between"
         style={{
-          padding: "18px 6vw",
+          padding: "12px 5vw",
           background: "rgba(0, 0, 0, 0.55)",
           backdropFilter: "blur(24px) saturate(140%)",
           borderBottom: "1px solid var(--color-border-subtle)",

@@ -174,7 +174,7 @@ export default function Pillars() {
   }, []);
 
   return (
-    <section id="pillars" ref={sectionRef} style={{ padding: "80px 4vw", maxWidth: 1600, margin: "0 auto", scrollMarginTop: 68 }}>
+    <section id="pillars" ref={sectionRef} style={{ padding: "80px 5vw", maxWidth: 1600, margin: "0 auto", scrollMarginTop: 68 }}>
       <div className="pillars-eyebrow flex items-center justify-center gap-4 mb-6 opacity-0" style={{
         fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
       }}>

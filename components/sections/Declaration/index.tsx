@@ -35,7 +35,7 @@ export default function Declaration() {
   const base = "clamp(28px, 4.5vw, 64px)";
 
   return (
-    <section id="about" ref={sectionRef} style={{ minHeight: "100vh", padding: "0 6vw", maxWidth: 1400, margin: "0 auto", scrollMarginTop: 68, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+    <section id="about" ref={sectionRef} style={{ minHeight: "100vh", padding: "60px 5vw", maxWidth: 1400, margin: "0 auto", scrollMarginTop: 68, display: "flex", flexDirection: "column", justifyContent: "center" }}>
       <div className="decl-eyebrow flex items-center justify-center gap-4 mb-10 opacity-0" style={{
         fontFamily: "var(--font-mono)", fontSize: 14,
         letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",

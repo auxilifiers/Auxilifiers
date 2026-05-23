@@ -3,7 +3,7 @@
 export default function HeroOrbit() {
   return (
     <div
-      className="absolute pointer-events-none"
+      className="absolute pointer-events-none hidden min-[768px]:block"
       style={{
         right: "2vw",
         top: "50%",

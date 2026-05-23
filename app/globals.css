@@ -135,6 +135,46 @@ body {
   background: rgba(0, 245, 255, 0.7);
 }
 
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  /* Hero */
+  .hero-line1, .hero-line2, .hero-line3 {
+    transform: none !important;
+  }
+
+  /* Stats wrap properly */
+  .hero-stat {
+    flex-direction: column !important;
+    gap: 2px !important;
+    align-items: flex-start !important;
+  }
+  .hero-stat span:first-child {
+    font-size: 28px !important;
+  }
+  .hero-stat span:last-child {
+    font-size: 9px !important;
+  }
+
+  /* Pillar cards stack */
+  .pillar {
+    transform: none !important;
+  }
+  .pillar:hover {
+    transform: none !important;
+  }
+
+  /* Contact modal */
+  .cta-form form {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

@@ -41,7 +41,6 @@ export default function Hero() {
 
       tl.fromTo(".hero-line1 .char", { opacity: 0, y: -50, rotation: -8 },
         { opacity: 1, y: 0, rotation: 0, duration: 0.9, ease: "back.out(1.4)", stagger: 0.04 }, 0);
-
       tl.fromTo(".hero-line2 .char", { opacity: 0, x: -20 },
         { opacity: 1, x: 0, duration: 0.6, ease: "power2.out", stagger: 0.03 }, 0.5);
 
@@ -98,31 +97,31 @@ export default function Hero() {
 
   const stats = [
     { counter: stat1, label: "Live projects right now" },
-    { counter: stat2, label: "Avg hrs/week saved per client" },
-    { counter: stat3, label: "Of pitches we win on outcomes" },
+    { counter: stat2, label: "Avg hrs/week saved" },
+    { counter: stat3, label: "Pitches we win" },
   ];
 
   return (
     <section
       ref={sectionRef}
       className="relative"
-      style={{ height: "calc(100dvh - 68px)", padding: "0 6vw", overflowX: "clip", overflowY: "visible" }}
+      style={{ height: "calc(100dvh - 60px)", padding: "0 5vw", overflowX: "clip", display: "flex", alignItems: "center" }}
     >
       <div className="relative z-10 max-w-[1400px] h-full flex flex-col justify-center">
         {/* Headline */}
-        <div style={{ marginBottom: 20 }}>
+        <div className="mb-4 min-[768px]:mb-5">
           <div className="hero-line1" style={{
             fontFamily: "var(--font-display)", fontWeight: 400,
-            fontSize: "clamp(44px, 7vw, 100px)", lineHeight: 0.95,
+            fontSize: "clamp(36px, 10vw, 100px)", lineHeight: 0.95,
             letterSpacing: "-0.045em", color: "white",
-            transform: "rotate(-0.5deg)", textShadow: "var(--text-shadow-safety)",
+            textShadow: "var(--text-shadow-safety)",
           }}>
             {splitChars("Orbit")}
             <span className="char inline-block" style={{ willChange: "transform, opacity" }}>
               <span className="relative inline-block">
                 <span style={{ fontFamily: "var(--font-display)" }}>ı</span>
                 <span className="absolute" style={{ top: "-0.2em", left: "50%", transform: "translateX(-50%)" }}>
-                  <OrbitDot size={22} />
+                  <OrbitDot size={16} />
                 </span>
               </span>
             </span>
@@ -130,7 +129,7 @@ export default function Hero() {
           </div>
           <div className="hero-line2" style={{
             fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
-            fontSize: "clamp(28px, 4.5vw, 64px)", lineHeight: 1.1,
+            fontSize: "clamp(24px, 7vw, 64px)", lineHeight: 1.1,
             color: "var(--color-text-dim)", letterSpacing: "-0.02em",
             textShadow: "var(--text-shadow-safety)",
           }}>
@@ -138,8 +137,8 @@ export default function Hero() {
           </div>
           <div className="hero-line3 opacity-0" style={{
             fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
-            fontSize: "clamp(48px, 9vw, 128px)", lineHeight: 0.95,
-            letterSpacing: "-0.02em", transform: "rotate(0.5deg)",
+            fontSize: "clamp(40px, 12vw, 128px)", lineHeight: 0.95,
+            letterSpacing: "-0.02em",
             textShadow: "var(--text-shadow-safety)",
             background: "var(--gradient-soft)", WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent", backgroundClip: "text",
@@ -154,9 +153,9 @@ export default function Hero() {
 
         {/* Sub paragraph */}
         <p className="hero-sub opacity-0" style={{
-          fontFamily: "var(--font-body)", fontSize: 18, lineHeight: 1.55,
+          fontFamily: "var(--font-body)", fontSize: "clamp(14px, 3.5vw, 18px)", lineHeight: 1.55,
           color: "var(--color-text-dim)", textShadow: "var(--text-shadow-safety)",
-          maxWidth: 540, marginBottom: 24,
+          maxWidth: 540, marginBottom: "clamp(16px, 3vw, 24px)",
         }}>
           We{" "}
           <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>build</em>{" "}
@@ -172,10 +171,10 @@ export default function Hero() {
           href="#services"
           className="hero-cta opacity-0 inline-flex items-center text-black self-start"
           style={{
-            fontFamily: "var(--font-body)", fontSize: 16, fontWeight: 500,
-            padding: "14px 28px", borderRadius: "var(--radius-pill)",
+            fontFamily: "var(--font-body)", fontSize: "clamp(13px, 3vw, 16px)", fontWeight: 500,
+            padding: "12px 24px", borderRadius: "var(--radius-pill)",
             background: "var(--gradient)", transition: "box-shadow 0.2s",
-            marginBottom: 28,
+            marginBottom: "clamp(16px, 4vw, 28px)",
           }}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
@@ -183,17 +182,17 @@ export default function Hero() {
           See what services we offer&nbsp;→
         </a>
 
-        {/* Stats — horizontal row below CTA */}
-        <div className="flex items-baseline gap-6 min-[1024px]:gap-10 flex-wrap min-[768px]:flex-nowrap">
+        {/* Stats row */}
+        <div className="flex flex-wrap gap-x-6 gap-y-3 min-[768px]:gap-x-10">
           {stats.map((stat, i) => (
-            <div key={i} className="hero-stat opacity-0 flex items-baseline gap-3">
+            <div key={i} className="hero-stat opacity-0 flex items-baseline gap-2 min-[768px]:gap-3">
               <span ref={stat.counter.ref} style={{
-                fontFamily: "var(--font-display)", fontSize: 40,
+                fontFamily: "var(--font-display)", fontSize: "clamp(24px, 5vw, 40px)",
                 fontWeight: 400, color: "white", letterSpacing: "-0.03em",
                 lineHeight: 1, textShadow: "var(--text-shadow-safety)",
               }}>{stat.counter.value}</span>
               <span style={{
-                fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.12em",
+                fontFamily: "var(--font-mono)", fontSize: "clamp(8px, 1.5vw, 11px)", letterSpacing: "0.12em",
                 color: "var(--color-text-dim)", textTransform: "uppercase",
               }}>{stat.label}</span>
             </div>
@@ -201,7 +200,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Decorative orbital animation — right side */}
+      {/* Decorative orbital animation */}
       <HeroOrbit />
     </section>
   );
