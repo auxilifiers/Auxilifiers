@@ -36,7 +36,7 @@ export default function Header() {
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 500,
-              fontSize: "clamp(13px, 3.5vw, 18px)",
+              fontSize: "clamp(14px, 3.5vw, 20px)",
               letterSpacing: "-0.02em",
             }}
           >
@@ -53,7 +53,7 @@ export default function Header() {
               className="transition-colors duration-200"
               style={{
                 fontFamily: "var(--font-body)",
-                fontSize: 15,
+                fontSize: 17,
                 color: "var(--color-text-muted)",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
@@ -71,9 +71,9 @@ export default function Header() {
             className="hidden min-[800px]:flex items-center text-black"
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: 15,
+              fontSize: 16,
               fontWeight: 500,
-              padding: "10px 24px",
+              padding: "11px 26px",
               borderRadius: "var(--radius-pill)",
               background: "var(--gradient)",
               border: "none",
