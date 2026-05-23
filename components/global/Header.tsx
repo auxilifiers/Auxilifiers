@@ -28,13 +28,13 @@ export default function Header() {
       >
         {/* Logo — S1: 40×40px */}
         <Link href="/" className="flex items-center gap-3.5">
-          <Image src="/logo.png" alt="Auxilifiers logo" width={44} height={44} priority />
+          <Image src="/logo.png" alt="Auxilifiers logo" width={48} height={48} priority />
           <span
             className="text-white"
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 500,
-              fontSize: 18,
+              fontSize: 20,
               letterSpacing: "-0.02em",
             }}
           >
@@ -51,7 +51,7 @@ export default function Header() {
               className="transition-colors duration-200"
               style={{
                 fontFamily: "var(--font-body)",
-                fontSize: 15,
+                fontSize: 16,
                 color: "var(--color-text-muted)",
               }}
               onMouseEnter={(e) =>
@@ -72,9 +72,9 @@ export default function Header() {
           className="flex items-center text-black"
           style={{
             fontFamily: "var(--font-body)",
-            fontSize: 15,
+            fontSize: 16,
             fontWeight: 500,
-            padding: "10px 22px",
+            padding: "12px 26px",
             borderRadius: "var(--radius-pill)",
             background: "var(--gradient)",
             border: "none",
