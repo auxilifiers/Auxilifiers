@@ -104,7 +104,7 @@ function MarqueeTrack() {
 
 export default function ServicesMarquee() {
   return (
-    <div id="services">
+    <div id="services" style={{ scrollMarginTop: 68 }}>
       {/* S4: Section heading above marquee */}
       <section style={{ padding: "80px 6vw 40px", maxWidth: 1400, margin: "0 auto" }}>
         <div className="flex items-center gap-4 mb-5" style={{
