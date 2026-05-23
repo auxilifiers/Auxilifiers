@@ -181,6 +181,12 @@ body {
     margin-bottom: 16px !important;
   }
 
+  /* Why Us: proper centering on mobile */
+  #whyus > div {
+    padding-top: 0 !important;
+    min-height: calc(100vh - 56px) !important;
+  }
+
   /* Footer: reduce gaps */
   footer .grid {
     gap: 24px !important;

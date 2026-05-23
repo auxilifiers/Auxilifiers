@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import OrbitDot from "./OrbitDot";
-import HeroOrbit from "./HeroOrbit";
 
 function useCountUp(target: number, duration = 1800, suffix = "") {
   const [value, setValue] = useState("0" + suffix);
@@ -200,8 +199,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Decorative orbital animation */}
-      <HeroOrbit />
     </section>
   );
 }
