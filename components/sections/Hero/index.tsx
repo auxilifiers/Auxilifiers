@@ -73,8 +73,7 @@ export default function Hero() {
 
       tl.fromTo(".hero-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 1.4);
       tl.fromTo(".hero-cta", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.6);
-      tl.fromTo(".hero-divider-line", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power3.out" }, 1.7);
-      tl.fromTo(".hero-stat", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.12 }, 2.0);
+      tl.fromTo(".hero-stat", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 1.8);
 
       if (drifterRef.current) {
         gsap.fromTo(drifterRef.current, { opacity: 0 }, { opacity: 1, duration: 0.4, delay: 2.2 });
@@ -118,21 +117,22 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative"
+      className="hero-section relative"
       style={{ height: "calc(100dvh - 68px)", padding: "0 6vw", overflow: "hidden" }}
     >
-      {/* Main content area using CSS grid for precise viewport fitting */}
+      {/* 2-column grid: left = headline+sub+CTA, right = stats */}
       <div
-        className="relative z-10 max-w-[1400px] h-full"
+        className="hero-grid relative z-10 max-w-[1400px] h-full"
         style={{
           display: "grid",
-          gridTemplateRows: "1fr auto auto",
-          gap: 0,
+          gridTemplateColumns: "1fr 260px",
+          gap: "48px",
+          alignItems: "center",
         }}
       >
-        {/* Row 1: Headline + sub + CTA — takes remaining space, centered vertically */}
-        <div className="flex flex-col justify-center" style={{ paddingTop: 16 }}>
-          <div style={{ marginBottom: 16 }}>
+        {/* Left column */}
+        <div className="flex flex-col">
+          <div style={{ marginBottom: 20 }}>
             <div className="hero-line1" style={{
               fontFamily: "var(--font-display)", fontWeight: 400,
               fontSize: "clamp(44px, 7vw, 100px)", lineHeight: 0.95,
@@ -177,7 +177,7 @@ export default function Hero() {
           <p className="hero-sub opacity-0" style={{
             fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.5,
             color: "var(--color-text-dim)", textShadow: "var(--text-shadow-safety)",
-            maxWidth: 500, marginBottom: 16,
+            maxWidth: 500, marginBottom: 20,
           }}>
             We{" "}
             <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>build</em>{" "}
@@ -203,42 +203,52 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Row 2: Divider line */}
-        <div style={{ padding: "16px 0 12px" }}>
-          <div
-            className="hero-divider-line"
-            style={{
-              height: 1,
-              background: "linear-gradient(90deg, var(--color-cyan), var(--color-blue), transparent)",
-              transformOrigin: "left",
-              opacity: 0.4,
-            }}
-          />
-        </div>
-
-        {/* Row 3: Stats horizontal — fixed height, no flex grow */}
-        <div className="flex flex-wrap justify-between gap-4" style={{ paddingBottom: 20 }}>
+        {/* Right column: stats vertical, top-aligned, right-aligned text */}
+        <div className="flex flex-col gap-8" style={{ textAlign: "right" }}>
           {stats.map((stat, i) => (
-            <div key={i} className="hero-stat opacity-0 flex items-baseline gap-3">
+            <div key={i} className="hero-stat opacity-0 flex flex-col items-end">
               <span ref={stat.counter.ref} style={{
-                fontFamily: "var(--font-display)", fontSize: "clamp(28px, 3.5vw, 44px)",
+                fontFamily: "var(--font-display)", fontSize: 44,
                 fontWeight: 400, color: "white", letterSpacing: "-0.03em",
                 lineHeight: 1, textShadow: "var(--text-shadow-safety)",
               }}>{stat.counter.value}</span>
               <span style={{
                 fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.15em",
                 color: "var(--color-text-dim)", textTransform: "uppercase",
-                maxWidth: 150,
+                marginTop: 6, maxWidth: 180,
               }}>{stat.label}</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Drifter — absolutely positioned so it doesn't affect layout */}
+      {/* Drifter — absolutely positioned */}
       <div ref={drifterRef} className="opacity-0 absolute" style={{ top: 0, left: 0 }}>
         <Drifter />
       </div>
+
+      {/* Mobile: stack columns */}
+      <style>{`
+        @media (max-width: 900px) {
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+            align-items: start !important;
+          }
+          .hero-grid > div:last-child {
+            flex-direction: row !important;
+            text-align: left !important;
+            gap: 24px !important;
+            flex-wrap: wrap;
+          }
+          .hero-stat {
+            align-items: flex-start !important;
+          }
+          .hero-stat span:first-child {
+            font-size: 32px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
