@@ -88,13 +88,19 @@ export default function ServicesMarquee() {
       const section = sectionRef.current;
       if (!section) return;
 
-      // Slide in from left with scale
-      gsap.fromTo(section.querySelector(".svc-eyebrow"), { opacity: 0, x: -40 },
-        { opacity: 1, x: 0, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 80%" } });
-      gsap.fromTo(section.querySelector(".svc-heading"), { opacity: 0, y: 30, scale: 0.97 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: "expo.out", scrollTrigger: { trigger: section, start: "top 80%" } });
-      gsap.fromTo(section.querySelector(".svc-sub"), { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", delay: 0.2, scrollTrigger: { trigger: section, start: "top 80%" } });
+      // Eyebrow: lines expand from center, text fades in
+      const eyebrowLines = section.querySelectorAll(".svc-eyebrow span");
+      gsap.fromTo(eyebrowLines, { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out", stagger: 0.1, scrollTrigger: { trigger: section, start: "top 80%" } });
+      gsap.fromTo(section.querySelector(".svc-eyebrow"), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out", scrollTrigger: { trigger: section, start: "top 80%" } });
+
+      // Heading: each word drops in with bounce
+      const words = section.querySelectorAll(".svc-word");
+      gsap.fromTo(words, { opacity: 0, y: 60, rotateX: -40 },
+        { opacity: 1, y: 0, rotateX: 0, duration: 0.7, ease: "back.out(1.4)", stagger: 0.08, scrollTrigger: { trigger: section, start: "top 80%" } });
+
+      // Sub: fade + blur clear
+      gsap.fromTo(section.querySelector(".svc-sub"), { opacity: 0, filter: "blur(6px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.8, ease: "power3.out", delay: 0.4, scrollTrigger: { trigger: section, start: "top 80%" } });
     };
     init();
   }, []);
@@ -110,12 +116,15 @@ export default function ServicesMarquee() {
           Services
           <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
         </div>
-        <h2 className="svc-heading opacity-0" style={{
+        <h2 style={{
           fontFamily: "var(--font-display)", fontWeight: 300,
           fontSize: "clamp(36px, 5vw, 64px)", letterSpacing: "-0.025em",
           lineHeight: 1.05, color: "white", textShadow: "var(--text-shadow-safety)", marginBottom: 12,
+          perspective: 600,
         }}>
-          Everything you need, under one roof.
+          {"Everything you need, under one roof.".split(" ").map((word, i) => (
+            <span key={i} className="svc-word inline-block opacity-0" style={{ marginRight: "0.3em" }}>{word}</span>
+          ))}
         </h2>
         <p className="svc-sub opacity-0" style={{
           fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.55,

@@ -155,14 +155,20 @@ export default function Pillars() {
       const section = sectionRef.current;
       if (!section) return;
 
-      gsap.fromTo(section.querySelector(".pillars-eyebrow"), { opacity: 0, x: -40 },
-        { opacity: 1, x: 0, duration: 0.7, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 75%" } });
-      gsap.fromTo(section.querySelector(".pillars-headline"), { opacity: 0, y: 40, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 1, ease: "expo.out", scrollTrigger: { trigger: section, start: "top 75%" } });
+      // Eyebrow clips in
+      gsap.fromTo(section.querySelector(".pillars-eyebrow"),
+        { opacity: 0, clipPath: "inset(0 100% 0 0)" },
+        { opacity: 1, clipPath: "inset(0 0% 0 0)", duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 75%" } });
 
-      // Cards stagger in from bottom with rotation
-      gsap.fromTo(section.querySelectorAll(".pillar"), { opacity: 0, y: 60, rotateX: 8 },
-        { opacity: 1, y: 0, rotateX: 0, duration: 0.8, ease: "power3.out", stagger: 0.2, scrollTrigger: { trigger: section, start: "top 60%" } });
+      // Headline words scale up from small
+      const hWords = section.querySelectorAll(".pillar-hword");
+      gsap.fromTo(hWords, { opacity: 0, scale: 0.3, filter: "blur(10px)" },
+        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.8, ease: "back.out(1.7)", stagger: 0.1, scrollTrigger: { trigger: section, start: "top 75%" } });
+
+      // Cards: each flips in from rotateY with stagger
+      gsap.fromTo(section.querySelectorAll(".pillar"),
+        { opacity: 0, rotateY: -90, transformOrigin: "left center" },
+        { opacity: 1, rotateY: 0, duration: 1, ease: "expo.out", stagger: 0.25, scrollTrigger: { trigger: section, start: "top 60%" } });
     };
     init();
   }, []);
@@ -177,14 +183,17 @@ export default function Pillars() {
         <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
       </div>
 
-      <h2 className="pillars-headline mb-16 opacity-0" style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.05, textAlign: "center" }}>
-        <span style={{ fontFamily: "var(--font-display)", fontWeight: 300, fontSize: "clamp(40px, 6.5vw, 96px)", letterSpacing: "-0.035em", color: "white" }}>
-          Three pillars.{" "}
+      <h2 className="mb-16" style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.05, textAlign: "center", perspective: 800 }}>
+        <span className="pillar-hword inline-block opacity-0" style={{ fontFamily: "var(--font-display)", fontWeight: 300, fontSize: "clamp(40px, 6.5vw, 96px)", letterSpacing: "-0.035em", color: "white", marginRight: "0.15em" }}>
+          Three
         </span>
-        <span style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(40px, 6.5vw, 96px)", background: "var(--gradient-soft)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+        <span className="pillar-hword inline-block opacity-0" style={{ fontFamily: "var(--font-display)", fontWeight: 300, fontSize: "clamp(40px, 6.5vw, 96px)", letterSpacing: "-0.035em", color: "white", marginRight: "0.3em" }}>
+          pillars.
+        </span>
+        <span className="pillar-hword inline-block opacity-0" style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(40px, 6.5vw, 96px)", background: "var(--gradient-soft)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", marginRight: "0.3em" }}>
           One
-        </span>{" "}
-        <span style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "clamp(56px, 9vw, 134px)", letterSpacing: "-0.035em", color: "white" }}>
+        </span>
+        <span className="pillar-hword inline-block opacity-0" style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "clamp(56px, 9vw, 134px)", letterSpacing: "-0.035em", color: "white" }}>
           mission.
         </span>
       </h2>

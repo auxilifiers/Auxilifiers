@@ -44,7 +44,7 @@ export default function Declaration() {
         About us
       </div>
 
-      <div className="grid grid-cols-1 min-[900px]:grid-cols-2 gap-16 items-start">
+      <div className="grid grid-cols-1 min-[900px]:grid-cols-2 gap-20 items-start">
         {/* Left — Philosophy, left-aligned */}
         <div style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.15 }}>
           <div className="word-anim opacity-0" style={{
@@ -76,27 +76,8 @@ export default function Declaration() {
 
         {/* Right — About details */}
         <div className="about-right opacity-0" style={{ paddingTop: 8 }}>
-          <h3 style={{
-            fontFamily: "var(--font-display)", fontWeight: 400, fontSize: 28,
-            color: "white", marginBottom: 20, letterSpacing: "-0.02em",
-          }}>
-            Who we are
-          </h3>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: 17, lineHeight: 1.65,
-            color: "var(--color-text-dim)", marginBottom: 20,
-          }}>
-            Auxilifiers is a tech and growth agency that works as your extended team. We build the products your customers use, automate the operations that drain your time, and grow the channels that bring in revenue.
-          </p>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: 17, lineHeight: 1.65,
-            color: "var(--color-text-dim)", marginBottom: 28,
-          }}>
-            We&apos;re not here to take over — we&apos;re here to amplify. Your brand, your vision, your growth. We just make it happen faster.
-          </p>
-
-          {/* Quick stats */}
-          <div className="flex gap-10 flex-wrap">
+          {/* Quick stats — on top */}
+          <div className="flex gap-10 flex-wrap mb-10">
             {[
               { num: "15+", label: "Services" },
               { num: "4", label: "Continents" },
@@ -114,6 +95,31 @@ export default function Declaration() {
               </div>
             ))}
           </div>
+
+          <h3 style={{
+            fontFamily: "var(--font-display)", fontWeight: 400, fontSize: 28,
+            color: "white", marginBottom: 20, letterSpacing: "-0.02em",
+          }}>
+            Who we are
+          </h3>
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: 18, lineHeight: 1.7,
+            color: "var(--color-text-dim)", marginBottom: 20,
+          }}>
+            Auxilifiers is a tech and growth agency that works as your extended team. We build the products your customers use, automate the operations that drain your time, and grow the channels that bring in revenue.
+          </p>
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: 18, lineHeight: 1.7,
+            color: "var(--color-text-dim)", marginBottom: 20,
+          }}>
+            We&apos;re not here to take over — we&apos;re here to amplify. Your brand, your vision, your growth. We just make it happen faster.
+          </p>
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: 18, lineHeight: 1.7,
+            color: "var(--color-text-dim)",
+          }}>
+            From custom websites and mobile apps to AI-powered workflows and full-scale digital marketing — we handle the entire stack so you can focus on what you do best: running your business.
+          </p>
         </div>
       </div>
     </section>
