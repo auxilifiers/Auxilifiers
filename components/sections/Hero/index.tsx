@@ -38,34 +38,22 @@ export default function Hero() {
   useEffect(() => {
     const initAnimations = async () => {
       const gsap = (await import("gsap")).default;
-
       const tl = gsap.timeline({ delay: 0.3 });
 
-      tl.fromTo(
-        ".hero-line1 .char",
-        { opacity: 0, y: -50, rotation: -8 },
-        { opacity: 1, y: 0, rotation: 0, duration: 0.9, ease: "back.out(1.4)", stagger: 0.04 },
-        0
-      );
+      tl.fromTo(".hero-line1 .char", { opacity: 0, y: -50, rotation: -8 },
+        { opacity: 1, y: 0, rotation: 0, duration: 0.9, ease: "back.out(1.4)", stagger: 0.04 }, 0);
 
-      tl.fromTo(
-        ".hero-line2 .char",
-        { opacity: 0, x: -20 },
-        { opacity: 1, x: 0, duration: 0.6, ease: "power2.out", stagger: 0.03 },
-        0.5
-      );
+      tl.fromTo(".hero-line2 .char", { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.6, ease: "power2.out", stagger: 0.03 }, 0.5);
 
       const line3El = document.querySelector(".hero-line3") as HTMLElement;
       if (line3El) {
         const finalText = "your success.";
         const chars = "!@#$%^&*<>/?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         let startTime = 0;
-        const scrambleDuration = 1400;
-
         const scramble = (timestamp: number) => {
           if (!startTime) startTime = timestamp;
-          const elapsed = timestamp - startTime;
-          const progress = Math.min(elapsed / scrambleDuration, 1);
+          const progress = Math.min((timestamp - startTime) / 1400, 1);
           const revealCount = Math.floor(progress * finalText.length);
           let display = "";
           for (let i = 0; i < finalText.length; i++) {
@@ -78,7 +66,6 @@ export default function Hero() {
           if (progress < 1) requestAnimationFrame(scramble);
           else if (textSpan) textSpan.textContent = "your success";
         };
-
         tl.fromTo(line3El, { opacity: 0 }, { opacity: 1, duration: 0.1 }, 0.7);
         tl.add(() => requestAnimationFrame(scramble), 0.7);
         tl.fromTo(".hero-period", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" }, 1.6);
@@ -86,7 +73,8 @@ export default function Hero() {
 
       tl.fromTo(".hero-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 1.4);
       tl.fromTo(".hero-cta", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.6);
-      tl.fromTo(".hero-stat", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 1.8);
+      tl.fromTo(".hero-divider-line", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power3.out" }, 1.7);
+      tl.fromTo(".hero-stat", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.12 }, 2.0);
 
       if (drifterRef.current) {
         gsap.fromTo(drifterRef.current, { opacity: 0 }, { opacity: 1, duration: 0.4, delay: 2.2 });
@@ -94,14 +82,11 @@ export default function Hero() {
           const vw = window.innerWidth;
           gsap.fromTo(drifterRef.current, { x: 0 }, {
             x: vw + 200, duration: 18, ease: "none", repeat: -1,
-            onRepeat: () => {
-              if (drifterRef.current) drifterRef.current.style.top = `${10 + Math.random() * 50}%`;
-            },
+            onRepeat: () => { if (drifterRef.current) drifterRef.current.style.top = `${10 + Math.random() * 50}%`; },
           });
         }, 2600);
       }
     };
-
     initAnimations();
   }, []);
 
@@ -111,7 +96,6 @@ export default function Hero() {
     const y = e.clientY - rect.top - rect.height / 2;
     e.currentTarget.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
   };
-
   const handleMouseLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.currentTarget.style.transform = "translate(0, 0)";
     e.currentTarget.style.transition = "transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)";
@@ -125,23 +109,33 @@ export default function Hero() {
       </span>
     ));
 
+  const stats = [
+    { counter: stat1, label: "Live projects right now" },
+    { counter: stat2, label: "Avg hrs/week saved per client" },
+    { counter: stat3, label: "Of pitches we win on outcomes" },
+  ];
+
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden flex items-center"
-      style={{ minHeight: "100vh", padding: "6vh 6vw" }}
+      className="relative"
+      style={{ height: "calc(100dvh - 68px)", padding: "0 6vw", overflow: "hidden" }}
     >
+      {/* Main content area using CSS grid for precise viewport fitting */}
       <div
-        className="relative z-10 w-full grid gap-[60px]"
-        style={{ gridTemplateColumns: "1fr 280px", alignItems: "end" }}
+        className="relative z-10 max-w-[1400px] h-full"
+        style={{
+          display: "grid",
+          gridTemplateRows: "1fr auto auto",
+          gap: 0,
+        }}
       >
-        {/* Left column: headline + sub + CTA */}
-        <div className="flex flex-col">
-          {/* Headline */}
-          <div style={{ marginBottom: 28 }}>
+        {/* Row 1: Headline + sub + CTA — takes remaining space, centered vertically */}
+        <div className="flex flex-col justify-center" style={{ paddingTop: 16 }}>
+          <div style={{ marginBottom: 16 }}>
             <div className="hero-line1" style={{
               fontFamily: "var(--font-display)", fontWeight: 400,
-              fontSize: "clamp(48px, 8vw, 120px)", lineHeight: 0.95,
+              fontSize: "clamp(44px, 7vw, 100px)", lineHeight: 0.95,
               letterSpacing: "-0.045em", color: "white",
               transform: "rotate(-0.5deg)", textShadow: "var(--text-shadow-safety)",
             }}>
@@ -156,19 +150,17 @@ export default function Hero() {
               </span>
               {splitChars("ng")}
             </div>
-
             <div className="hero-line2" style={{
               fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
-              fontSize: "clamp(32px, 5vw, 72px)", lineHeight: 1.1,
+              fontSize: "clamp(28px, 4.5vw, 64px)", lineHeight: 1.1,
               color: "var(--color-text-dim)", letterSpacing: "-0.02em",
               textShadow: "var(--text-shadow-safety)",
             }}>
               {splitChars("around")}
             </div>
-
             <div className="hero-line3 opacity-0" style={{
               fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
-              fontSize: "clamp(56px, 10vw, 156px)", lineHeight: 0.95,
+              fontSize: "clamp(48px, 9vw, 128px)", lineHeight: 0.95,
               letterSpacing: "-0.02em", transform: "rotate(0.5deg)",
               textShadow: "var(--text-shadow-safety)",
               background: "var(--gradient-soft)", WebkitBackgroundClip: "text",
@@ -182,11 +174,10 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Sub paragraph */}
           <p className="hero-sub opacity-0" style={{
-            fontFamily: "var(--font-body)", fontSize: 17, lineHeight: 1.55,
+            fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.5,
             color: "var(--color-text-dim)", textShadow: "var(--text-shadow-safety)",
-            maxWidth: 520, marginBottom: 32,
+            maxWidth: 500, marginBottom: 16,
           }}>
             We{" "}
             <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>build</em>{" "}
@@ -197,72 +188,57 @@ export default function Hero() {
             the reach — for businesses ready to scale beyond what their team alone can carry.
           </p>
 
-          {/* CTA */}
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="#services"
-              className="hero-cta opacity-0 inline-flex items-center text-black"
-              style={{
-                fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 500,
-                padding: "14px 28px", borderRadius: "var(--radius-pill)",
-                background: "var(--gradient)", transition: "box-shadow 0.2s",
-              }}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-            >
-              See how we work&nbsp;→
-            </a>
-          </div>
+          <a
+            href="#services"
+            className="hero-cta opacity-0 inline-flex items-center text-black self-start"
+            style={{
+              fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 500,
+              padding: "12px 24px", borderRadius: "var(--radius-pill)",
+              background: "var(--gradient)", transition: "box-shadow 0.2s",
+            }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
+            See how we work&nbsp;→
+          </a>
         </div>
 
-        {/* Right column: stats */}
-        <div className="flex flex-col gap-7" style={{ textAlign: "right", paddingBottom: 8 }}>
-          {[
-            { counter: stat1, label: "Live projects right now" },
-            { counter: stat2, label: "Avg hrs/week saved per client" },
-            { counter: stat3, label: "Of pitches we win on outcomes" },
-          ].map((stat, i) => (
-            <div key={i} className="hero-stat opacity-0 flex flex-col items-end">
+        {/* Row 2: Divider line */}
+        <div style={{ padding: "16px 0 12px" }}>
+          <div
+            className="hero-divider-line"
+            style={{
+              height: 1,
+              background: "linear-gradient(90deg, var(--color-cyan), var(--color-blue), transparent)",
+              transformOrigin: "left",
+              opacity: 0.4,
+            }}
+          />
+        </div>
+
+        {/* Row 3: Stats horizontal — fixed height, no flex grow */}
+        <div className="flex flex-wrap justify-between gap-4" style={{ paddingBottom: 20 }}>
+          {stats.map((stat, i) => (
+            <div key={i} className="hero-stat opacity-0 flex items-baseline gap-3">
               <span ref={stat.counter.ref} style={{
-                fontFamily: "var(--font-display)", fontSize: 44,
+                fontFamily: "var(--font-display)", fontSize: "clamp(28px, 3.5vw, 44px)",
                 fontWeight: 400, color: "white", letterSpacing: "-0.03em",
                 lineHeight: 1, textShadow: "var(--text-shadow-safety)",
               }}>{stat.counter.value}</span>
               <span style={{
-                fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.15em",
+                fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.15em",
                 color: "var(--color-text-dim)", textTransform: "uppercase",
-                marginTop: 6, maxWidth: 180,
+                maxWidth: 150,
               }}>{stat.label}</span>
             </div>
           ))}
         </div>
       </div>
 
-      <div ref={drifterRef} className="opacity-0">
+      {/* Drifter — absolutely positioned so it doesn't affect layout */}
+      <div ref={drifterRef} className="opacity-0 absolute" style={{ top: 0, left: 0 }}>
         <Drifter />
       </div>
-
-      {/* Mobile override: stack columns */}
-      <style>{`
-        @media (max-width: 900px) {
-          .hero > div:first-child {
-            grid-template-columns: 1fr !important;
-            gap: 40px !important;
-          }
-          .hero > div:first-child > div:last-child {
-            text-align: left !important;
-          }
-          .hero-stat {
-            align-items: flex-start !important;
-            flex-direction: row !important;
-            gap: 14px !important;
-            align-items: baseline !important;
-          }
-          .hero-stat span:first-child {
-            font-size: 36px !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
