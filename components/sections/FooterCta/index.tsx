@@ -15,11 +15,20 @@ export default function FooterCta() {
       const section = sectionRef.current;
       if (!section) return;
 
-      gsap.fromTo(
-        section.querySelectorAll(".cta-anim"),
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", stagger: 0.12, scrollTrigger: { trigger: section, start: "top 75%" } }
-      );
+      // Eyebrow clips in
+      gsap.fromTo(section.querySelector(".cta-eyebrow"),
+        { opacity: 0, clipPath: "inset(0 100% 0 0)" },
+        { opacity: 1, clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 75%" } });
+
+      // Headline words scale up from small with blur
+      const words = section.querySelectorAll(".cta-word");
+      gsap.fromTo(words, { opacity: 0, scale: 0.4, filter: "blur(8px)" },
+        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.8, ease: "back.out(1.4)", stagger: 0.1, scrollTrigger: { trigger: section, start: "top 75%" } });
+
+      // Form slides up
+      gsap.fromTo(section.querySelector(".cta-form"),
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "expo.out", delay: 0.3, scrollTrigger: { trigger: section, start: "top 75%" } });
     };
     init();
   }, []);
@@ -30,7 +39,7 @@ export default function FooterCta() {
       ref={sectionRef}
       style={{ minHeight: "100vh", padding: "0 6vw", maxWidth: 1400, margin: "0 auto", textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", scrollMarginTop: 68 }}
     >
-      <div className="cta-anim flex items-center justify-center gap-4 mb-5 opacity-0" style={{
+      <div className="cta-eyebrow flex items-center justify-center gap-4 mb-5 opacity-0" style={{
         fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
       }}>
         <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
@@ -38,14 +47,20 @@ export default function FooterCta() {
         <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
       </div>
 
-      <h2 className="cta-anim mb-8 opacity-0" style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.1 }}>
-        <span style={{
+      <h2 className="mb-8" style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.1, perspective: 800 }}>
+        <span className="cta-word inline-block opacity-0" style={{
           fontFamily: "var(--font-display)", fontWeight: 300,
-          fontSize: "clamp(36px, 7vw, 96px)", letterSpacing: "-0.035em", color: "white",
+          fontSize: "clamp(36px, 7vw, 96px)", letterSpacing: "-0.035em", color: "white", marginRight: "0.2em",
         }}>
-          Ready to{" "}
+          Ready
         </span>
-        <span style={{
+        <span className="cta-word inline-block opacity-0" style={{
+          fontFamily: "var(--font-display)", fontWeight: 300,
+          fontSize: "clamp(36px, 7vw, 96px)", letterSpacing: "-0.035em", color: "white", marginRight: "0.2em",
+        }}>
+          to
+        </span>
+        <span className="cta-word inline-block opacity-0" style={{
           fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
           fontSize: "clamp(36px, 7vw, 96px)",
           background: "var(--gradient-soft)", WebkitBackgroundClip: "text",
@@ -54,14 +69,14 @@ export default function FooterCta() {
           start
         </span>
         <br />
-        <span style={{
+        <span className="cta-word inline-block opacity-0" style={{
           fontFamily: "var(--font-display)", fontWeight: 300,
           fontSize: "clamp(14px, 2.5vw, 32px)", color: "var(--color-text-dim)",
-          verticalAlign: "0.5em", display: "inline-block", marginRight: "0.3em",
+          verticalAlign: "0.5em", marginRight: "0.3em",
         }}>
           (actually)
         </span>
-        <span style={{
+        <span className="cta-word inline-block opacity-0" style={{
           fontFamily: "var(--font-display)", fontWeight: 300,
           fontSize: "clamp(36px, 7vw, 96px)", letterSpacing: "-0.035em", color: "white",
         }}>
@@ -70,7 +85,7 @@ export default function FooterCta() {
       </h2>
 
       {/* Centered inline contact form */}
-      <div className="cta-anim opacity-0 flex justify-center">
+      <div className="cta-form opacity-0 flex justify-center">
         <ContactForm variant="inline" />
       </div>
     </section>

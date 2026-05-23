@@ -10,8 +10,8 @@ export default function BuildViz() {
     [0, 1], [1, 2], [3, 4], [4, 5], [6, 7], [7, 8],
     [0, 3], [1, 4], [2, 5], [3, 6], [4, 7], [5, 8],
   ];
-  const spacing = 36;
-  const pad = 20;
+  const spacing = 52;
+  const pad = 24;
 
   return (
     <div className="relative w-full flex justify-center">
@@ -25,8 +25,8 @@ export default function BuildViz() {
               y1={nodes[a][1] * spacing + pad}
               x2={nodes[b][0] * spacing + pad}
               y2={nodes[b][1] * spacing + pad}
-              stroke="rgba(0,245,255,0.25)"
-              strokeWidth={1}
+              stroke="rgba(0,245,255,0.35)"
+              strokeWidth={1.5}
               strokeDasharray="40"
               strokeDashoffset="40"
             >
@@ -46,7 +46,7 @@ export default function BuildViz() {
             key={i}
             cx={n[0] * spacing + pad}
             cy={n[1] * spacing + pad}
-            r={3}
+            r={5}
             fill="#00F5FF"
             opacity={0.7}
           >
