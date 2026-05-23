@@ -1,0 +1,187 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+
+const serviceLinks = {
+  Build: [
+    { label: "Web Dev", href: "#web-dev" },
+    { label: "Mobile Apps", href: "#mobile-apps" },
+    { label: "Shopify", href: "#shopify" },
+    { label: "Integrations", href: "#integrations" },
+  ],
+  Automate: [
+    { label: "AI Workflows", href: "#ai-workflows" },
+    { label: "Chatbots", href: "#chatbots" },
+    { label: "Voice Agents", href: "#voice-agents" },
+    { label: "Voice-on-Site", href: "#voice-on-site" },
+    { label: "CRM Sync", href: "#crm-sync" },
+    { label: "Email Assistant", href: "#inbox-triage" },
+  ],
+  Grow: [
+    { label: "SEO", href: "#seo" },
+    { label: "Google Ads", href: "#google-ads" },
+    { label: "Meta Ads", href: "#meta-ads" },
+    { label: "Social", href: "#social" },
+    { label: "Content", href: "#content" },
+  ],
+};
+
+const companyLinks = [
+  { label: "About", href: "#about" },
+  { label: "Process", href: "#process" },
+  { label: "Case Studies", href: "#cases" },
+  { label: "Contact", href: "#contact" },
+  { label: "Careers", href: "#careers" },
+];
+
+export default function Footer() {
+  return (
+    <footer style={{ padding: "80px 6vw 60px", borderTop: "1px solid var(--color-border-subtle)" }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16" style={{ maxWidth: 1400, margin: "0 auto" }}>
+        {/* Col 1 — Brand + Contact + Social */}
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center gap-2.5">
+            <Image src="/logo.png" alt="Auxilifiers" width={28} height={28} />
+            <span style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 14, color: "white" }}>
+              Auxilifiers
+            </span>
+          </div>
+          <p style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontSize: 15, color: "var(--color-text-dim)" }}>
+            Orbiting around your success.
+          </p>
+
+          {/* S10b: Contact info */}
+          <div className="flex flex-col gap-2 mt-2">
+            <a
+              href="https://wa.me/923324619441"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 transition-colors duration-200 hover:text-white"
+              style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--color-text-muted)" }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: "var(--color-cyan)", flexShrink: 0 }}>
+                <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
+                <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
+              </svg>
+              +92 332 4619441
+            </a>
+            <a
+              href="mailto:info@auxilifiers.com"
+              className="flex items-center gap-2 transition-colors duration-200 hover:text-white"
+              style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--color-text-muted)" }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: "var(--color-cyan)", flexShrink: 0 }}>
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              info@auxilifiers.com
+            </a>
+          </div>
+
+          {/* S10c: Social icons */}
+          <div className="flex gap-3 mt-3">
+            {[
+              { label: "Instagram", href: "#", icon: <path d="M16 4H8a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V8a4 4 0 0 0-4-4Z" />, icon2: <><circle cx="12" cy="12" r="3" /><circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></> },
+              { label: "Facebook", href: "#", icon: <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /> },
+              { label: "LinkedIn", href: "#", icon: <><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></> },
+            ].map((social) => (
+              <a
+                key={social.label}
+                href={social.href} // TODO: replace with real URL
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="flex items-center justify-center transition-all duration-200"
+                style={{
+                  width: 36, height: 36, borderRadius: "50%",
+                  border: "1px solid var(--color-border-default)", color: "var(--color-text-muted)",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = "var(--color-cyan)"; e.currentTarget.style.borderColor = "var(--color-border-strong)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = "var(--color-text-muted)"; e.currentTarget.style.borderColor = "var(--color-border-default)"; }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  {social.icon}
+                  {social.icon2}
+                </svg>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Col 2 — Services — S10a: larger text */}
+        <div>
+          <h4 className="mb-4" style={{ fontFamily: "var(--font-mono)", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-text-muted)" }}>
+            Services
+          </h4>
+          <div className="flex flex-col gap-3">
+            {Object.entries(serviceLinks).map(([category, links]) => (
+              <div key={category}>
+                <span className="block mb-1" style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--color-cyan)", opacity: 0.7 }}>
+                  {category}
+                </span>
+                <div className="flex flex-wrap gap-x-3 gap-y-1">
+                  {links.map((link) => (
+                    <Link key={link.href} href={link.href} className="transition-colors duration-200 hover:text-white" style={{ fontFamily: "var(--font-body)", fontSize: 15, color: "var(--color-text-muted)" }}>
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Col 3 — Company */}
+        <div>
+          <h4 className="mb-4" style={{ fontFamily: "var(--font-mono)", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-text-muted)" }}>
+            Company
+          </h4>
+          <div className="flex flex-col gap-2">
+            {companyLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="transition-colors duration-200 hover:text-white" style={{ fontFamily: "var(--font-body)", fontSize: 15, color: "var(--color-text-muted)" }}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Col 4 — Newsletter */}
+        <div>
+          <h4 className="mb-1" style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: 20, color: "white" }}>
+            Stay in orbit.
+          </h4>
+          <p className="mb-4" style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--color-text-muted)" }}>
+            Monthly. Tactical. No fluff.
+          </p>
+          <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
+            <input
+              type="email"
+              placeholder="you@company.com"
+              className="flex-1 min-w-0"
+              style={{ fontFamily: "var(--font-body)", fontSize: 14, padding: "10px 14px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-border-default)", background: "transparent", color: "white", outline: "none" }}
+            />
+            <button type="submit" style={{ fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 500, padding: "10px 18px", borderRadius: "var(--radius-pill)", background: "var(--gradient)", color: "black", border: "none", whiteSpace: "nowrap" }}>
+              Subscribe&nbsp;→
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {/* Bottom row */}
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6" style={{ borderTop: "1px solid var(--color-border-subtle)", maxWidth: 1400, margin: "0 auto" }}>
+        <span style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-muted)" }}>
+          © 2026 Auxilifiers
+        </span>
+        <div className="flex gap-4">
+          <Link href="#privacy" className="transition-colors duration-200 hover:text-white" style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-muted)" }}>
+            Privacy
+          </Link>
+          <Link href="#terms" className="transition-colors duration-200 hover:text-white" style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-muted)" }}>
+            Terms
+          </Link>
+        </div>
+      </div>
+    </footer>
+  );
+}

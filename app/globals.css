@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: #000000;
+  --color-surface: #0A0F1A;
+  --color-surface-elevated: rgba(0, 8, 16, 0.72);
+  --color-cyan: #00F5FF;
+  --color-blue: #0066FF;
+  --color-ice: #7DD3FC;
+  --color-text: #FFFFFF;
+  --color-text-muted: #C4C4CB;
+  --color-text-dim: rgba(255, 255, 255, 0.72);
+  --color-text-strike: rgba(255, 255, 255, 0.50);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-default: rgba(255, 255, 255, 0.15);
+  --color-border-strong: rgba(0, 245, 255, 0.35);
+  --color-border-active: rgba(0, 245, 255, 0.70);
+
+  --font-display: 'Unbounded', sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-italic: 'Instrument Serif', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 100px;
+
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 24px;
+  --spacing-6: 32px;
+  --spacing-7: 48px;
+  --spacing-8: 64px;
+  --spacing-9: 80px;
+  --spacing-10: 120px;
+  --spacing-11: 160px;
+  --spacing-12: 200px;
+}
+
+:root {
+  --gradient: linear-gradient(135deg, #00F5FF 0%, #0066FF 100%);
+  --gradient-soft: linear-gradient(135deg, #00F5FF 0%, #7DD3FC 50%, #0066FF 100%);
+  --glow-cyan: 0 0 60px rgba(0, 245, 255, 0.5);
+  --glow-cyan-soft: 0 0 14px rgba(0, 245, 255, 0.6);
+  --text-shadow-safety: 0 0 24px rgba(0, 0, 0, 0.55);
+}
+
+* {
+  cursor: none;
+}
+
+@media (pointer: coarse) {
+  * {
+    cursor: auto;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(0, 245, 255, 0.25);
+  color: #fff;
+}
+
+/* Aurora blob animations */
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(120px, 80px); }
+  66% { transform: translate(-60px, 140px); }
+}
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-100px, -120px); }
+  66% { transform: translate(80px, -60px); }
+}
+@keyframes aurora-drift-3 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(140px, -100px); }
+  66% { transform: translate(-120px, 60px); }
+}
+@keyframes aurora-drift-4 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-80px, 120px); }
+  66% { transform: translate(100px, -80px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Orbit satellite rotation */
+@keyframes orbit-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Drifter spin */
+@keyframes drifter-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Modal animations */
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes modal-scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Styled scrollbar for pillar back faces */
+.pillar-back {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 245, 255, 0.4) transparent;
+}
+.pillar-back::-webkit-scrollbar { width: 4px; }
+.pillar-back::-webkit-scrollbar-track { background: transparent; }
+.pillar-back::-webkit-scrollbar-thumb {
+  background: rgba(0, 245, 255, 0.4);
+  border-radius: 100px;
+}
+.pillar-back::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 245, 255, 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
