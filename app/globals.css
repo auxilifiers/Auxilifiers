@@ -49,7 +49,8 @@
   --text-shadow-safety: 0 0 24px rgba(0, 0, 0, 0.55);
 }
 
-@media (any-pointer: fine) {
+/* Hide native cursor only on devices with mouse */
+@media (hover: hover) and (pointer: fine) {
   * {
     cursor: none;
   }

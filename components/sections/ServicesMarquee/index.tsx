@@ -106,7 +106,7 @@ export default function ServicesMarquee() {
   }, []);
 
   return (
-    <div id="services" style={{ scrollMarginTop: 68, minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+    <div id="services" style={{ scrollMarginTop: 68, padding: "80px 0" }}>
       <section ref={sectionRef} style={{ padding: "40px 5vw 30px", maxWidth: 1400, margin: "0 auto", textAlign: "center" }}>
         <div className="svc-eyebrow flex items-center justify-center gap-4 mb-5 opacity-0" style={{
           fontFamily: "var(--font-mono)", fontSize: 14,

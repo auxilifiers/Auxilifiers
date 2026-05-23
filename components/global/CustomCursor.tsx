@@ -12,8 +12,8 @@ export default function CustomCursor() {
   const isHovering = useRef(false);
 
   useEffect(() => {
-    const hasFinePointer = window.matchMedia("(any-pointer: fine)").matches;
-    if (!hasFinePointer) return;
+    const hasHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!hasHover) return;
 
     const dot = dotRef.current;
     const ring = ringRef.current;

@@ -120,10 +120,10 @@ export default function Header() {
       {menuOpen && (
         <div
           className="fixed inset-0 z-40 min-[800px]:hidden"
-          style={{ top: 58, background: "rgba(0,0,0,0.92)", backdropFilter: "blur(16px)" }}
+          style={{ top: 58, background: "rgba(0,0,0,0.92)", backdropFilter: "blur(16px)", display: "flex", alignItems: "center", justifyContent: "center" }}
           onClick={() => setMenuOpen(false)}
         >
-          <nav className="flex flex-col items-center gap-6 pt-12">
+          <nav className="flex flex-col items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
