@@ -105,7 +105,6 @@ export function ContactForm({ variant = "modal" }: { variant?: "modal" | "inline
     <form onSubmit={handleSubmit} className="w-full" style={{ maxWidth: isInline ? 720 : undefined }}>
       <div className={`grid gap-4 ${isInline ? "grid-cols-1 min-[640px]:grid-cols-2" : "grid-cols-1"}`}>
         <div>
-          <label style={labelStyle}>Name</label>
           <input
             type="text"
             required
@@ -127,7 +126,6 @@ export function ContactForm({ variant = "modal" }: { variant?: "modal" | "inline
           />
         </div>
         <div>
-          <label style={labelStyle}>Email</label>
           <input
             type="email"
             required
@@ -148,7 +146,6 @@ export function ContactForm({ variant = "modal" }: { variant?: "modal" | "inline
         </div>
       </div>
       <div className="mt-4">
-        <label style={labelStyle}>Message</label>
         <textarea
           required
           minLength={10}

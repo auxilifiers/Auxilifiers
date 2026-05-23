@@ -76,7 +76,7 @@ function PillarCard({ pillar }: { pillar: PillarData }) {
 
         {/* FRONT */}
         <div className="relative w-full flex flex-col p-7 overflow-hidden"
-          style={{ backfaceVisibility: "hidden", background: "var(--color-surface-elevated)", borderRadius: "var(--radius-xl)", border: "1px solid var(--color-border-subtle)", minHeight: 480 }}>
+          style={{ backfaceVisibility: "hidden", background: "var(--color-surface-elevated)", borderRadius: "var(--radius-xl)", border: "1px solid var(--color-border-subtle)", minHeight: "100%" }}>
           <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, letterSpacing: "0.18em", color: "var(--color-text-muted)", textTransform: "uppercase", marginBottom: 12 }}>
             {pillar.label}
           </span>
@@ -189,8 +189,8 @@ export default function Pillars() {
         </span>
       </h2>
 
-      {/* 3 cards in one row */}
-      <div className="grid grid-cols-1 min-[900px]:grid-cols-3 gap-5">
+      {/* 3 cards in one row, equal height */}
+      <div className="grid grid-cols-1 min-[900px]:grid-cols-3 gap-5" style={{ gridAutoRows: "1fr" }}>
         <PillarCard pillar={pillars[0]} />
         <PillarCard pillar={pillars[1]} />
         <PillarCard pillar={pillars[2]} />

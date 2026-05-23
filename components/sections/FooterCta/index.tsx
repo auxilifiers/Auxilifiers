@@ -30,7 +30,7 @@ export default function FooterCta() {
       ref={sectionRef}
       style={{ padding: "100px 6vw 120px", borderTop: "1px solid var(--color-border-subtle)", maxWidth: 1400, margin: "0 auto", textAlign: "center" }}
     >
-      <div className="cta-anim flex items-center justify-center gap-4 mb-10 opacity-0" style={{
+      <div className="cta-anim flex items-center justify-center gap-4 mb-5 opacity-0" style={{
         fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
       }}>
         <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
