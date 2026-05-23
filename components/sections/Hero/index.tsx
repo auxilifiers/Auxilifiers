@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import OrbitDot from "./OrbitDot";
-import Drifter from "./Drifter";
+import HeroOrbit from "./HeroOrbit";
 
 function useCountUp(target: number, duration = 1800, suffix = "") {
   const [value, setValue] = useState("0" + suffix);
@@ -29,7 +29,6 @@ function useCountUp(target: number, duration = 1800, suffix = "") {
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const drifterRef = useRef<HTMLDivElement>(null);
 
   const stat1 = useCountUp(12, 1800);
   const stat2 = useCountUp(38, 2000);
@@ -74,17 +73,6 @@ export default function Hero() {
       tl.fromTo(".hero-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 1.4);
       tl.fromTo(".hero-cta", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.6);
       tl.fromTo(".hero-stat", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 2.0);
-
-      if (drifterRef.current) {
-        gsap.fromTo(drifterRef.current, { opacity: 0 }, { opacity: 1, duration: 0.4, delay: 2.2 });
-        setTimeout(() => {
-          const vw = window.innerWidth;
-          gsap.fromTo(drifterRef.current, { x: 0 }, {
-            x: vw + 200, duration: 18, ease: "none", repeat: -1,
-            onRepeat: () => { if (drifterRef.current) drifterRef.current.style.top = `${10 + Math.random() * 50}%`; },
-          });
-        }, 2600);
-      }
     };
     initAnimations();
   }, []);
@@ -133,8 +121,8 @@ export default function Hero() {
             <span className="char inline-block" style={{ willChange: "transform, opacity" }}>
               <span className="relative inline-block">
                 <span style={{ fontFamily: "var(--font-display)" }}>ı</span>
-                <span className="absolute" style={{ top: "-0.15em", left: "50%", transform: "translateX(-50%)" }}>
-                  <OrbitDot size={12} />
+                <span className="absolute" style={{ top: "-0.2em", left: "50%", transform: "translateX(-50%)" }}>
+                  <OrbitDot size={22} />
                 </span>
               </span>
             </span>
@@ -195,10 +183,10 @@ export default function Hero() {
           See what services we offer&nbsp;→
         </a>
 
-        {/* Stats — horizontal row below CTA, all 3 in one line */}
-        <div className="flex items-baseline gap-10" style={{ flexWrap: "nowrap" }}>
+        {/* Stats — horizontal row below CTA */}
+        <div className="flex items-baseline gap-6 min-[1024px]:gap-10 flex-wrap min-[768px]:flex-nowrap">
           {stats.map((stat, i) => (
-            <div key={i} className="hero-stat opacity-0 flex items-baseline gap-3 shrink-0">
+            <div key={i} className="hero-stat opacity-0 flex items-baseline gap-3">
               <span ref={stat.counter.ref} style={{
                 fontFamily: "var(--font-display)", fontSize: 40,
                 fontWeight: 400, color: "white", letterSpacing: "-0.03em",
@@ -213,10 +201,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Drifter — absolutely positioned */}
-      <div ref={drifterRef} className="opacity-0 absolute" style={{ top: 0, left: 0 }}>
-        <Drifter />
-      </div>
+      {/* Decorative orbital animation — right side */}
+      <HeroOrbit />
     </section>
   );
 }
