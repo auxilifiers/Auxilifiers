@@ -106,13 +106,14 @@ export default function ServicesMarquee() {
   return (
     <div id="services" style={{ scrollMarginTop: 68 }}>
       {/* S4: Section heading above marquee */}
-      <section style={{ padding: "80px 6vw 40px", maxWidth: 1400, margin: "0 auto" }}>
-        <div className="flex items-center gap-4 mb-5" style={{
+      <section style={{ padding: "80px 6vw 40px", maxWidth: 1400, margin: "0 auto", textAlign: "center" }}>
+        <div className="flex items-center justify-center gap-4 mb-5" style={{
           fontFamily: "var(--font-mono)", fontSize: 11,
           letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
         }}>
           <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
           Services
+          <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
         </div>
         <h2 style={{
           fontFamily: "var(--font-display)", fontWeight: 300,
@@ -123,7 +124,7 @@ export default function ServicesMarquee() {
         </h2>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.55,
-          color: "var(--color-text-muted)", maxWidth: 560,
+          color: "var(--color-text-muted)", maxWidth: 560, margin: "0 auto",
         }}>
           Build, automate, and grow — all under one roof.
         </p>

@@ -19,6 +19,9 @@ export default function CustomCursor() {
     const ring = ringRef.current;
     if (!dot || !ring) return;
 
+    dot.style.display = "block";
+    ring.style.display = "block";
+
     const onMouseMove = (e: MouseEvent) => {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
@@ -91,8 +94,10 @@ export default function CustomCursor() {
     <>
       <div
         ref={dotRef}
-        className="pointer-events-none fixed top-0 left-0 z-[9999] hidden md:block"
+        className="pointer-events-none fixed top-0 left-0 z-[9999]"
+        data-custom-cursor
         style={{
+          display: "none",
           width: 6,
           height: 6,
           borderRadius: "50%",
@@ -103,8 +108,10 @@ export default function CustomCursor() {
       />
       <div
         ref={ringRef}
-        className="pointer-events-none fixed top-0 left-0 z-[9999] hidden md:block"
+        className="pointer-events-none fixed top-0 left-0 z-[9999]"
+        data-custom-cursor
         style={{
+          display: "none",
           width: 36,
           height: 36,
           borderRadius: "50%",
