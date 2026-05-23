@@ -181,10 +181,18 @@ body {
     margin-bottom: 16px !important;
   }
 
-  /* Why Us: proper centering on mobile */
+  /* Why Us: center in visible area below header */
   #whyus > div {
     padding-top: 0 !important;
-    min-height: calc(100vh - 56px) !important;
+    padding-bottom: 0 !important;
+    min-height: calc(100svh - 56px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  #whyus > div > * {
+    width: 100%;
   }
 
   /* Footer: reduce gaps */

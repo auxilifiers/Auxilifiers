@@ -38,7 +38,7 @@ export default function WhyUs() {
     <section id="whyus" ref={sectionRef} style={{ minHeight: "160vh", position: "relative", scrollMarginTop: 56 }}>
       <div className="sticky top-0 flex flex-col justify-center" style={{ minHeight: "100vh", padding: "56px 5vw 0", maxWidth: 1400, margin: "0 auto" }}>
         {/* S9: Center-aligned eyebrow */}
-        <div className="whyus-anim flex items-center justify-center gap-4 mb-16 opacity-0" style={{
+        <div className="whyus-anim flex items-center justify-center gap-4 mb-8 min-[768px]:mb-16 opacity-0" style={{
           fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
         }}>
           <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
