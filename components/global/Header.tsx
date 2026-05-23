@@ -30,7 +30,7 @@ export default function Header() {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" alt="Auxilifiers" width={28} height={28} priority style={{ width: 28, height: 28 }} />
+          <Image src="/logo.png" alt="Auxilifiers" width={38} height={38} priority style={{ width: 38, height: 38 }} />
           <span
             className="text-white"
             style={{
