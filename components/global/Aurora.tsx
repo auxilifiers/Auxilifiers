@@ -5,10 +5,10 @@ export default function Aurora() {
       aria-hidden="true"
     >
       <div
-        className="absolute rounded-full opacity-[0.32]"
+        className="absolute rounded-full opacity-[0.18] min-[768px]:opacity-[0.28]"
         style={{
-          width: 620,
-          height: 620,
+          width: "clamp(300px, 50vw, 620px)",
+          height: "clamp(300px, 50vw, 620px)",
           background: "#00F5FF",
           top: -120,
           left: -140,
@@ -18,10 +18,10 @@ export default function Aurora() {
         }}
       />
       <div
-        className="absolute rounded-full opacity-[0.32]"
+        className="absolute rounded-full opacity-[0.18] min-[768px]:opacity-[0.28]"
         style={{
-          width: 720,
-          height: 720,
+          width: "clamp(350px, 55vw, 720px)",
+          height: "clamp(350px, 55vw, 720px)",
           background: "#0066FF",
           bottom: -220,
           right: -180,
@@ -31,10 +31,10 @@ export default function Aurora() {
         }}
       />
       <div
-        className="absolute rounded-full opacity-[0.32]"
+        className="absolute rounded-full opacity-[0.15] min-[768px]:opacity-[0.25]"
         style={{
-          width: 480,
-          height: 480,
+          width: "clamp(250px, 40vw, 480px)",
+          height: "clamp(250px, 40vw, 480px)",
           background: "#7DD3FC",
           top: "30%",
           right: "18%",
@@ -44,10 +44,10 @@ export default function Aurora() {
         }}
       />
       <div
-        className="absolute rounded-full opacity-[0.32]"
+        className="absolute rounded-full opacity-[0.15] min-[768px]:opacity-[0.25]"
         style={{
-          width: 400,
-          height: 400,
+          width: "clamp(200px, 35vw, 400px)",
+          height: "clamp(200px, 35vw, 400px)",
           background: "#0066FF",
           bottom: "5%",
           left: "18%",

@@ -5,71 +5,111 @@ export default function HeroOrbit() {
     <div
       className="absolute pointer-events-none hidden min-[768px]:block"
       style={{
-        right: "2vw",
+        right: "3vw",
         top: "50%",
         transform: "translateY(-50%)",
-        width: "clamp(280px, 35vw, 500px)",
-        height: "clamp(280px, 35vw, 500px)",
-        opacity: 0.5,
+        width: "clamp(250px, 30vw, 420px)",
+        height: "clamp(250px, 30vw, 420px)",
+        opacity: 0.45,
         zIndex: 0,
       }}
       aria-hidden="true"
     >
-      <svg width="100%" height="100%" viewBox="0 0 500 500" fill="none">
-        {/* Outer pulsing ring */}
-        <circle cx="250" cy="250" r="240" stroke="rgba(0,245,255,0.06)" strokeWidth="0.5">
-          <animate attributeName="r" values="238;242;238" dur="6s" repeatCount="indefinite" />
-        </circle>
+      <svg width="100%" height="100%" viewBox="0 0 420 420" fill="none">
+        {/* Outer circle */}
+        <circle cx="210" cy="210" r="200" stroke="rgba(0,245,255,0.08)" strokeWidth="1" />
 
-        {/* Main orbit ring */}
-        <circle cx="250" cy="250" r="180" stroke="rgba(0,245,255,0.1)" strokeWidth="1" />
+        {/* Triangle frame — like the logo */}
+        <path
+          d="M210 40 L380 340 L40 340 Z"
+          fill="none"
+          stroke="rgba(0,245,255,0.12)"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
 
-        {/* Dashed middle ring — rotating */}
-        <circle cx="250" cy="250" r="130" stroke="rgba(0,102,255,0.12)" strokeWidth="0.8" strokeDasharray="4 16">
-          <animateTransform attributeName="transform" type="rotate" from="0 250 250" to="360 250 250" dur="60s" repeatCount="indefinite" />
-        </circle>
+        {/* Inner triangle */}
+        <path
+          d="M210 120 L320 300 L100 300 Z"
+          fill="none"
+          stroke="rgba(0,102,255,0.1)"
+          strokeWidth="1"
+          strokeLinejoin="round"
+        />
 
-        {/* Inner ring */}
-        <circle cx="250" cy="250" r="70" stroke="rgba(0,245,255,0.08)" strokeWidth="0.5" />
-
-        {/* Satellite 1 — large, slow, outer */}
-        <g>
-          <animateTransform attributeName="transform" type="rotate" from="0 250 250" to="360 250 250" dur="15s" repeatCount="indefinite" />
-          <circle cx="430" cy="250" r="6" fill="rgba(0,245,255,0.6)">
-            <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" />
-          </circle>
-          <circle cx="430" cy="250" r="12" fill="none" stroke="rgba(0,245,255,0.15)" strokeWidth="0.5" />
-        </g>
-
-        {/* Satellite 2 — medium, counter-clockwise */}
-        <g>
-          <animateTransform attributeName="transform" type="rotate" from="360 250 250" to="0 250 250" dur="22s" repeatCount="indefinite" />
-          <circle cx="380" cy="250" r="4" fill="rgba(0,102,255,0.7)">
-            <animate attributeName="opacity" values="0.4;1;0.4" dur="4s" repeatCount="indefinite" />
-          </circle>
-        </g>
-
-        {/* Satellite 3 — small, fast, inner */}
-        <g>
-          <animateTransform attributeName="transform" type="rotate" from="0 250 250" to="360 250 250" dur="9s" repeatCount="indefinite" />
-          <circle cx="320" cy="250" r="3" fill="rgba(125,211,252,0.6)">
-            <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" repeatCount="indefinite" />
-          </circle>
-        </g>
-
-        {/* Center core — breathing */}
-        <circle cx="250" cy="250" r="3" fill="rgba(0,245,255,0.4)">
-          <animate attributeName="r" values="2;5;2" dur="5s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0.2;0.6;0.2" dur="5s" repeatCount="indefinite" />
-        </circle>
-
-        {/* Arc segments — decorative */}
-        <path d="M 250 70 A 180 180 0 0 1 430 250" fill="none" stroke="rgba(0,245,255,0.04)" strokeWidth="1">
-          <animate attributeName="opacity" values="0;0.08;0" dur="8s" repeatCount="indefinite" />
+        {/* Circuit paths — connecting nodes like the logo */}
+        {/* Top to right */}
+        <path d="M210 40 Q310 120 330 200" fill="none" stroke="rgba(0,245,255,0.15)" strokeWidth="1" strokeDasharray="4 8">
+          <animate attributeName="stroke-dashoffset" from="48" to="0" dur="4s" repeatCount="indefinite" />
         </path>
-        <path d="M 70 250 A 180 180 0 0 1 250 430" fill="none" stroke="rgba(0,102,255,0.04)" strokeWidth="1">
-          <animate attributeName="opacity" values="0;0.06;0" dur="10s" repeatCount="indefinite" />
+        {/* Top to left */}
+        <path d="M210 40 Q110 120 90 200" fill="none" stroke="rgba(0,245,255,0.15)" strokeWidth="1" strokeDasharray="4 8">
+          <animate attributeName="stroke-dashoffset" from="48" to="0" dur="5s" repeatCount="indefinite" />
         </path>
+        {/* Bottom arc */}
+        <path d="M90 300 Q210 380 330 300" fill="none" stroke="rgba(0,102,255,0.12)" strokeWidth="1" strokeDasharray="4 8">
+          <animate attributeName="stroke-dashoffset" from="48" to="0" dur="6s" repeatCount="indefinite" />
+        </path>
+
+        {/* Main nodes — triangle vertices */}
+        {/* Top node */}
+        <circle cx="210" cy="40" r="6" fill="rgba(0,245,255,0.5)">
+          <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="210" cy="40" r="12" fill="none" stroke="rgba(0,245,255,0.2)" strokeWidth="0.5" />
+
+        {/* Bottom-left node */}
+        <circle cx="40" cy="340" r="5" fill="rgba(0,102,255,0.5)">
+          <animate attributeName="r" values="4;7;4" dur="4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.3;0.7;0.3" dur="4s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="40" cy="340" r="10" fill="none" stroke="rgba(0,102,255,0.2)" strokeWidth="0.5" />
+
+        {/* Bottom-right node */}
+        <circle cx="380" cy="340" r="5" fill="rgba(0,245,255,0.5)">
+          <animate attributeName="r" values="4;7;4" dur="3.5s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.5s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="380" cy="340" r="10" fill="none" stroke="rgba(0,245,255,0.2)" strokeWidth="0.5" />
+
+        {/* Mid nodes — circuit junctions */}
+        <circle cx="160" cy="180" r="3" fill="rgba(0,245,255,0.4)">
+          <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.5s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="260" cy="180" r="3" fill="rgba(0,102,255,0.4)">
+          <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="210" cy="260" r="3" fill="rgba(125,211,252,0.4)">
+          <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2s" repeatCount="indefinite" />
+        </circle>
+
+        {/* Inner circuit lines */}
+        <line x1="160" y1="180" x2="260" y2="180" stroke="rgba(0,245,255,0.1)" strokeWidth="0.5" />
+        <line x1="160" y1="180" x2="210" y2="260" stroke="rgba(0,245,255,0.1)" strokeWidth="0.5" />
+        <line x1="260" y1="180" x2="210" y2="260" stroke="rgba(0,102,255,0.1)" strokeWidth="0.5" />
+
+        {/* Orbiting satellite on outer circle */}
+        <g>
+          <animateTransform attributeName="transform" type="rotate" from="0 210 210" to="360 210 210" dur="20s" repeatCount="indefinite" />
+          <circle cx="410" cy="210" r="4" fill="rgba(0,245,255,0.6)">
+            <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite" />
+          </circle>
+        </g>
+
+        {/* Orbiting satellite — counter direction */}
+        <g>
+          <animateTransform attributeName="transform" type="rotate" from="360 210 210" to="0 210 210" dur="28s" repeatCount="indefinite" />
+          <circle cx="10" cy="210" r="3" fill="rgba(0,102,255,0.5)">
+            <animate attributeName="opacity" values="0.2;0.7;0.2" dur="3s" repeatCount="indefinite" />
+          </circle>
+        </g>
+
+        {/* Center glow */}
+        <circle cx="210" cy="210" r="3" fill="rgba(0,245,255,0.3)">
+          <animate attributeName="r" values="2;5;2" dur="4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.15;0.4;0.15" dur="4s" repeatCount="indefinite" />
+        </circle>
       </svg>
     </div>
   );
