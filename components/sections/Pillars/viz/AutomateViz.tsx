@@ -82,19 +82,6 @@ export default function AutomateViz() {
           </g>
         ))}
       </svg>
-      <span
-        className="absolute bottom-1 left-1/2 -translate-x-1/2"
-        style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: 8,
-          letterSpacing: "0.15em",
-          color: "var(--color-text-dim)",
-          opacity: 0.5,
-          whiteSpace: "nowrap",
-        }}
-      >
-        // LIVE WORKFLOW · 3 AGENTS ACTIVE
-      </span>
     </div>
   );
 }

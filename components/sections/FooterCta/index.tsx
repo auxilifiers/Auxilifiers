@@ -28,17 +28,17 @@ export default function FooterCta() {
     <section
       id="contact"
       ref={sectionRef}
-      style={{ padding: "120px 6vw 160px", borderTop: "1px solid var(--color-border-subtle)", maxWidth: 1400, margin: "0 auto", textAlign: "center" }}
+      style={{ padding: "100px 6vw 120px", borderTop: "1px solid var(--color-border-subtle)", maxWidth: 1400, margin: "0 auto", textAlign: "center" }}
     >
       <div className="cta-anim flex items-center justify-center gap-4 mb-10 opacity-0" style={{
-        fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
+        fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
       }}>
         <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
         One last thing
         <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
       </div>
 
-      <h2 className="cta-anim mb-12 opacity-0" style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.1 }}>
+      <h2 className="cta-anim mb-8 opacity-0" style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.1 }}>
         <span style={{
           fontFamily: "var(--font-display)", fontWeight: 300,
           fontSize: "clamp(36px, 7vw, 96px)", letterSpacing: "-0.035em", color: "white",
