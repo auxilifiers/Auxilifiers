@@ -32,21 +32,22 @@ export default function Declaration() {
     init();
   }, []);
 
-  const base = "clamp(36px, 5.5vw, 80px)";
+  const base = "clamp(28px, 4.5vw, 64px)";
 
   return (
-    <section id="about" ref={sectionRef} style={{ padding: "160px 6vw", maxWidth: 1400, margin: "0 auto", scrollMarginTop: 68 }}>
-      <div className="decl-eyebrow flex items-center gap-4 mb-16 opacity-0" style={{
+    <section id="about" ref={sectionRef} style={{ minHeight: "100vh", padding: "0 6vw", maxWidth: 1400, margin: "0 auto", scrollMarginTop: 68, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+      <div className="decl-eyebrow flex items-center justify-center gap-4 mb-10 opacity-0" style={{
         fontFamily: "var(--font-mono)", fontSize: 14,
         letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
       }}>
         <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
         About us
+        <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
       </div>
 
-      <div className="grid grid-cols-1 min-[900px]:grid-cols-2 gap-20 items-start">
-        {/* Left — Philosophy, left-aligned */}
-        <div style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.15 }}>
+      <div className="grid grid-cols-1 min-[900px]:grid-cols-2 gap-16 items-stretch">
+        {/* Left — Philosophy */}
+        <div style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.15, display: "flex", flexDirection: "column", justifyContent: "center" }}>
           <div className="word-anim opacity-0" style={{
             fontFamily: "var(--font-display)", fontWeight: 300,
             fontSize: `calc(${base} * 0.6)`, color: "var(--color-text-dim)", marginBottom: "0.15em",
@@ -71,13 +72,13 @@ export default function Declaration() {
           <div className="word-anim opacity-0" style={{
             fontFamily: "var(--font-display)", fontWeight: 300,
             fontSize: `calc(${base} * 0.55)`, color: "var(--color-text-dim)",
-          }}>— amplifying what&apos;s already yours.</div>
+          }}>Amplifying what&apos;s already yours.</div>
         </div>
 
         {/* Right — About details */}
-        <div className="about-right opacity-0" style={{ paddingTop: 8 }}>
+        <div className="about-right opacity-0" style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
           {/* Quick stats — on top */}
-          <div className="flex gap-10 flex-wrap mb-10">
+          <div className="flex gap-10 flex-wrap mb-8">
             {[
               { num: "15+", label: "Services" },
               { num: "4", label: "Continents" },
@@ -97,28 +98,28 @@ export default function Declaration() {
           </div>
 
           <h3 style={{
-            fontFamily: "var(--font-display)", fontWeight: 400, fontSize: 28,
-            color: "white", marginBottom: 20, letterSpacing: "-0.02em",
+            fontFamily: "var(--font-display)", fontWeight: 400, fontSize: 24,
+            color: "white", marginBottom: 14, letterSpacing: "-0.02em",
           }}>
             Who we are
           </h3>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: 18, lineHeight: 1.7,
-            color: "var(--color-text-dim)", marginBottom: 20,
+            fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.6,
+            color: "var(--color-text-dim)", marginBottom: 16,
           }}>
             Auxilifiers is a tech and growth agency that works as your extended team. We build the products your customers use, automate the operations that drain your time, and grow the channels that bring in revenue.
           </p>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: 18, lineHeight: 1.7,
-            color: "var(--color-text-dim)", marginBottom: 20,
+            fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.6,
+            color: "var(--color-text-dim)", marginBottom: 16,
           }}>
-            We&apos;re not here to take over — we&apos;re here to amplify. Your brand, your vision, your growth. We just make it happen faster.
+            We&apos;re not here to take over. We&apos;re here to amplify. Your brand, your vision, your growth. We just make it happen faster.
           </p>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: 18, lineHeight: 1.7,
+            fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.6,
             color: "var(--color-text-dim)",
           }}>
-            From custom websites and mobile apps to AI-powered workflows and full-scale digital marketing — we handle the entire stack so you can focus on what you do best: running your business.
+            From custom websites and mobile apps to AI-powered workflows and full-scale digital marketing, we handle the entire stack so you can focus on what you do best: running your business.
           </p>
         </div>
       </div>

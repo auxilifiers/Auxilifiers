@@ -164,7 +164,7 @@ export default function Hero() {
           <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>automate</em>{" "}
           the operations, and{" "}
           <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>grow</em>{" "}
-          the reach — for businesses ready to scale beyond what their team alone can carry.
+          the reach, for businesses ready to scale beyond what their team alone can carry.
         </p>
 
         {/* CTA */}

@@ -26,13 +26,13 @@ const pillars: PillarData[] = [
   {
     id: "automate", label: "PILLAR/02",
     title: (<>The <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic" }}>unfair</em> advantage.</>),
-    description: (<>The operations that drain your team — turned into systems that run themselves. We&apos;re an <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>n8n + Claude + Vapi</em> shop. <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>Tap a tag</em> for details.</>),
+    description: (<>The operations that drain your team, turned into systems that run themselves. We&apos;re an <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>n8n + Claude + Vapi</em> shop. <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>Tap a tag</em> for details.</>),
     tags: [{ id: "ai-workflows", label: "AI Workflows" }, { id: "chatbots", label: "Chatbots" }, { id: "voice-agents", label: "Voice Agents" }, { id: "voice-on-site", label: "Voice-on-Site" }, { id: "crm-sync", label: "CRM Sync" }, { id: "inbox-triage", label: "Inbox Triage" }],
     viz: <AutomateViz />, rotation: 0.3,
   },
   {
     id: "grow", label: "PILLAR/03", title: "Grow",
-    description: (<>The audiences and revenue that compound — engineered, not gambled. Last quarter: +47% organic traffic across portfolio. <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>Tap a tag</em> for details.</>),
+    description: (<>The audiences and revenue that compound. Engineered, not gambled. Last quarter: +47% organic traffic across portfolio. <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>Tap a tag</em> for details.</>),
     tags: [{ id: "seo", label: "SEO" }, { id: "google-ads", label: "Google Ads" }, { id: "meta-ads", label: "Meta Ads" }, { id: "social", label: "Social" }, { id: "content", label: "Content" }],
     viz: <GrowViz />, rotation: 0.4,
   },

@@ -130,7 +130,7 @@ export default function ServicesMarquee() {
           fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.55,
           color: "var(--color-text-muted)", maxWidth: 560, margin: "0 auto",
         }}>
-          Build, automate, and grow — all under one roof.
+          Build, automate, and grow. All under one roof.
         </p>
       </section>
 
