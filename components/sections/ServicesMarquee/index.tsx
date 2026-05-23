@@ -25,7 +25,7 @@ function MarqueeTrack() {
   const speedRef = useRef(1);
   const directionRef = useRef(1);
   const lastScrollY = useRef(0);
-  const scrollTimeout = useRef<ReturnType<typeof setTimeout>>();
+  const scrollTimeout = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
     const track = trackRef.current;
