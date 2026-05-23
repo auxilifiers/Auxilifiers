@@ -35,8 +35,8 @@ export default function WhyUs() {
   const base = "clamp(40px, 6.5vw, 96px)";
 
   return (
-    <section ref={sectionRef} style={{ minHeight: "160vh", position: "relative" }}>
-      <div className="sticky top-0 flex flex-col justify-center" style={{ minHeight: "100vh", padding: "120px 6vw", maxWidth: 1400, margin: "0 auto" }}>
+    <section id="whyus" ref={sectionRef} style={{ minHeight: "160vh", position: "relative", scrollMarginTop: 68 }}>
+      <div className="sticky top-0 flex flex-col justify-center" style={{ minHeight: "100vh", padding: "0 6vw", maxWidth: 1400, margin: "0 auto" }}>
         {/* S9: Center-aligned eyebrow */}
         <div className="whyus-anim flex items-center justify-center gap-4 mb-16 opacity-0" style={{
           fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
