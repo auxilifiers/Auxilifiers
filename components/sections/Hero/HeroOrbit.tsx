@@ -5,7 +5,7 @@ export default function HeroOrbit() {
     <div
       className="absolute pointer-events-none"
       style={{
-        right: "-5vw",
+        right: "2vw",
         top: "50%",
         transform: "translateY(-50%)",
         width: "clamp(280px, 35vw, 500px)",

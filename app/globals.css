@@ -49,13 +49,9 @@
   --text-shadow-safety: 0 0 24px rgba(0, 0, 0, 0.55);
 }
 
-* {
-  cursor: none;
-}
-
-@media (pointer: coarse) {
+@media (any-pointer: fine) {
   * {
-    cursor: auto;
+    cursor: none;
   }
 }
 

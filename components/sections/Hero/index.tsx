@@ -106,7 +106,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       className="relative"
-      style={{ height: "calc(100dvh - 68px)", padding: "0 6vw", overflow: "hidden" }}
+      style={{ height: "calc(100dvh - 68px)", padding: "0 6vw", overflowX: "clip", overflowY: "visible" }}
     >
       <div className="relative z-10 max-w-[1400px] h-full flex flex-col justify-center">
         {/* Headline */}
