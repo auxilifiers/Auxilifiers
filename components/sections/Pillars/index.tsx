@@ -124,11 +124,11 @@ function PillarCard({ pillar }: { pillar: PillarData }) {
                 </ul>
               </div>
               <div className="mt-auto pt-4" style={{ borderTop: "1px solid var(--color-border-subtle)" }}>
-                <span className="block mb-2" style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.18em", color: "var(--color-text-muted)", textTransform: "uppercase" }}>Switch service</span>
+                <span className="block mb-3" style={{ fontFamily: "var(--font-mono)", fontSize: 12, letterSpacing: "0.18em", color: "var(--color-text-muted)", textTransform: "uppercase" }}>Switch service</span>
                 <div className="flex flex-wrap gap-1.5">
                   {pillarServices.map((svc) => (
                     <button key={svc.id} onClick={() => switchService(svc.id)} style={{
-                      fontFamily: "var(--font-mono)", fontSize: 11, padding: "4px 10px", borderRadius: "var(--radius-pill)",
+                      fontFamily: "var(--font-mono)", fontSize: 13, padding: "7px 14px", borderRadius: "var(--radius-pill)",
                       border: `1px solid ${svc.id === activeService.id ? "var(--color-border-active)" : "var(--color-border-subtle)"}`,
                       color: svc.id === activeService.id ? "var(--color-cyan)" : "var(--color-text-muted)",
                       background: svc.id === activeService.id ? "rgba(0,245,255,0.1)" : "transparent", cursor: "none", letterSpacing: "0.04em",
