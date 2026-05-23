@@ -108,16 +108,16 @@ function PillarCard({ pillar }: { pillar: PillarData }) {
               <div className="flex items-start justify-between mb-5">
                 <div>
                   <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.18em", color: "var(--color-cyan)", textTransform: "uppercase" }}>{pillar.id} · service</span>
-                  <h4 className="mt-1" style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 500, letterSpacing: "-0.025em", color: "white" }}>{activeService.title}</h4>
+                  <h4 className="mt-1" style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 500, letterSpacing: "-0.025em", color: "white" }}>{activeService.title}</h4>
                 </div>
                 <button onClick={flipBack} className="flex items-center justify-center shrink-0" style={{ width: 32, height: 32, borderRadius: "50%", border: "1px solid var(--color-border-default)", color: "var(--color-text-muted)", fontSize: 16, background: "transparent", cursor: "none" }}>×</button>
               </div>
-              <p className="mb-5" style={{ fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.6, color: "var(--color-text-dim)" }}>{activeService.pitch}</p>
+              <p className="mb-5" style={{ fontFamily: "var(--font-body)", fontSize: 17, lineHeight: 1.6, color: "var(--color-text-dim)" }}>{activeService.pitch}</p>
               <div className="mb-5">
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.15em", color: "var(--color-text-muted)", textTransform: "uppercase" }}>What you get</span>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 13, letterSpacing: "0.15em", color: "var(--color-text-muted)", textTransform: "uppercase" }}>What you get</span>
                 <ul className="mt-3 flex flex-col gap-2">
                   {activeService.outcomes.map((o, i) => (
-                    <li key={i} className="flex items-start gap-2.5" style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.55, color: "var(--color-text-dim)", padding: "3px 0" }}>
+                    <li key={i} className="flex items-start gap-2.5" style={{ fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.55, color: "var(--color-text-dim)", padding: "4px 0" }}>
                       <span className="shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan" />{o}
                     </li>
                   ))}
