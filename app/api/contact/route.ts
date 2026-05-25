@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { supabase } from "@/lib/supabase";
 
 type Body = {
   firstName?: string;
@@ -126,6 +127,32 @@ export async function POST(request: Request) {
     } else {
       console.log("[contact] no RESEND_API_KEY — would send to:", to);
       console.log(text);
+    }
+
+    // Save submission to Supabase database
+    try {
+      const { error: dbError } = await supabase
+        .from("contact_submissions")
+        .insert([
+          {
+            first_name: firstName.trim(),
+            last_name: lastName.trim(),
+            email: email.trim(),
+            phone: phone.trim() || null,
+            company: company.trim(),
+            job_title: jobTitle.trim() || null,
+            service_interest: serviceInterest,
+            budget: budget || null,
+            business_brief: businessBrief.trim(),
+            message: message.trim(),
+          }
+        ]);
+
+      if (dbError) {
+        console.error("Failed to save contact submission to Supabase:", dbError);
+      }
+    } catch (dbErr) {
+      console.error("Database error during contact submission:", dbErr);
     }
 
     return NextResponse.json({ ok: true });
