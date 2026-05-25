@@ -10,6 +10,7 @@ export default function OrbitDot({ size = 12 }: { size?: number }) {
         height: size + 4,
         verticalAlign: "top",
         marginTop: "-0.08em",
+        color: "var(--color-cyan)",
       }}
     >
       <svg
@@ -17,14 +18,14 @@ export default function OrbitDot({ size = 12 }: { size?: number }) {
         height={size + 4}
         viewBox={`0 0 ${size + 4} ${size + 4}`}
         className="absolute top-0 left-0"
-        style={{ filter: "drop-shadow(0 0 4px rgba(0,245,255,0.6))" }}
+        style={{ filter: "drop-shadow(0 0 4px color-mix(in srgb, var(--color-cyan) 60%, transparent))" }}
       >
         <circle
           cx={(size + 4) / 2}
           cy={(size + 4) / 2}
           r={size / 2}
           fill="none"
-          stroke="#00F5FF"
+          stroke="currentColor"
           strokeWidth={1.2}
         />
         <g
@@ -37,7 +38,7 @@ export default function OrbitDot({ size = 12 }: { size?: number }) {
             cx={(size + 4) / 2 + satelliteR}
             cy={(size + 4) / 2}
             r={2}
-            fill="#00F5FF"
+            fill="currentColor"
           />
         </g>
       </svg>

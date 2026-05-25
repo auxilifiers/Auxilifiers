@@ -42,17 +42,65 @@
 }
 
 :root {
+  /* Dark theme defaults — also overridden by [data-theme="dark"] for explicitness */
   --gradient: linear-gradient(135deg, #00F5FF 0%, #0066FF 100%);
   --gradient-soft: linear-gradient(135deg, #00F5FF 0%, #7DD3FC 50%, #0066FF 100%);
   --glow-cyan: 0 0 60px rgba(0, 245, 255, 0.5);
   --glow-cyan-soft: 0 0 14px rgba(0, 245, 255, 0.6);
   --text-shadow-safety: 0 0 24px rgba(0, 0, 0, 0.55);
+
+  /* Theme-aware tokens (extend the @theme tokens) */
+  --color-header-bg: rgba(0, 0, 0, 0.55);
+  --color-mobile-menu-bg: rgba(0, 0, 0, 0.92);
+  --color-cta-text: #000000;
+  --color-card-bg: rgba(10, 15, 26, 0.72);
+  --color-card-img-overlay: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%);
+  --color-aurora-opacity: 1;
+  --aurora-blend: screen;
+  --color-input-bg: rgba(255, 255, 255, 0.04);
+  --color-input-placeholder: rgba(255, 255, 255, 0.42);
 }
 
-/* Native cursor hidden via JS in CustomCursor component */
+/* Light theme — keeps brand cyan/blue, swaps bg/text/borders for legibility */
+[data-theme="light"] {
+  --color-bg: #EEF3F8;
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: rgba(255, 255, 255, 0.92);
+  --color-text: #050810;
+  --color-text-muted: #0F172A;
+  --color-text-dim: rgba(5, 8, 16, 0.92);
+  --color-text-strike: rgba(5, 8, 16, 0.60);
+  --color-border-subtle: rgba(5, 8, 16, 0.12);
+  --color-border-default: rgba(5, 8, 16, 0.28);
+  --color-border-strong: rgba(0, 80, 200, 0.65);
+  --color-border-active: rgba(0, 80, 200, 0.90);
+  /* Darker cyan for light mode so accents are actually readable on white */
+  --color-cyan: #0066A6;
+  --color-blue: #0050C8;
+  --color-ice: #2563EB;
+
+  --color-header-bg: rgba(255, 255, 255, 0.82);
+  --color-mobile-menu-bg: rgba(238, 243, 248, 0.96);
+  --color-cta-text: #FFFFFF;
+  --color-card-bg: rgba(255, 255, 255, 0.95);
+  --color-card-img-overlay: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.18) 100%);
+  --color-aurora-opacity: 1;
+  --aurora-blend: multiply;
+  --text-shadow-safety: 0 0 24px rgba(255, 255, 255, 0.55);
+  --color-input-bg: rgba(10, 15, 26, 0.05);
+  --color-input-placeholder: rgba(10, 15, 26, 0.50);
+
+  /* Light-mode gradient tuned darker so it stays readable on light bg */
+  --gradient: linear-gradient(135deg, #0066FF 0%, #00B4D8 100%);
+  --gradient-soft: linear-gradient(135deg, #0066FF 0%, #00B4D8 50%, #00F5FF 100%);
+  --glow-cyan: 0 0 40px rgba(0, 102, 255, 0.25);
+  --glow-cyan-soft: 0 0 14px rgba(0, 102, 255, 0.35);
+}
 
 html {
   scroll-behavior: smooth;
+  background: var(--color-bg);
+  color-scheme: light dark;
 }
 
 body {
@@ -60,11 +108,82 @@ body {
   color: var(--color-text);
   font-family: var(--font-body);
   overflow-x: hidden;
+  transition: background-color 0.35s ease, color 0.35s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Justify body paragraphs site-wide (except inside center-aligned containers) */
+main p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+main .text-center p,
+main p.text-center,
+main [style*="text-align: center"] p,
+main [style*="textAlign:\"center\""] p,
+header p,
+footer p,
+.no-justify p,
+p.no-justify {
+  text-align: center;
+  hyphens: none;
+}
+main p[style*="text-align: center"],
+main p[style*="textAlign:\"center\""] {
+  text-align: center !important;
+}
+
+/* Mono labels: bolder + min readable size so eyebrows pop in both themes */
+[style*="--font-mono"], [style*="font-mono"] {
+  font-weight: 700 !important;
+  letter-spacing: 0.16em !important;
+}
+/* Force a readable minimum size on eyebrow labels.
+   Targets inline-mono spans that are typically small (<= 14px). */
+section [style*="font-mono"][style*="text-transform"],
+section [style*="font-mono"][style*="textTransform"] {
+  font-size: clamp(13px, 1.6vw, 16px) !important;
+}
+
+/* Avoid <1px hairlines disappearing on light bg */
+[data-theme="light"] [style*="height: 1px"],
+[data-theme="light"] [style*="height:1px"] {
+  background: var(--color-cyan) !important;
+  opacity: 0.85;
 }
 
 ::selection {
   background: rgba(0, 245, 255, 0.25);
-  color: #fff;
+  color: var(--color-text);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-input-placeholder);
+  opacity: 1;
+}
+
+input, textarea, select {
+  color: var(--color-text);
+  background: var(--color-input-bg);
+}
+
+select option {
+  color: #0A0F1A;
+  background: #FFFFFF;
+}
+
+/* Aurora dims on light theme via opacity hook */
+[data-aurora-root] {
+  opacity: var(--color-aurora-opacity);
+  transition: opacity 0.35s ease;
+}
+
+/* Light theme: boost inner blob opacity so multiply blend shows through */
+[data-theme="light"] [data-aurora-root] > div {
+  opacity: 0.55 !important;
 }
 
 /* Aurora blob animations */
@@ -94,19 +213,16 @@ body {
   50% { opacity: 0.4; }
 }
 
-/* Orbit satellite rotation */
 @keyframes orbit-rotate {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/* Drifter spin */
 @keyframes drifter-spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/* Modal animations */
 @keyframes modal-fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -116,7 +232,6 @@ body {
   to { opacity: 1; transform: scale(1); }
 }
 
-/* Styled scrollbar for pillar back faces */
 .pillar-back {
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 245, 255, 0.4) transparent;
@@ -131,14 +246,61 @@ body {
   background: rgba(0, 245, 255, 0.7);
 }
 
+/* Testimonial marquee cards: ~3 per row on desktop, scale down responsively */
+.svc-testimonial-card {
+  width: 86vw;
+  min-height: 260px;
+}
+@media (min-width: 640px) {
+  .svc-testimonial-card { width: 48vw; min-height: 280px; }
+}
+@media (min-width: 1024px) {
+  .svc-testimonial-card { width: 30vw; min-height: 300px; max-width: 520px; }
+}
+
+/* Service grid: flex-based so orphan items center instead of left-aligning */
+.svc-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+.svc-grid-item {
+  width: 100%;
+}
+@media (min-width: 640px) {
+  .svc-grid-item {
+    width: calc((100% - 24px) / 2);
+  }
+}
+@media (min-width: 1024px) {
+  .svc-grid-item {
+    width: calc((100% - 48px) / 3);
+  }
+}
+
+/* Service card hover lift */
+.svc-card {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.svc-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-border-active);
+  box-shadow: var(--glow-cyan-soft);
+}
+
+/* Smooth content fade on first paint to hide font-swap flash */
+@keyframes content-fade-in { from { opacity: 0; } to { opacity: 1; } }
+main {
+  animation: content-fade-in 0.4s ease both;
+}
+
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
-  /* Hero: remove rotations */
   .hero-line1, .hero-line2, .hero-line3 {
     transform: none !important;
   }
 
-  /* Hero stats: vertical stack, each stat on its own row */
   .hero-stats-row {
     flex-direction: column !important;
     gap: 12px !important;
@@ -156,7 +318,6 @@ body {
     font-size: 11px !important;
   }
 
-  /* Pillar cards: no rotation on mobile */
   .pillar {
     transform: none !important;
   }
@@ -164,13 +325,11 @@ body {
     transform: none !important;
   }
 
-  /* Pillars eyebrow: smaller on mobile */
   .pillars-eyebrow {
     font-size: 10px !important;
     letter-spacing: 0.12em !important;
   }
 
-  /* About section: kill all the big gaps */
   #about .decl-eyebrow {
     margin-bottom: 20px !important;
   }
@@ -181,7 +340,6 @@ body {
     margin-bottom: 16px !important;
   }
 
-  /* Why Us: center in visible area below header */
   #whyus > div {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
@@ -195,10 +353,20 @@ body {
     width: 100%;
   }
 
-  /* Footer: reduce gaps */
   footer .grid {
     gap: 24px !important;
   }
+
+  /* Headings — slightly larger min on mobile so they don't feel cramped */
+  body { font-size: 15px; }
+
+  /* Section paddings */
+  section { padding-left: 5vw; padding-right: 5vw; }
+}
+
+/* Tablet refinements */
+@media (min-width: 769px) and (max-width: 1024px) {
+  body { font-size: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

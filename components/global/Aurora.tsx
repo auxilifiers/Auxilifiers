@@ -1,6 +1,7 @@
 export default function Aurora() {
   return (
     <div
+      data-aurora-root
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
       aria-hidden="true"
     >
@@ -13,7 +14,7 @@ export default function Aurora() {
           top: -120,
           left: -140,
           filter: "blur(110px)",
-          mixBlendMode: "screen",
+          mixBlendMode: "var(--aurora-blend)" as any,
           animation: "aurora-drift-1 32s ease-in-out infinite",
         }}
       />
@@ -26,7 +27,7 @@ export default function Aurora() {
           bottom: -220,
           right: -180,
           filter: "blur(110px)",
-          mixBlendMode: "screen",
+          mixBlendMode: "var(--aurora-blend)" as any,
           animation: "aurora-drift-2 38s ease-in-out infinite",
         }}
       />
@@ -39,7 +40,7 @@ export default function Aurora() {
           top: "30%",
           right: "18%",
           filter: "blur(110px)",
-          mixBlendMode: "screen",
+          mixBlendMode: "var(--aurora-blend)" as any,
           animation: "aurora-drift-3 28s ease-in-out infinite",
         }}
       />
@@ -52,7 +53,7 @@ export default function Aurora() {
           bottom: "5%",
           left: "18%",
           filter: "blur(110px)",
-          mixBlendMode: "screen",
+          mixBlendMode: "var(--aurora-blend)" as any,
           animation: "aurora-drift-4 42s ease-in-out infinite",
         }}
       />

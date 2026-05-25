@@ -1,8 +1,8 @@
 import Hero from "@/components/sections/Hero";
 import ServicesMarquee from "@/components/sections/ServicesMarquee";
-import Declaration from "@/components/sections/Declaration";
 import Pillars from "@/components/sections/Pillars";
-import WhyUs from "@/components/sections/WhyUs";
+import Testimonials from "@/components/sections/Testimonials";
+import FAQs from "@/components/sections/FAQs";
 import FooterCta from "@/components/sections/FooterCta";
 
 export default function Home() {
@@ -10,9 +10,9 @@ export default function Home() {
     <div className="min-h-screen">
       <Hero />
       <ServicesMarquee />
-      <Declaration />
       <Pillars />
-      <WhyUs />
+      <Testimonials />
+      <FAQs />
       <FooterCta />
     </div>
   );

@@ -60,7 +60,7 @@ export default function Declaration() {
           }}>take the spotlight.</div>
           <div className="word-anim opacity-0" style={{
             fontFamily: "var(--font-display)", fontWeight: 400,
-            fontSize: `calc(${base} * 1.15)`, color: "white", marginBottom: "0.15em",
+            fontSize: `calc(${base} * 1.15)`, color: "var(--color-text)", marginBottom: "0.15em",
           }}>
             We support{" "}
             <span style={{
@@ -99,7 +99,7 @@ export default function Declaration() {
 
           <h3 style={{
             fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "clamp(20px, 4vw, 24px)",
-            color: "white", marginBottom: 10, letterSpacing: "-0.02em",
+            color: "var(--color-text)", marginBottom: 10, letterSpacing: "-0.02em",
           }}>
             Who we are
           </h3>

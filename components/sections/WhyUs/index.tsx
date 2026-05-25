@@ -49,7 +49,7 @@ export default function WhyUs() {
         {/* S9: Center-aligned text */}
         <div style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.15, textAlign: "center" }}>
           <div className="whyus-anim opacity-0" style={{
-            fontFamily: "var(--font-display)", fontWeight: 300, fontSize: base, color: "white", marginBottom: "0.15em",
+            fontFamily: "var(--font-display)", fontWeight: 300, fontSize: base, color: "var(--color-text)", marginBottom: "0.15em",
           }}>
             While agencies
           </div>
@@ -66,7 +66,7 @@ export default function WhyUs() {
             fontSize: `calc(${base} * 1.2)`,
           }}>
             <span ref={outcomesRef} style={{
-              background: "linear-gradient(90deg, #00F5FF 0%, #0066FF 50%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0.35) 100%)",
+              background: "linear-gradient(90deg, #00F5FF 0%, #0066FF 50%, var(--color-text-strike) 50%, var(--color-text-strike) 100%)",
               backgroundSize: "200% 100%", backgroundPosition: "100% 0",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
             }}>

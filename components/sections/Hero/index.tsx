@@ -111,8 +111,8 @@ export default function Hero() {
         <div className="mb-4 min-[768px]:mb-5">
           <div className="hero-line1" style={{
             fontFamily: "var(--font-display)", fontWeight: 400,
-            fontSize: "clamp(36px, 10vw, 100px)", lineHeight: 0.95,
-            letterSpacing: "-0.045em", color: "white",
+            fontSize: "clamp(48px, 11vw, 144px)", lineHeight: 0.95,
+            letterSpacing: "-0.045em", color: "var(--color-text)",
             textShadow: "var(--text-shadow-safety)",
           }}>
             {splitChars("Orbit")}
@@ -128,7 +128,7 @@ export default function Hero() {
           </div>
           <div className="hero-line2" style={{
             fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
-            fontSize: "clamp(24px, 7vw, 64px)", lineHeight: 1.1,
+            fontSize: "clamp(28px, 7vw, 80px)", lineHeight: 1.1,
             color: "var(--color-text-dim)", letterSpacing: "-0.02em",
             textShadow: "var(--text-shadow-safety)",
           }}>
@@ -136,7 +136,7 @@ export default function Hero() {
           </div>
           <div className="hero-line3 opacity-0" style={{
             fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontWeight: 400,
-            fontSize: "clamp(40px, 12vw, 128px)", lineHeight: 0.95,
+            fontSize: "clamp(52px, 13vw, 168px)", lineHeight: 0.95,
             letterSpacing: "-0.02em",
             textShadow: "var(--text-shadow-safety)",
             background: "var(--gradient-soft)", WebkitBackgroundClip: "text",
@@ -152,16 +152,16 @@ export default function Hero() {
 
         {/* Sub paragraph */}
         <p className="hero-sub opacity-0" style={{
-          fontFamily: "var(--font-body)", fontSize: "clamp(14px, 3.5vw, 18px)", lineHeight: 1.55,
+          fontFamily: "var(--font-body)", fontSize: "clamp(16px, 1.6vw, 22px)", lineHeight: 1.6,
           color: "var(--color-text-dim)", textShadow: "var(--text-shadow-safety)",
-          maxWidth: 540, marginBottom: "clamp(16px, 3vw, 24px)",
+          maxWidth: 620, marginBottom: "clamp(16px, 3vw, 24px)",
         }}>
           We{" "}
-          <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>build</em>{" "}
+          <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "var(--color-text)" }}>build</em>{" "}
           the tech,{" "}
-          <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>automate</em>{" "}
+          <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "var(--color-text)" }}>automate</em>{" "}
           the operations, and{" "}
-          <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "white" }}>grow</em>{" "}
+          <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "var(--color-text)" }}>grow</em>{" "}
           the reach, for businesses ready to scale beyond what their team alone can carry.
         </p>
 
@@ -187,7 +187,7 @@ export default function Hero() {
             <div key={i} className="hero-stat opacity-0 flex items-baseline gap-2 min-[768px]:gap-3">
               <span ref={stat.counter.ref} style={{
                 fontFamily: "var(--font-display)", fontSize: "clamp(24px, 5vw, 40px)",
-                fontWeight: 400, color: "white", letterSpacing: "-0.03em",
+                fontWeight: 400, color: "var(--color-text)", letterSpacing: "-0.03em",
                 lineHeight: 1, textShadow: "var(--text-shadow-safety)",
               }}>{stat.counter.value}</span>
               <span style={{
@@ -202,3 +202,5 @@ export default function Hero() {
     </section>
   );
 }
+
+// Removed: HeroRightPanel (user opted out)

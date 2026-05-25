@@ -43,8 +43,8 @@ export default function CustomCursor() {
       if (ring) {
         ring.style.width = "70px";
         ring.style.height = "70px";
-        ring.style.borderColor = "rgba(0, 245, 255, 0.4)";
-        ring.style.backgroundColor = "rgba(0, 245, 255, 0.08)";
+        ring.style.borderColor = "var(--color-border-active)";
+        ring.style.backgroundColor = "color-mix(in srgb, var(--color-cyan) 12%, transparent)";
       }
       if (dot) {
         dot.style.opacity = "0.3";
@@ -57,7 +57,7 @@ export default function CustomCursor() {
       if (ring) {
         ring.style.width = "40px";
         ring.style.height = "40px";
-        ring.style.borderColor = "rgba(0, 245, 255, 0.5)";
+        ring.style.borderColor = "var(--color-border-active)";
         ring.style.backgroundColor = "transparent";
       }
       if (dot) {
@@ -114,12 +114,12 @@ export default function CustomCursor() {
         ref={dotRef}
         className="pointer-events-none fixed top-0 left-0 z-[9999]"
         style={{
-          width: 8,
-          height: 8,
+          width: 10,
+          height: 10,
           borderRadius: "50%",
-          background: "#00F5FF",
-          boxShadow: "0 0 12px rgba(0, 245, 255, 0.7)",
-          transition: "opacity 0.2s",
+          background: "var(--color-cyan)",
+          boxShadow: "0 0 14px color-mix(in srgb, var(--color-cyan) 70%, transparent)",
+          transition: "opacity 0.2s, background 0.35s",
         }}
       />
       <div
@@ -129,8 +129,8 @@ export default function CustomCursor() {
           width: 40,
           height: 40,
           borderRadius: "50%",
-          border: "1.5px solid rgba(0, 245, 255, 0.5)",
-          transition: "width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s",
+          border: "1.5px solid var(--color-border-active)",
+          transition: "width 0.3s, height 0.3s, border-color 0.35s, background-color 0.3s",
         }}
       />
     </>

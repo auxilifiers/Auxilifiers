@@ -20,37 +20,90 @@ const items = [
 ];
 
 function MarqueeTrack() {
+  const wrapRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const xRef = useRef(0);
   const speedRef = useRef(1);
   const directionRef = useRef(1);
   const lastScrollY = useRef(0);
   const scrollTimeout = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const dragRef = useRef({ active: false, startX: 0, startOffset: 0, lastX: 0, lastT: 0, velocity: 0 });
 
   useEffect(() => {
     const track = trackRef.current;
-    if (!track) return;
+    const wrap = wrapRef.current;
+    if (!track || !wrap) return;
     let rafId: number;
-    const baseSpeed = 0.8;
+    const baseSpeed = 2.2;
+
     const animate = () => {
       const halfWidth = track.scrollWidth / 2;
-      xRef.current -= baseSpeed * speedRef.current * directionRef.current;
-      if (xRef.current <= -halfWidth) xRef.current = 0;
-      else if (xRef.current > 0) xRef.current = -halfWidth;
+      if (!dragRef.current.active) {
+        if (Math.abs(dragRef.current.velocity) > 0.1) {
+          xRef.current += dragRef.current.velocity;
+          dragRef.current.velocity *= 0.94;
+        } else {
+          xRef.current -= baseSpeed * speedRef.current * directionRef.current;
+        }
+      }
+      if (xRef.current <= -halfWidth) xRef.current += halfWidth;
+      else if (xRef.current > 0) xRef.current -= halfWidth;
       track.style.transform = `translate3d(${xRef.current}px, 0, 0)`;
       rafId = requestAnimationFrame(animate);
     };
+
     const onScroll = () => {
       const currentY = window.scrollY;
-      if (currentY < lastScrollY.current) { directionRef.current = -1; speedRef.current = 2; }
-      else { directionRef.current = 1; speedRef.current = 1.5; }
+      if (currentY < lastScrollY.current) { directionRef.current = -1; speedRef.current = 1.8; }
+      else { directionRef.current = 1; speedRef.current = 1.4; }
       lastScrollY.current = currentY;
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-      scrollTimeout.current = setTimeout(() => { directionRef.current = 1; speedRef.current = 1; }, 200);
+      scrollTimeout.current = setTimeout(() => { directionRef.current = 1; speedRef.current = 1; }, 220);
     };
+
+    const onPointerDown = (e: PointerEvent) => {
+      dragRef.current.active = true;
+      dragRef.current.startX = e.clientX;
+      dragRef.current.startOffset = xRef.current;
+      dragRef.current.lastX = e.clientX;
+      dragRef.current.lastT = performance.now();
+      dragRef.current.velocity = 0;
+      try { wrap.setPointerCapture(e.pointerId); } catch {}
+      wrap.style.cursor = "grabbing";
+    };
+    const onPointerMove = (e: PointerEvent) => {
+      if (!dragRef.current.active) return;
+      const dx = e.clientX - dragRef.current.startX;
+      xRef.current = dragRef.current.startOffset + dx;
+      const now = performance.now();
+      const dt = Math.max(1, now - dragRef.current.lastT);
+      dragRef.current.velocity = ((e.clientX - dragRef.current.lastX) / dt) * 16;
+      dragRef.current.lastX = e.clientX;
+      dragRef.current.lastT = now;
+    };
+    const onPointerUp = (e: PointerEvent) => {
+      if (!dragRef.current.active) return;
+      dragRef.current.active = false;
+      try { wrap.releasePointerCapture(e.pointerId); } catch {}
+      wrap.style.cursor = "grab";
+    };
+
     rafId = requestAnimationFrame(animate);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => { cancelAnimationFrame(rafId); window.removeEventListener("scroll", onScroll); if (scrollTimeout.current) clearTimeout(scrollTimeout.current); };
+    wrap.addEventListener("pointerdown", onPointerDown);
+    wrap.addEventListener("pointermove", onPointerMove);
+    wrap.addEventListener("pointerup", onPointerUp);
+    wrap.addEventListener("pointercancel", onPointerUp);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScroll);
+      wrap.removeEventListener("pointerdown", onPointerDown);
+      wrap.removeEventListener("pointermove", onPointerMove);
+      wrap.removeEventListener("pointerup", onPointerUp);
+      wrap.removeEventListener("pointercancel", onPointerUp);
+      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+    };
   }, []);
 
   const renderItems = () =>
@@ -68,7 +121,11 @@ function MarqueeTrack() {
     ));
 
   return (
-    <div className="overflow-hidden w-full">
+    <div
+      ref={wrapRef}
+      className="overflow-hidden w-full select-none"
+      style={{ cursor: "grab", touchAction: "pan-y" }}
+    >
       <div ref={trackRef} className="flex items-center gap-6" style={{ willChange: "transform" }}>
         {renderItems()}
         {renderItems()}
@@ -106,39 +163,41 @@ export default function ServicesMarquee() {
   }, []);
 
   return (
-    <div id="services" style={{ scrollMarginTop: 56, paddingTop: "clamp(40px, 8vw, 80px)", paddingBottom: "clamp(100px, 15vw, 160px)" }}>
+    <div style={{ paddingTop: "clamp(30px, 5vw, 56px)", paddingBottom: "clamp(40px, 6vw, 64px)" }}>
       <section ref={sectionRef} style={{ padding: "20px 5vw 24px", maxWidth: 1400, margin: "0 auto", textAlign: "center" }}>
         <div className="svc-eyebrow flex items-center justify-center gap-4 mb-5 opacity-0" style={{
           fontFamily: "var(--font-mono)", fontSize: 14,
           letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
         }}>
           <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
-          Services
+          What we ship
           <span style={{ display: "inline-block", width: 40, height: 1, background: "var(--color-cyan)" }} />
         </div>
         <h2 style={{
           fontFamily: "var(--font-display)", fontWeight: 300,
           fontSize: "clamp(36px, 5vw, 64px)", letterSpacing: "-0.025em",
-          lineHeight: 1.05, color: "white", textShadow: "var(--text-shadow-safety)", marginBottom: 12,
+          lineHeight: 1.05, color: "var(--color-text)", textShadow: "var(--text-shadow-safety)", marginBottom: 12,
           perspective: 600,
         }}>
           {"Everything you need, under one roof.".split(" ").map((word, i) => (
             <span key={i} className="svc-word inline-block opacity-0" style={{ marginRight: "0.3em" }}>{word}</span>
           ))}
         </h2>
-        <p className="svc-sub opacity-0" style={{
+        <p className="svc-sub opacity-0 text-center" style={{
           fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.55,
           color: "var(--color-text-muted)", maxWidth: 560, margin: "0 auto",
+          textAlign: "center",
         }}>
           Build, automate, and grow. All under one roof.
         </p>
       </section>
 
       <section className="relative w-full overflow-hidden" style={{
-        padding: "56px 0", marginTop: 20,
+        padding: "36px 0", marginTop: 16,
         borderTop: "1px solid var(--color-border-subtle)",
         borderBottom: "1px solid var(--color-border-subtle)",
-        background: "rgba(0, 0, 0, 0.25)", backdropFilter: "blur(8px)",
+        background: "color-mix(in srgb, var(--color-bg) 70%, transparent)",
+        backdropFilter: "blur(8px)",
       }}>
         <MarqueeTrack />
       </section>

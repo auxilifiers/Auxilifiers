@@ -37,7 +37,7 @@ export default function FooterCta() {
     <section
       id="contact"
       ref={sectionRef}
-      style={{ padding: "clamp(60px, 10vw, 100px) 5vw", maxWidth: 1400, margin: "0 auto", textAlign: "center", scrollMarginTop: 56 }}
+      style={{ padding: "clamp(28px, 4vw, 48px) 5vw clamp(56px, 9vw, 96px)", maxWidth: 1400, margin: "0 auto", textAlign: "center", scrollMarginTop: 56 }}
     >
       <div className="cta-eyebrow flex items-center justify-center gap-4 mb-5 opacity-0" style={{
         fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)",
@@ -50,13 +50,13 @@ export default function FooterCta() {
       <h2 className="mb-8" style={{ textShadow: "var(--text-shadow-safety)", lineHeight: 1.1, perspective: 800 }}>
         <span className="cta-word inline-block opacity-0" style={{
           fontFamily: "var(--font-display)", fontWeight: 300,
-          fontSize: "clamp(28px, 7vw, 96px)", letterSpacing: "-0.035em", color: "white", marginRight: "0.2em",
+          fontSize: "clamp(28px, 7vw, 96px)", letterSpacing: "-0.035em", color: "var(--color-text)", marginRight: "0.2em",
         }}>
           Ready
         </span>
         <span className="cta-word inline-block opacity-0" style={{
           fontFamily: "var(--font-display)", fontWeight: 300,
-          fontSize: "clamp(28px, 7vw, 96px)", letterSpacing: "-0.035em", color: "white", marginRight: "0.2em",
+          fontSize: "clamp(28px, 7vw, 96px)", letterSpacing: "-0.035em", color: "var(--color-text)", marginRight: "0.2em",
         }}>
           to
         </span>
@@ -78,7 +78,7 @@ export default function FooterCta() {
         </span>
         <span className="cta-word inline-block opacity-0" style={{
           fontFamily: "var(--font-display)", fontWeight: 300,
-          fontSize: "clamp(28px, 7vw, 96px)", letterSpacing: "-0.035em", color: "white",
+          fontSize: "clamp(28px, 7vw, 96px)", letterSpacing: "-0.035em", color: "var(--color-text)",
         }}>
           scaling?
         </span>

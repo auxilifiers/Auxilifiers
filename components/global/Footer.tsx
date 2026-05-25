@@ -4,11 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 const companyLinks = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "How We Work", href: "#pillars" },
-  { label: "Why Us", href: "#whyus" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "/#services" },
+  { label: "Why Us", href: "/why-us" },
+  { label: "Contact", href: "/#contact" },
+  { label: "Terms & Conditions", href: "/terms" },
+  { label: "Privacy Policy", href: "/privacy" },
 ];
 
 export default function Footer() {
@@ -19,7 +21,7 @@ export default function Footer() {
         <div className="flex flex-col gap-5 items-center">
           <div className="flex items-center gap-3">
             <Image src="/logo.png" alt="Auxilifiers" width={36} height={36} />
-            <span style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 18, color: "white" }}>
+            <span style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 18, color: "var(--color-text)" }}>
               Auxilifiers
             </span>
           </div>
