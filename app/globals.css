@@ -325,9 +325,11 @@ main {
     transform: none !important;
   }
 
+  section [style*="font-mono"].pillars-eyebrow,
+  section .pillars-eyebrow,
   .pillars-eyebrow {
     font-size: 10px !important;
-    letter-spacing: 0.12em !important;
+    letter-spacing: 0.08em !important;
   }
 
   #about .decl-eyebrow {

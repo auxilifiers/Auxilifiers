@@ -18,11 +18,6 @@ const SEED: Testimonial[] = [
   { id: "s-3", name: "Asim Mahmood", role: "Marketing Director", company: "Verda Skincare", quote: "Five agencies told us SEO would take a year. Auxilifiers had us ranking for our money keyword in three months. No tricks, just real work.", rating: 5, createdAt: 0 },
   { id: "s-4", name: "Bilal Sheikh", role: "Founder", company: "MetroFit Studios", quote: "The AI calling agent picks up at 2am and books classes. Our front desk is no longer a bottleneck. I sleep again.", rating: 5, createdAt: 0 },
   { id: "s-5", name: "Saad Imran", role: "Co-Founder", company: "Tiffin Box Co.", quote: "They didn't just build us a website — they fixed our whole ordering flow. Customer complaints dropped to almost zero.", rating: 5, createdAt: 0 },
-  { id: "s-6", name: "Daniyal Ahmed", role: "Founder", company: "Clarity Legal", quote: "Plain language is real. They explained every technical decision in a way my non-tech partners understood. Refreshing.", rating: 5, createdAt: 0 },
-  { id: "s-7", name: "Mustafa Tariq", role: "Head of Growth", company: "Stride Apparel", quote: "Meta ad creatives that actually convert. Our CPA dropped 41% over two months — and the new creative comes in every Monday like clockwork.", rating: 5, createdAt: 0 },
-  { id: "s-8", name: "Faisal Qureshi", role: "CEO", company: "Northwind Realty", quote: "They rebuilt our CRM sync in a week. We had 6 conflicting customer records per lead before. Now: one source of truth. Game changer.", rating: 5, createdAt: 0 },
-  { id: "s-9", name: "Zain Iqbal", role: "Founder", company: "Bloom Stationery", quote: "I had a half-finished Shopify store and ten tabs of confusion. Two weeks later I had a real store and orders. Just… on it.", rating: 5, createdAt: 0 },
-  { id: "s-10", name: "Hassan Javed", role: "Operations Manager", company: "Pinewood Cafe Group", quote: "The chatbot answers reservation queries while my team focuses on the floor. Reviews mention how fast we reply now. Worth every rupee.", rating: 5, createdAt: 0 },
 ];
 
 // Local storage helper functions removed in favor of Supabase backend
@@ -47,13 +42,16 @@ function Stars({ value, onChange }: { value: number; onChange?: (n: number) => v
 function TestimonialCard({ t }: { t: Testimonial }) {
   return (
     <article
-      className="relative flex flex-col gap-4 p-7 min-[768px]:p-8 shrink-0 svc-testimonial-card overflow-hidden"
+      className="relative flex flex-col gap-5 p-8 shrink-0 svc-testimonial-card overflow-hidden"
       style={{
-        background: "var(--color-card-bg)",
+        background: "linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.06) 100%)",
+        backgroundColor: "var(--color-card-bg)",
         border: "1px solid var(--color-border-subtle)",
-        borderRadius: "var(--radius-xl)",
-        backdropFilter: "blur(10px)",
-        WebkitBackdropFilter: "blur(10px)",
+        borderTop: "3px solid var(--color-cyan)",
+        borderRadius: "var(--radius-lg)",
+        boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
       }}
     >
       {/* Decorative quote glyph */}
@@ -61,13 +59,13 @@ function TestimonialCard({ t }: { t: Testimonial }) {
         aria-hidden="true"
         style={{
           position: "absolute",
-          top: -16,
-          right: 16,
+          top: -24,
+          right: 20,
           fontFamily: "'Instrument Serif', serif",
-          fontSize: 120,
+          fontSize: 140,
           lineHeight: 1,
           color: "var(--color-cyan)",
-          opacity: 0.18,
+          opacity: 0.08,
           pointerEvents: "none",
           fontStyle: "italic",
         }}
@@ -83,7 +81,7 @@ function TestimonialCard({ t }: { t: Testimonial }) {
           fontFamily: "'Instrument Serif', serif",
           fontStyle: "italic",
           fontSize: 19,
-          lineHeight: 1.5,
+          lineHeight: 1.55,
           color: "var(--color-text-dim)",
           flex: 1,
           textAlign: "left",
@@ -99,11 +97,16 @@ function TestimonialCard({ t }: { t: Testimonial }) {
         <div
           className="flex items-center justify-center shrink-0"
           style={{
-            width: 44, height: 44, borderRadius: "50%",
+            width: 44,
+            height: 44,
+            borderRadius: "50%",
             background: "var(--gradient)",
             color: "var(--color-cta-text)",
-            fontFamily: "var(--font-display)", fontSize: 17, fontWeight: 500,
-            boxShadow: "0 0 16px color-mix(in srgb, var(--color-cyan) 35%, transparent)",
+            fontFamily: "var(--font-display)",
+            fontSize: 17,
+            fontWeight: 500,
+            boxShadow: "0 0 12px var(--color-cyan)",
+            border: "2px solid rgba(255, 255, 255, 0.1)",
           }}
         >
           {t.name.charAt(0)}
