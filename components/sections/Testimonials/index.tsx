@@ -395,7 +395,7 @@ export default function Testimonials() {
               <div>
                 <label style={labelStyle}>Your name <span style={{ color: "var(--color-cyan)" }}>*</span></label>
                 <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  placeholder="Ayesha Khan" style={inputStyle} />
+                  placeholder="Malika Ikram" style={inputStyle} />
               </div>
               <div>
                 <label style={labelStyle}>Role</label>

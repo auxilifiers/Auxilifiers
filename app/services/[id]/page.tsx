@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   services,
@@ -137,19 +138,16 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           </Link>
         </div>
 
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={svc.image}
-          alt={svc.title}
-          style={{
-            width: "100%",
-            height: "clamp(220px, 40vw, 440px)",
-            objectFit: "cover",
-            borderRadius: "var(--radius-xl)",
-            border: "1px solid var(--color-border-subtle)",
-            display: "block",
-          }}
-        />
+        <div style={{ position: "relative", width: "100%", height: "clamp(220px, 40vw, 440px)", borderRadius: "var(--radius-xl)", border: "1px solid var(--color-border-subtle)", overflow: "hidden" }}>
+          <Image
+            src={svc.image}
+            alt={svc.title}
+            fill
+            sizes="(max-width: 1200px) 100vw, 1200px"
+            priority
+            style={{ objectFit: "cover" }}
+          />
+        </div>
       </section>
 
       {/* Pitch + Outcomes */}
@@ -462,12 +460,12 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
                   cursor: "none",
                 }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={s.image}
                   alt={s.title}
-                  loading="lazy"
-                  style={{ width: 88, height: 88, objectFit: "cover", borderRadius: "var(--radius-sm)", flexShrink: 0 }}
+                  width={88}
+                  height={88}
+                  style={{ objectFit: "cover", borderRadius: "var(--radius-sm)", flexShrink: 0 }}
                 />
                 <div className="flex flex-col justify-center min-w-0">
                   <h4

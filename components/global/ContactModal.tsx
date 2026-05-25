@@ -150,21 +150,21 @@ export function ContactForm({ variant = "modal" }: { variant?: "modal" | "inline
       <div className="grid gap-4 grid-cols-1 min-[520px]:grid-cols-2">
         <Field label="First name" required>
           <input type="text" required minLength={2} maxLength={60} value={form.firstName}
-            onChange={(e) => update("firstName", e.target.value)} placeholder="Hafiz"
+            onChange={(e) => update("firstName", e.target.value)} placeholder="Malika"
             pattern="^[\p{L}\s'.\-]{2,60}$"
             title="Use letters, spaces, hyphens or apostrophes only."
             style={inputStyle} onFocus={focusStyles} onBlur={blurStyles} disabled={status === "sending"} />
         </Field>
         <Field label="Last name" required>
           <input type="text" required minLength={2} maxLength={60} value={form.lastName}
-            onChange={(e) => update("lastName", e.target.value)} placeholder="Arham"
+            onChange={(e) => update("lastName", e.target.value)} placeholder="Ikram"
             pattern="^[\p{L}\s'.\-]{2,60}$"
             title="Use letters, spaces, hyphens or apostrophes only."
             style={inputStyle} onFocus={focusStyles} onBlur={blurStyles} disabled={status === "sending"} />
         </Field>
         <Field label="Email" required>
           <input type="email" required value={form.email}
-            onChange={(e) => update("email", e.target.value)} placeholder="hafiz@yourcompany.com"
+            onChange={(e) => update("email", e.target.value)} placeholder="malika@yourcompany.com"
             pattern="^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"
             title="Enter a valid email like name@company.com"
             style={inputStyle} onFocus={focusStyles} onBlur={blurStyles} disabled={status === "sending"} />
