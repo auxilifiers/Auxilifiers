@@ -43,7 +43,7 @@ export default function Footer() {
           {/* Social icons — bigger, + YouTube */}
           <div className="flex gap-4 mt-4 justify-center">
             {[
-              { label: "WhatsApp", href: "https://wa.me/923324619441", icon: <><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" /><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" /></> },
+              { label: "WhatsApp", href: "https://wa.me/923190809171", icon: <><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" /><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" /></> },
               { label: "Instagram", href: "#", icon: <><path d="M16 4H8a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V8a4 4 0 0 0-4-4Z" /><circle cx="12" cy="12" r="3" /><circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></> },
               { label: "Facebook", href: "#", icon: <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /> },
               { label: "LinkedIn", href: "https://www.linkedin.com/company/auxilifiers", icon: <><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></> },
