@@ -115,7 +115,6 @@ export default function Pillars() {
                     borderRadius: "var(--radius-pill)",
                     border: "1px solid var(--color-cyan)",
                     backdropFilter: "blur(8px)",
-                    color: "#FFFFFF",
                   }}
                 >
                   {pillar.label}
