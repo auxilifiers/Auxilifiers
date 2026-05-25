@@ -25,18 +25,7 @@ const SEED: Testimonial[] = [
   { id: "s-10", name: "Hassan Javed", role: "Operations Manager", company: "Pinewood Cafe Group", quote: "The chatbot answers reservation queries while my team focuses on the floor. Reviews mention how fast we reply now. Worth every rupee.", rating: 5, createdAt: 0 },
 ];
 
-const STORAGE_KEY = "aux-testimonials";
-
-function loadUserSubs(): Testimonial[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? (JSON.parse(raw) as Testimonial[]) : [];
-  } catch { return []; }
-}
-function saveUserSubs(list: Testimonial[]) {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); } catch {}
-}
+// Local storage helper functions removed in favor of Supabase backend
 
 function Stars({ value, onChange }: { value: number; onChange?: (n: number) => void }) {
   return (
@@ -232,7 +221,20 @@ export default function Testimonials() {
   const [form, setForm] = useState({ name: "", role: "", company: "", quote: "", rating: 5 });
   const [justSubmitted, setJustSubmitted] = useState(false);
 
-  useEffect(() => { setUserSubs(loadUserSubs()); }, []);
+  useEffect(() => {
+    async function fetchTestimonials() {
+      try {
+        const res = await fetch("/api/testimonials");
+        const json = await res.json();
+        if (json.ok && Array.isArray(json.data)) {
+          setUserSubs(json.data);
+        }
+      } catch (err) {
+        console.error("Error loading testimonials:", err);
+      }
+    }
+    fetchTestimonials();
+  }, []);
 
   const list: Testimonial[] = [...userSubs, ...SEED];
   // Split into two rows for variety
@@ -240,25 +242,36 @@ export default function Testimonials() {
   const row1 = list.slice(0, half);
   const row2 = list.slice(half);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.quote.trim()) return;
-    const next: Testimonial = {
-      id: `u-${Date.now()}`,
-      name: form.name.trim(),
-      role: form.role.trim() || "Customer",
-      company: form.company.trim() || "—",
-      quote: form.quote.trim(),
-      rating: form.rating,
-      createdAt: Date.now(),
-    };
-    const updated = [next, ...userSubs].slice(0, 20);
-    setUserSubs(updated);
-    saveUserSubs(updated);
-    setForm({ name: "", role: "", company: "", quote: "", rating: 5 });
-    setJustSubmitted(true);
-    setTimeout(() => setJustSubmitted(false), 3500);
-    setShowForm(false);
+    
+    try {
+      const res = await fetch("/api/testimonials", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          role: form.role.trim() || "Customer",
+          company: form.company.trim() || "—",
+          quote: form.quote.trim(),
+          rating: form.rating,
+        }),
+      });
+      const json = await res.json();
+      if (json.ok && json.data) {
+        setUserSubs((prev) => [json.data, ...prev]);
+        setForm({ name: "", role: "", company: "", quote: "", rating: 5 });
+        setJustSubmitted(true);
+        setTimeout(() => setJustSubmitted(false), 3500);
+        setShowForm(false);
+      } else {
+        alert(json.error || "Failed to submit testimonial.");
+      }
+    } catch (err) {
+      console.error("Error submitting testimonial:", err);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   const inputStyle: React.CSSProperties = {
