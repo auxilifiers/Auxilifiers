@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getServicesByPillar, getPillar, type PillarId } from "@/data/services";
 
 export default function PillarPage({ pillarId }: { pillarId: PillarId }) {
@@ -109,12 +110,12 @@ export default function PillarPage({ pillarId }: { pillarId: PillarId }) {
               }}
             >
               <div className="relative" style={{ height: 200, overflow: "hidden" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={svc.image}
                   alt={svc.title}
-                  loading="lazy"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.7s ease" }}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  style={{ objectFit: "cover", transition: "transform 0.7s ease" }}
                   className="group-hover:scale-105"
                 />
                 <div className="absolute inset-0" style={{ background: "var(--color-card-img-overlay)" }} />

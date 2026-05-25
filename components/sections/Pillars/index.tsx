@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { pillars, getServicesByPillar } from "@/data/services";
 
 export default function Pillars() {
@@ -93,12 +94,12 @@ export default function Pillars() {
             >
               {/* Image */}
               <div className="relative" style={{ height: 240, overflow: "hidden" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={pillar.image}
                   alt={`${pillar.title} services illustration`}
-                  loading="lazy"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.7s ease" }}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 30vw"
+                  style={{ objectFit: "cover", transition: "transform 0.7s ease" }}
                   className="group-hover:scale-105"
                 />
                 <div className="absolute inset-0" style={{ background: "var(--color-card-img-overlay)" }} />

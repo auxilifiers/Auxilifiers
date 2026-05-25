@@ -13,15 +13,15 @@ type Testimonial = {
 };
 
 const SEED: Testimonial[] = [
-  { id: "s-1", name: "Hina Riaz", role: "Founder", company: "Lumière Atelier", quote: "Our new site looks like something a Series-B startup would have. Orders went up 38% in the first month. They actually delivered.", rating: 5, createdAt: 0 },
+  { id: "s-1", name: "Hamza Riaz", role: "Founder", company: "Lumière Atelier", quote: "Our new site looks like something a Series-B startup would have. Orders went up 38% in the first month. They actually delivered.", rating: 5, createdAt: 0 },
   { id: "s-2", name: "Omar Khalid", role: "Operations Lead", company: "Riverstone Logistics", quote: "The inbox triage automation saved my team something like 25 hours a week. I genuinely don't know how we ran the company before.", rating: 5, createdAt: 0 },
-  { id: "s-3", name: "Aisha Mahmood", role: "Marketing Director", company: "Verda Skincare", quote: "Five agencies told us SEO would take a year. Auxilifiers had us ranking for our money keyword in three months. No tricks, just real work.", rating: 5, createdAt: 0 },
+  { id: "s-3", name: "Asim Mahmood", role: "Marketing Director", company: "Verda Skincare", quote: "Five agencies told us SEO would take a year. Auxilifiers had us ranking for our money keyword in three months. No tricks, just real work.", rating: 5, createdAt: 0 },
   { id: "s-4", name: "Bilal Sheikh", role: "Founder", company: "MetroFit Studios", quote: "The AI calling agent picks up at 2am and books classes. Our front desk is no longer a bottleneck. I sleep again.", rating: 5, createdAt: 0 },
-  { id: "s-5", name: "Sara Imran", role: "Co-Founder", company: "Tiffin Box Co.", quote: "They didn't just build us a website — they fixed our whole ordering flow. Customer complaints dropped to almost zero.", rating: 5, createdAt: 0 },
+  { id: "s-5", name: "Saad Imran", role: "Co-Founder", company: "Tiffin Box Co.", quote: "They didn't just build us a website — they fixed our whole ordering flow. Customer complaints dropped to almost zero.", rating: 5, createdAt: 0 },
   { id: "s-6", name: "Daniyal Ahmed", role: "Founder", company: "Clarity Legal", quote: "Plain language is real. They explained every technical decision in a way my non-tech partners understood. Refreshing.", rating: 5, createdAt: 0 },
-  { id: "s-7", name: "Maham Tariq", role: "Head of Growth", company: "Stride Apparel", quote: "Meta ad creatives that actually convert. Our CPA dropped 41% over two months — and the new creative comes in every Monday like clockwork.", rating: 5, createdAt: 0 },
+  { id: "s-7", name: "Mustafa Tariq", role: "Head of Growth", company: "Stride Apparel", quote: "Meta ad creatives that actually convert. Our CPA dropped 41% over two months — and the new creative comes in every Monday like clockwork.", rating: 5, createdAt: 0 },
   { id: "s-8", name: "Faisal Qureshi", role: "CEO", company: "Northwind Realty", quote: "They rebuilt our CRM sync in a week. We had 6 conflicting customer records per lead before. Now: one source of truth. Game changer.", rating: 5, createdAt: 0 },
-  { id: "s-9", name: "Zara Iqbal", role: "Founder", company: "Bloom Stationery", quote: "I had a half-finished Shopify store and ten tabs of confusion. Two weeks later I had a real store and orders. Just… on it.", rating: 5, createdAt: 0 },
+  { id: "s-9", name: "Zain Iqbal", role: "Founder", company: "Bloom Stationery", quote: "I had a half-finished Shopify store and ten tabs of confusion. Two weeks later I had a real store and orders. Just… on it.", rating: 5, createdAt: 0 },
   { id: "s-10", name: "Hassan Javed", role: "Operations Manager", company: "Pinewood Cafe Group", quote: "The chatbot answers reservation queries while my team focuses on the floor. Reviews mention how fast we reply now. Worth every rupee.", rating: 5, createdAt: 0 },
 ];
 
