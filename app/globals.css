@@ -378,3 +378,56 @@ main {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ---- Blog rich-text content (rendered post body + editor) ---- */
+.blog-content {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--color-text-dim);
+  text-align: justify;
+}
+.blog-content p { margin: 0 0 1.15em; text-align: justify; }
+.blog-content h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 1.6em 0 0.5em;
+  text-align: left;
+}
+.blog-content h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--color-text);
+  margin: 1.4em 0 0.4em;
+  text-align: left;
+}
+.blog-content ul { margin: 0 0 1.15em; padding-left: 1.4em; list-style: disc; }
+.blog-content ol { margin: 0 0 1.15em; padding-left: 1.4em; list-style: decimal; }
+.blog-content li { margin: 0.4em 0; text-align: left; }
+.blog-content li::marker { color: var(--color-cyan); }
+.blog-content a { color: var(--color-cyan); text-decoration: underline; }
+.blog-content blockquote {
+  border-left: 3px solid var(--color-cyan);
+  padding-left: 1em;
+  margin: 1.2em 0;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+.blog-content img { max-width: 100%; height: auto; border-radius: var(--radius-md); margin: 1em 0; }
+.blog-content strong { color: var(--color-text); font-weight: 600; }
+.blog-content :where(p, li):empty { display: none; }
+
+/* ---- Hero: hide animated lines before GSAP runs (prevents un-animated flash on load) ---- */
+.hero-line1 .char,
+.hero-line2 .char {
+  opacity: 0;
+}
+/* Failsafe: if JS/GSAP never runs, reveal text so it is never permanently hidden */
+.hero-ready .hero-line1 .char,
+.hero-ready .hero-line2 .char {
+  opacity: 1;
+}

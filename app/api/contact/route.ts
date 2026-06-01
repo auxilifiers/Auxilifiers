@@ -116,7 +116,7 @@ export async function POST(request: Request) {
       const { Resend } = await import("resend");
       const resend = new Resend(process.env.RESEND_API_KEY);
 
-      await resend.emails.send({
+      const { data: sendData, error: sendError } = await resend.emails.send({
         from: process.env.CONTACT_FROM_EMAIL || "Auxilifiers Contact <onboarding@resend.dev>",
         to,
         replyTo: email,
@@ -124,6 +124,12 @@ export async function POST(request: Request) {
         text,
         html,
       });
+      if (sendError) {
+        // Surface the real reason (unverified domain, restricted recipient, etc.) in runtime logs
+        console.error("[contact] Resend send error:", sendError);
+      } else {
+        console.log("[contact] Resend email sent:", sendData?.id, "->", to);
+      }
     } else {
       console.log("[contact] no RESEND_API_KEY — would send to:", to);
       console.log(text);

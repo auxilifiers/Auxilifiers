@@ -14,8 +14,11 @@ export async function GET() {
       return NextResponse.json({ ok: false, data: [], error: error.message });
     }
 
+    // Hide moderated testimonials (defensive: works whether or not the `hidden` column exists)
+    const visible = (data || []).filter((item: any) => !item.hidden);
+
     // Map database fields to frontend structure if necessary
-    const formatted = data.map((item: any) => ({
+    const formatted = visible.map((item: any) => ({
       id: item.id,
       name: item.name,
       role: item.role,
@@ -39,6 +42,31 @@ export async function POST(request: Request) {
 
     if (!name || !name.trim() || !quote || !quote.trim()) {
       return NextResponse.json({ ok: false, error: "Name and Quote are required." }, { status: 400 });
+    }
+
+    // Prevent storing duplicates: if the same name + quote already exists, return it instead of inserting again.
+    const { data: existing } = await supabase
+      .from("testimonials")
+      .select("*")
+      .eq("name", name.trim())
+      .eq("quote", quote.trim())
+      .limit(1);
+
+    if (existing && existing.length > 0) {
+      const dup = existing[0];
+      return NextResponse.json({
+        ok: true,
+        duplicate: true,
+        data: {
+          id: dup.id,
+          name: dup.name,
+          role: dup.role,
+          company: dup.company,
+          quote: dup.quote,
+          rating: dup.rating,
+          createdAt: new Date(dup.created_at).getTime(),
+        },
+      });
     }
 
     const { data, error } = await supabase

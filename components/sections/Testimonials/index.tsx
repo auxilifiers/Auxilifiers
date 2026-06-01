@@ -136,11 +136,31 @@ function TestimonialMarquee({ items, reverse = false }: { items: Testimonial[]; 
   const xRef = useRef(0);
   const pausedRef = useRef(false);
   const dragRef = useRef({ active: false, startX: 0, startOffset: 0, lastX: 0, lastT: 0, velocity: 0 });
+  // Only loop/duplicate when a single set of cards is wider than the viewport.
+  // Otherwise the duplicate copy would sit on screen and each card appears twice.
+  const [shouldLoop, setShouldLoop] = useState(false);
 
   useEffect(() => {
     const wrap = wrapRef.current;
     const track = trackRef.current;
     if (!wrap || !track) return;
+    const measure = () => {
+      const children = Array.from(track.children) as HTMLElement[];
+      let singleWidth = 0;
+      for (let i = 0; i < items.length && i < children.length; i++) {
+        singleWidth += children[i].offsetWidth + 20; // card + gap
+      }
+      setShouldLoop(singleWidth > wrap.clientWidth);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [items]);
+
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    const track = trackRef.current;
+    if (!wrap || !track || !shouldLoop) return;
     let rafId: number;
     const speed = reverse ? 0.7 : -0.7;
 
@@ -206,13 +226,21 @@ function TestimonialMarquee({ items, reverse = false }: { items: Testimonial[]; 
       wrap.removeEventListener("mouseenter", onEnter);
       wrap.removeEventListener("mouseleave", onLeave);
     };
-  }, [reverse]);
+  }, [reverse, shouldLoop]);
 
   return (
-    <div ref={wrapRef} className="overflow-hidden w-full select-none" style={{ cursor: "grab", touchAction: "pan-y" }}>
-      <div ref={trackRef} className="flex gap-5" style={{ willChange: "transform" }}>
+    <div
+      ref={wrapRef}
+      className="overflow-hidden w-full select-none"
+      style={{ cursor: shouldLoop ? "grab" : "default", touchAction: "pan-y" }}
+    >
+      <div
+        ref={trackRef}
+        className={shouldLoop ? "flex gap-5" : "flex gap-5 flex-wrap justify-center"}
+        style={{ willChange: "transform" }}
+      >
         {items.map((t) => <TestimonialCard key={`a-${t.id}`} t={t} />)}
-        {items.map((t) => <TestimonialCard key={`b-${t.id}`} t={t} />)}
+        {shouldLoop && items.map((t) => <TestimonialCard key={`b-${t.id}`} t={t} />)}
       </div>
     </div>
   );
@@ -239,11 +267,16 @@ export default function Testimonials() {
     fetchTestimonials();
   }, []);
 
-  const list: Testimonial[] = [...userSubs, ...SEED];
-  // Split into two rows for variety
-  const half = Math.ceil(list.length / 2);
-  const row1 = list.slice(0, half);
-  const row2 = list.slice(half);
+  // Database (Supabase) is the single source. SEED is only a fallback if the DB is empty/unreachable.
+  const source = userSubs.length > 0 ? userSubs : SEED;
+  // Remove accidental duplicates (same name + quote) so nothing ever shows twice.
+  const seen = new Set<string>();
+  const list: Testimonial[] = source.filter((t) => {
+    const k = `${t.name.trim().toLowerCase()}|${t.quote.trim().toLowerCase()}`;
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -348,10 +381,9 @@ export default function Testimonials() {
         </p>
       </div>
 
-      {/* Two rows, opposite directions */}
+      {/* Single row marquee */}
       <div className="flex flex-col gap-5">
-        <TestimonialMarquee items={row1} />
-        <TestimonialMarquee items={row2} reverse />
+        <TestimonialMarquee items={list} />
       </div>
 
       {/* Submit CTA */}
@@ -434,7 +466,7 @@ export default function Testimonials() {
               fontFamily: "var(--font-body)", fontSize: 12,
               color: "var(--color-text-muted)", lineHeight: 1.5,
             }}>
-              Your testimonial is stored in your browser and appears instantly in the carousel. We&apos;ll review and feature genuine ones globally.
+              Your testimonial is saved securely and appears instantly in the carousel. We&apos;ll review and feature genuine ones globally.
             </p>
           </form>
         )}

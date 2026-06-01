@@ -35,6 +35,7 @@ export default function Hero() {
 
   useEffect(() => {
     const initAnimations = async () => {
+     try {
       const gsap = (await import("gsap")).default;
       const tl = gsap.timeline({ delay: 0.3 });
 
@@ -71,6 +72,10 @@ export default function Hero() {
       tl.fromTo(".hero-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 1.4);
       tl.fromTo(".hero-cta", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.6);
       tl.fromTo(".hero-stat", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 2.0);
+     } catch {
+       // GSAP failed to load — reveal hero text so it is never stuck hidden
+       sectionRef.current?.classList.add("hero-ready");
+     }
     };
     initAnimations();
   }, []);
