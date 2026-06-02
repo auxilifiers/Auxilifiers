@@ -38,5 +38,5 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   facebook: "https://web.facebook.com/profile.php?id=61590733731265",
   linkedin: "https://www.linkedin.com/company/auxilifiers",
   youtube: "",
-  gaId: "G-EPCBPTTJBL",
+  gaId: "G-T4LN3HVD0V",
 };

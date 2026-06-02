@@ -7,6 +7,7 @@ import CustomCursor from "@/components/global/CustomCursor";
 import Header from "@/components/global/Header";
 import Footer from "@/components/global/Footer";
 import { getSiteSettings } from "@/lib/settings";
+import { FAQS } from "@/data/faqs";
 
 const unbounded = Unbounded({
   variable: "--font-display",
@@ -125,6 +126,15 @@ export default async function RootLayout({
           "Video Editing",
           "Graphic Design",
         ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${SITE}#faq`,
+        mainEntity: FAQS.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
       },
     ],
   };
