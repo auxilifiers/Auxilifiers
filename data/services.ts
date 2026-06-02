@@ -29,7 +29,7 @@ export const pillars: Pillar[] = [
     description:
       "The websites, apps, stores, and integrations your customers actually use. Designed to convert, engineered to last.",
     image:
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1600&q=80",
+      "/images/pillar-build.jpg",
     href: "/build",
   },
   {
@@ -40,7 +40,7 @@ export const pillars: Pillar[] = [
     description:
       "The repetitive operations that drain your team, turned into systems that run themselves — 24/7, no breaks.",
     image:
-      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=80",
+      "/images/pillar-automate.jpg",
     href: "/automate",
   },
   {
@@ -51,7 +51,7 @@ export const pillars: Pillar[] = [
     description:
       "The audiences and revenue that grow month over month. Engineered through SEO, ads, social, and content.",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80",
+      "/images/pillar-grow.jpg",
     href: "/grow",
   },
 ];
@@ -72,7 +72,7 @@ export const services: Service[] = [
       "Built to rank on Google from day one",
     ],
     image:
-      "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1200&q=80",
+      "/images/web-dev.jpg",
   },
   {
     id: "mobile-apps",
@@ -88,7 +88,7 @@ export const services: Service[] = [
       "Ongoing updates and bug fixes",
     ],
     image:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80",
+      "/images/mobile-apps.jpg",
   },
   {
     id: "shopify",
@@ -104,7 +104,7 @@ export const services: Service[] = [
       "Monthly improvements as your business grows",
     ],
     image:
-      "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1200&q=80",
+      "/images/shopify.jpg",
   },
   {
     id: "integrations",
@@ -120,7 +120,7 @@ export const services: Service[] = [
       "One source of truth, no conflicts",
     ],
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+      "/images/integrations.jpg",
   },
   // Automate
   {
@@ -137,7 +137,7 @@ export const services: Service[] = [
       "20-40 hours saved per week",
     ],
     image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
+      "/images/ai-workflows.jpg",
   },
   {
     id: "chatbots",
@@ -153,7 +153,7 @@ export const services: Service[] = [
       "Fewer support tickets reaching your team",
     ],
     image:
-      "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1200&q=80",
+      "/images/chatbots.jpg",
   },
   {
     id: "voice-agents",
@@ -169,7 +169,7 @@ export const services: Service[] = [
       "Your team freed up for real work",
     ],
     image:
-      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80",
+      "/images/voice-agents.jpg",
   },
   {
     id: "voice-on-site",
@@ -185,7 +185,7 @@ export const services: Service[] = [
       "Your brand feels future-forward",
     ],
     image:
-      "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1200&q=80",
+      "/images/voice-on-site.jpg",
   },
   {
     id: "crm-sync",
@@ -201,7 +201,7 @@ export const services: Service[] = [
       "Cleaner, simpler reporting",
     ],
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "/images/crm-sync.jpg",
   },
   {
     id: "inbox-triage",
@@ -217,7 +217,7 @@ export const services: Service[] = [
       "Hours saved on email every day",
     ],
     image:
-      "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1200&q=80",
+      "/images/inbox-triage.jpg",
   },
   // Grow
   {
@@ -234,7 +234,7 @@ export const services: Service[] = [
       "Long-term brand authority that compounds",
     ],
     image:
-      "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=1200&q=80",
+      "/images/seo.jpg",
   },
   {
     id: "google-ads",
@@ -250,7 +250,7 @@ export const services: Service[] = [
       "Real ROI, not vanity metrics",
     ],
     image:
-      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80",
+      "/images/google-ads.jpg",
   },
   {
     id: "meta-ads",
@@ -266,7 +266,7 @@ export const services: Service[] = [
       "Full transparency on what you spend",
     ],
     image:
-      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80",
+      "/images/meta-ads.jpg",
   },
   {
     id: "social",
@@ -282,7 +282,7 @@ export const services: Service[] = [
       "Followers that keep growing",
     ],
     image:
-      "https://images.unsplash.com/photo-1611926653458-09294b3142bf?auto=format&fit=crop&w=1200&q=80",
+      "/images/social.jpg",
   },
   {
     id: "content",
@@ -298,7 +298,7 @@ export const services: Service[] = [
       "One idea, used 5 ways (blog → social → email)",
     ],
     image:
-      "https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&w=1200&q=80",
+      "/images/content.jpg",
   },
   {
     id: "video-editing",
@@ -314,7 +314,7 @@ export const services: Service[] = [
       "Subtitles, motion graphics, and sound mixing included",
     ],
     image:
-      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80",
+      "/images/video-editing.jpg",
   },
   {
     id: "graphic-design",
@@ -330,7 +330,7 @@ export const services: Service[] = [
       "Reusable templates your team can edit later",
     ],
     image:
-      "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=80",
+      "/images/graphic-design.jpg",
   },
 ];
 
