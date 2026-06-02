@@ -15,6 +15,7 @@ export default function PrivacyPage() {
     <>
       <PageSeoSchema path="/privacy" />
       <LegalPage
+      path="/privacy"
       title="Privacy Policy"
       updatedAt={updatedAt}
       intro="We respect your privacy. This policy explains what data we collect when you use auxilifiers.com or engage us as a client, why we collect it, how we protect it, and the choices you have. We've tried to keep the language plain — no buried clauses."

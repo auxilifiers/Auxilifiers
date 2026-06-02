@@ -6,7 +6,7 @@ import Link from "next/link";
 import ContactModal from "./ContactModal";
 import ThemeToggle from "./ThemeToggle";
 
-const navLinks: { label: string; href: string }[] = [
+const DEFAULT_NAV: { label: string; href: string }[] = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/#services" },
   { label: "About Us", href: "/about" },
@@ -15,7 +15,7 @@ const navLinks: { label: string; href: string }[] = [
   { label: "Contact", href: "/#contact" },
 ];
 
-export default function Header() {
+export default function Header({ navLinks = DEFAULT_NAV }: { navLinks?: { label: string; href: string }[] }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 

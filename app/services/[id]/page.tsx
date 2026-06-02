@@ -9,6 +9,9 @@ import {
   getServicesByPillar,
   pillarDetails,
 } from "@/data/services";
+import { getImageAlts } from "@/lib/image-alts";
+import { altFor } from "@/lib/managed-images";
+import Reveal from "@/components/animations/Reveal";
 
 type Params = { id: string };
 
@@ -53,12 +56,14 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
   const { id } = await params;
   const svc = getServiceById(id);
   if (!svc) notFound();
+  const imageAlts = await getImageAlts();
   const pillar = getPillar(svc.pillar)!;
   const detail = pillarDetails[svc.pillar];
   const siblings = getServicesByPillar(svc.pillar).filter((s) => s.id !== svc.id);
 
   return (
     <div className="relative z-10">
+      <Reveal anim="up">
       {/* Breadcrumb + Hero */}
       <section style={{ padding: "clamp(40px, 8vw, 80px) 5vw 0", maxWidth: 1200, margin: "0 auto" }}>
         <div
@@ -141,7 +146,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
         <div style={{ position: "relative", width: "100%", height: "clamp(220px, 40vw, 440px)", borderRadius: "var(--radius-xl)", border: "1px solid var(--color-border-subtle)", overflow: "hidden" }}>
           <Image
             src={svc.image}
-            alt={svc.title}
+            alt={altFor(imageAlts, svc.image, svc.title)}
             fill
             sizes="(max-width: 1200px) 100vw, 1200px"
             priority
@@ -462,7 +467,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
               >
                 <Image
                   src={s.image}
-                  alt={s.title}
+                  alt={altFor(imageAlts, s.image, s.title)}
                   width={88}
                   height={88}
                   style={{ objectFit: "cover", borderRadius: "var(--radius-sm)", flexShrink: 0 }}
@@ -497,6 +502,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           </div>
         </section>
       )}
+      </Reveal>
     </div>
   );
 }

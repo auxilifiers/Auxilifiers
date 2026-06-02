@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { buildMetadata } from "@/lib/page-seo";
+import { buildMetadata, getPageSeo } from "@/lib/page-seo";
 import PageSeoSchema from "@/components/PageSeoSchema";
+import Reveal from "@/components/animations/Reveal";
 
 export const revalidate = 60;
 
@@ -88,10 +89,12 @@ const proof = [
   { value: "0", label: "long-term contracts required" },
 ];
 
-export default function WhyUsPage() {
+export default async function WhyUsPage() {
+  const seo = await getPageSeo("/why-us");
   return (
     <div className="relative z-10">
       <PageSeoSchema path="/why-us" />
+      <Reveal anim="left">
       {/* Hero */}
       <section style={{ padding: "clamp(60px, 10vw, 120px) 5vw clamp(40px, 6vw, 60px)", maxWidth: 1400, margin: "0 auto", textAlign: "center" }}>
         <span style={sectionLabel}>Why Auxilifiers</span>
@@ -108,7 +111,7 @@ export default function WhyUsPage() {
             maxWidth: 1100,
           }}
         >
-          A different kind of{" "}
+          {seo.h1 || (<>A different kind of{" "}
           <em
             style={{
               fontFamily: "'Instrument Serif', serif",
@@ -122,7 +125,7 @@ export default function WhyUsPage() {
           >
             agency
           </em>
-          .
+          .</>)}
         </h1>
         <p
           className="mt-8 mx-auto"
@@ -134,8 +137,8 @@ export default function WhyUsPage() {
             lineHeight: 1.6,
           }}
         >
-          We don&apos;t bill hours. We don&apos;t disappear after launch. We don&apos;t speak agency-jargon. Here&apos;s why
-          founders and operators choose us over freelancers, big agencies, and DIY tools.
+          {seo.intro || (<>We don&apos;t bill hours. We don&apos;t disappear after launch. We don&apos;t speak agency-jargon. Here&apos;s why
+          founders and operators choose us over freelancers, big agencies, and DIY tools.</>)}
         </p>
       </section>
 
@@ -429,6 +432,7 @@ export default function WhyUsPage() {
           </Link>
         </div>
       </section>
+      </Reveal>
     </div>
   );
 }

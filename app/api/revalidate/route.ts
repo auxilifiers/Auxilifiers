@@ -27,18 +27,23 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Not authorized" }, { status: 401 });
     }
 
-    const body = (await req.json().catch(() => ({}))) as { path?: string };
+    const body = (await req.json().catch(() => ({}))) as { path?: string; layout?: boolean };
     const path = typeof body.path === "string" && body.path.startsWith("/") ? body.path : null;
     if (!path) {
       return NextResponse.json({ error: "Invalid path" }, { status: 400 });
     }
 
-    // Revalidate the page itself. The root layout (global schema, GA, footer)
-    // is shared, so also refresh the home route when other pages change.
-    revalidatePath(path);
-    if (path !== "/") revalidatePath("/");
+    if (body.layout) {
+      // Global change (footer, schema, GA live in the shared root layout):
+      // revalidate every page under the root layout in one shot.
+      revalidatePath("/", "layout");
+    } else {
+      // Per-page change. Also refresh home since the layout is shared.
+      revalidatePath(path);
+      if (path !== "/") revalidatePath("/");
+    }
 
-    return NextResponse.json({ revalidated: true, path });
+    return NextResponse.json({ revalidated: true, path, layout: !!body.layout });
   } catch (e) {
     return NextResponse.json(
       { error: e instanceof Error ? e.message : "Unknown error" },

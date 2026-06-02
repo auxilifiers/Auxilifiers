@@ -11,8 +11,19 @@ export type SiteSettings = {
   facebook: string;
   linkedin: string;
   youtube: string;
+  x: string;
+  threads: string;
   gaId: string;
+  // ---- Technical SEO ----
+  headScripts: string;   // custom <head> JavaScript (GTM, Meta Pixel, etc.)
+  siteIndexable: boolean; // false → robots.txt blocks the whole site
+  robotsExtra: string;   // extra Disallow paths, one per line
+  // ---- Navigation / internal links ----
+  navLinks: NavLink[];   // header menu
+  footerLinks: NavLink[]; // footer "Company" column
 };
+
+export type NavLink = { label: string; href: string };
 
 // Current site values — used as fallback if the DB row is missing or unreachable.
 export const DEFAULT_SETTINGS: SiteSettings = {
@@ -38,5 +49,28 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   facebook: "https://web.facebook.com/profile.php?id=61590733731265",
   linkedin: "https://www.linkedin.com/company/auxilifiers",
   youtube: "",
+  x: "",
+  threads: "",
   gaId: "G-T4LN3HVD0V",
+  headScripts: "",
+  siteIndexable: true,
+  robotsExtra: "",
+  navLinks: [
+    { label: "Home", href: "/" },
+    { label: "Services", href: "/#services" },
+    { label: "About Us", href: "/about" },
+    { label: "Why Us", href: "/why-us" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/#contact" },
+  ],
+  footerLinks: [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Services", href: "/#services" },
+    { label: "Why Us", href: "/why-us" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/#contact" },
+    { label: "Terms & Conditions", href: "/terms" },
+    { label: "Privacy Policy", href: "/privacy" },
+  ],
 };

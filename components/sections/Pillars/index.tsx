@@ -4,8 +4,9 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { pillars, getServicesByPillar } from "@/data/services";
+import { altFor } from "@/lib/managed-images";
 
-export default function Pillars() {
+export default function Pillars({ alts = {} }: { alts?: Record<string, string> }) {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -96,7 +97,7 @@ export default function Pillars() {
               <div className="relative" style={{ height: 240, overflow: "hidden" }}>
                 <Image
                   src={pillar.image}
-                  alt={`${pillar.title} services illustration`}
+                  alt={altFor(alts, pillar.image, `${pillar.title} services illustration`)}
                   fill
                   sizes="(max-width: 900px) 100vw, 30vw"
                   style={{ objectFit: "cover", transition: "transform 0.7s ease" }}

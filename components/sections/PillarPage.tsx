@@ -1,14 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getServicesByPillar, getPillar, type PillarId } from "@/data/services";
+import { getPageSeo } from "@/lib/page-seo";
+import { getImageAlts } from "@/lib/image-alts";
+import { altFor } from "@/lib/managed-images";
+import Reveal from "@/components/animations/Reveal";
 
-export default function PillarPage({ pillarId }: { pillarId: PillarId }) {
+export default async function PillarPage({ pillarId }: { pillarId: PillarId }) {
   const pillar = getPillar(pillarId);
   const services = getServicesByPillar(pillarId);
   if (!pillar) return null;
+  const seo = await getPageSeo(`/${pillarId}`);
+  const imageAlts = await getImageAlts();
 
   return (
     <div className="relative z-10">
+      <Reveal anim="blur">
       {/* Hero */}
       <section
         style={{
@@ -43,7 +50,7 @@ export default function PillarPage({ pillarId }: { pillarId: PillarId }) {
             textShadow: "var(--text-shadow-safety)",
           }}
         >
-          {pillar.title}.
+          {seo.h1 || `${pillar.title}.`}
         </h1>
         <p
           className="text-center mx-auto mt-6"
@@ -68,7 +75,7 @@ export default function PillarPage({ pillarId }: { pillarId: PillarId }) {
             lineHeight: 1.6,
           }}
         >
-          {pillar.description}
+          {seo.intro || pillar.description}
         </p>
       </section>
 
@@ -112,7 +119,7 @@ export default function PillarPage({ pillarId }: { pillarId: PillarId }) {
               <div className="relative" style={{ height: 200, overflow: "hidden" }}>
                 <Image
                   src={svc.image}
-                  alt={svc.title}
+                  alt={altFor(imageAlts, svc.image, svc.title)}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   style={{ objectFit: "cover", transition: "transform 0.7s ease" }}
@@ -171,6 +178,7 @@ export default function PillarPage({ pillarId }: { pillarId: PillarId }) {
           ))}
         </div>
       </section>
+      </Reveal>
     </div>
   );
 }

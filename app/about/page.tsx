@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { buildMetadata } from "@/lib/page-seo";
+import { buildMetadata, getPageSeo } from "@/lib/page-seo";
 import PageSeoSchema from "@/components/PageSeoSchema";
+import Reveal from "@/components/animations/Reveal";
 
 export const revalidate = 60;
 
@@ -86,10 +87,12 @@ const process = [
   },
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const seo = await getPageSeo("/about");
   return (
     <div className="relative z-10">
       <PageSeoSchema path="/about" />
+      <Reveal anim="up">
       {/* Hero */}
       <section style={{ padding: "clamp(60px, 10vw, 120px) 5vw clamp(40px, 6vw, 60px)", maxWidth: 1400, margin: "0 auto", textAlign: "center" }}>
         <span style={sectionLabel}>About Auxilifiers</span>
@@ -106,7 +109,7 @@ export default function AboutPage() {
             maxWidth: 1200,
           }}
         >
-          Orbiting around{" "}
+          {seo.h1 || (<>Orbiting around{" "}
           <em
             style={{
               fontFamily: "'Instrument Serif', serif",
@@ -120,7 +123,7 @@ export default function AboutPage() {
           >
             your
           </em>{" "}
-          success.
+          success.</>)}
         </h1>
         <p
           className="mt-8 mx-auto"
@@ -132,8 +135,8 @@ export default function AboutPage() {
             lineHeight: 1.6,
           }}
         >
-          We&apos;re a tech and growth agency for ambitious small and mid-size businesses. Not enterprises, not other developers — the
-          founders, operators, and teams who need the tech to just work, the operations to just run, and the audience to just grow.
+          {seo.intro || (<>We&apos;re a tech and growth agency for ambitious small and mid-size businesses. Not enterprises, not other developers — the
+          founders, operators, and teams who need the tech to just work, the operations to just run, and the audience to just grow.</>)}
         </p>
       </section>
 
@@ -449,6 +452,7 @@ export default function AboutPage() {
           </Link>
         </div>
       </section>
+      </Reveal>
     </div>
   );
 }

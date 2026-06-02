@@ -26,7 +26,14 @@ export const getSiteSettings = cache(async (): Promise<SiteSettings> => {
       facebook: data.facebook || DEFAULT_SETTINGS.facebook,
       linkedin: data.linkedin || DEFAULT_SETTINGS.linkedin,
       youtube: data.youtube || DEFAULT_SETTINGS.youtube,
+      x: data.x || DEFAULT_SETTINGS.x,
+      threads: data.threads || DEFAULT_SETTINGS.threads,
       gaId: data.ga_id ?? DEFAULT_SETTINGS.gaId,
+      headScripts: data.head_scripts || DEFAULT_SETTINGS.headScripts,
+      siteIndexable: data.site_indexable ?? DEFAULT_SETTINGS.siteIndexable,
+      robotsExtra: data.robots_extra || DEFAULT_SETTINGS.robotsExtra,
+      navLinks: Array.isArray(data.nav_links) && data.nav_links.length ? data.nav_links : DEFAULT_SETTINGS.navLinks,
+      footerLinks: Array.isArray(data.footer_links) && data.footer_links.length ? data.footer_links : DEFAULT_SETTINGS.footerLinks,
     };
   } catch {
     return DEFAULT_SETTINGS;

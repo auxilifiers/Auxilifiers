@@ -431,3 +431,16 @@ main {
 .hero-ready .hero-line2 .char {
   opacity: 1;
 }
+
+/* ---- Reveal: hide children before GSAP scroll-reveal runs (no flash) ---- */
+.reveal-group > * {
+  opacity: 0;
+}
+/* Reduced motion (or no GSAP): show content immediately, never keep it hidden */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-group > * {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

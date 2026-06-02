@@ -15,6 +15,7 @@ export default function TermsPage() {
     <>
       <PageSeoSchema path="/terms" />
       <LegalPage
+      path="/terms"
       title="Terms & Conditions"
       updatedAt={updatedAt}
       intro="These terms describe the basis on which Auxilifiers provides its services and you use this website. By using auxilifiers.com or engaging us for work, you agree to these terms. We've kept the language as plain as we could."

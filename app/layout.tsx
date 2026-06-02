@@ -94,7 +94,7 @@ export default async function RootLayout({
           "Tech and growth agency that builds the tech, automates the operations, and grows the reach for small and mid-size businesses.",
         email: s.contactEmail,
         slogan: "Orbiting around your success.",
-        sameAs: [s.instagram, s.facebook, s.linkedin, s.youtube].filter(Boolean),
+        sameAs: [s.instagram, s.facebook, s.linkedin, s.youtube, s.x, s.threads].filter(Boolean),
       },
       {
         "@type": "WebSite",
@@ -162,11 +162,15 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Admin-managed custom head scripts (GTM, Meta Pixel, etc.) */}
+        {s.headScripts ? (
+          <script dangerouslySetInnerHTML={{ __html: s.headScripts }} />
+        ) : null}
       </head>
       <body>
         <Aurora />
         <CustomCursor />
-        <Header />
+        <Header navLinks={s.navLinks} />
         <main className="relative z-10">{children}</main>
         <Footer settings={s} />
 

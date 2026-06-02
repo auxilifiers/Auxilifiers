@@ -1,18 +1,25 @@
+import Reveal from "@/components/animations/Reveal";
+import { getPageSeo } from "@/lib/page-seo";
+
 type Section = { id?: string; title: string; body: React.ReactNode };
 
-export default function LegalPage({
+export default async function LegalPage({
   title,
   intro,
   updatedAt,
   sections,
+  path,
 }: {
   title: string;
   intro: string;
   updatedAt: string;
   sections: Section[];
+  path: string;
 }) {
+  const seo = await getPageSeo(path);
   return (
     <div className="relative z-10">
+      <Reveal anim="fade">
       <section
         style={{
           padding: "clamp(60px, 10vw, 120px) 5vw clamp(40px, 6vw, 60px)",
@@ -43,7 +50,7 @@ export default function LegalPage({
             textShadow: "var(--text-shadow-safety)",
           }}
         >
-          {title}
+          {seo.h1 || title}
         </h1>
         <p
           className="mt-6"
@@ -54,7 +61,7 @@ export default function LegalPage({
             lineHeight: 1.65,
           }}
         >
-          {intro}
+          {seo.intro || intro}
         </p>
       </section>
 
@@ -93,6 +100,7 @@ export default function LegalPage({
           </div>
         ))}
       </section>
+      </Reveal>
     </div>
   );
 }
