@@ -35,6 +35,12 @@ yarn-error.log*
 .env.local
 .env*.local
 
+# secrets / credentials — never commit tokens
+GITHUB-ACCESS.txt
+*token*.txt
+*secret*.txt
+*credentials*.txt
+
 # screenshots & playwright
 .screenshots/
 .playwright-mcp/
