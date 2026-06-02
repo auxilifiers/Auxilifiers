@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
 import PillarPage from "@/components/sections/PillarPage";
+import { buildMetadata } from "@/lib/page-seo";
+import PageSeoSchema from "@/components/PageSeoSchema";
 
-export const metadata: Metadata = {
-  title: "Grow — SEO, Google Ads, Meta Ads & Social | Auxilifiers",
-  description:
-    "SEO, Google Ads, Facebook & Instagram ads, social media management, and content. The reach and revenue that compound month over month.",
-  openGraph: {
-    title: "Grow with Auxilifiers",
-    description:
-      "SEO, paid ads, social, and content engineered to compound your reach.",
-    type: "website",
-  },
-};
+export const revalidate = 60;
+
+export async function generateMetadata() {
+  return buildMetadata("/grow");
+}
 
 export default function GrowPage() {
-  return <PillarPage pillarId="grow" />;
+  return (
+    <>
+      <PageSeoSchema path="/grow" />
+      <PillarPage pillarId="grow" />
+    </>
+  );
 }

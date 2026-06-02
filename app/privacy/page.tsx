@@ -1,18 +1,20 @@
-import type { Metadata } from "next";
 import LegalPage from "@/components/sections/LegalPage";
+import { buildMetadata } from "@/lib/page-seo";
+import PageSeoSchema from "@/components/PageSeoSchema";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | Auxilifiers",
-  description:
-    "How Auxilifiers collects, uses, stores, and protects your personal data. Plain-language privacy policy covering the website and client engagements.",
-  alternates: { canonical: "/privacy" },
-};
+export const revalidate = 60;
+
+export async function generateMetadata() {
+  return buildMetadata("/privacy");
+}
 
 const updatedAt = "May 2026";
 
 export default function PrivacyPage() {
   return (
-    <LegalPage
+    <>
+      <PageSeoSchema path="/privacy" />
+      <LegalPage
       title="Privacy Policy"
       updatedAt={updatedAt}
       intro="We respect your privacy. This policy explains what data we collect when you use auxilifiers.com or engage us as a client, why we collect it, how we protect it, and the choices you have. We've tried to keep the language plain — no buried clauses."
@@ -184,5 +186,6 @@ export default function PrivacyPage() {
         },
       ]}
     />
+    </>
   );
 }

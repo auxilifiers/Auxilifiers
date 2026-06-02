@@ -1,17 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { buildMetadata } from "@/lib/page-seo";
+import PageSeoSchema from "@/components/PageSeoSchema";
 
-export const metadata: Metadata = {
-  title: "Why Us — A different kind of agency | Auxilifiers",
-  description:
-    "We don't bill hours, we don't disappear after launch, and we don't speak agency-jargon. Here's why founders and operators choose Auxilifiers over the alternatives.",
-  openGraph: {
-    title: "Why Auxilifiers",
-    description:
-      "Outcomes over hours. Plain language. No lock-in. The agency that stays after launch.",
-    type: "website",
-  },
-};
+export const revalidate = 60;
+
+export async function generateMetadata() {
+  return buildMetadata("/why-us");
+}
 
 const sectionLabel: React.CSSProperties = {
   fontFamily: "var(--font-mono)",
@@ -96,6 +91,7 @@ const proof = [
 export default function WhyUsPage() {
   return (
     <div className="relative z-10">
+      <PageSeoSchema path="/why-us" />
       {/* Hero */}
       <section style={{ padding: "clamp(60px, 10vw, 120px) 5vw clamp(40px, 6vw, 60px)", maxWidth: 1400, margin: "0 auto", textAlign: "center" }}>
         <span style={sectionLabel}>Why Auxilifiers</span>

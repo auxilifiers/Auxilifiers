@@ -1,18 +1,20 @@
-import type { Metadata } from "next";
 import LegalPage from "@/components/sections/LegalPage";
+import { buildMetadata } from "@/lib/page-seo";
+import PageSeoSchema from "@/components/PageSeoSchema";
 
-export const metadata: Metadata = {
-  title: "Terms & Conditions | Auxilifiers",
-  description:
-    "The terms and conditions governing your use of the Auxilifiers website and engagement of our services. Plain-language version included.",
-  alternates: { canonical: "/terms" },
-};
+export const revalidate = 60;
+
+export async function generateMetadata() {
+  return buildMetadata("/terms");
+}
 
 const updatedAt = "May 2026";
 
 export default function TermsPage() {
   return (
-    <LegalPage
+    <>
+      <PageSeoSchema path="/terms" />
+      <LegalPage
       title="Terms & Conditions"
       updatedAt={updatedAt}
       intro="These terms describe the basis on which Auxilifiers provides its services and you use this website. By using auxilifiers.com or engaging us for work, you agree to these terms. We've kept the language as plain as we could."
@@ -183,5 +185,6 @@ export default function TermsPage() {
         },
       ]}
     />
+    </>
   );
 }

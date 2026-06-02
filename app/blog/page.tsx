@@ -1,14 +1,11 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
+import { buildMetadata } from "@/lib/page-seo";
+import PageSeoSchema from "@/components/PageSeoSchema";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Practical, no-jargon ideas on websites, AI automation, SEO, and growth for ambitious small and mid-size businesses — from the Auxilifiers team.",
-  alternates: { canonical: "/blog" },
-  openGraph: { title: "Blog | Auxilifiers", url: "/blog", type: "website" },
-};
+export async function generateMetadata() {
+  return buildMetadata("/blog");
+}
 
 export const revalidate = 60;
 
@@ -32,6 +29,7 @@ export default async function BlogIndex() {
 
   return (
     <section style={{ maxWidth: 1100, margin: "0 auto", padding: "clamp(60px, 10vw, 120px) 5vw 90px" }}>
+      <PageSeoSchema path="/blog" />
       <div className="text-center" style={{ marginBottom: 52 }}>
         <div style={{ fontFamily: "var(--font-mono)", fontSize: "clamp(10px,2vw,14px)", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-cyan)", marginBottom: 16 }}>
           The Auxilifiers Blog

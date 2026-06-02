@@ -1,17 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { buildMetadata } from "@/lib/page-seo";
+import PageSeoSchema from "@/components/PageSeoSchema";
 
-export const metadata: Metadata = {
-  title: "About Us — Orbiting around your success | Auxilifiers",
-  description:
-    "Auxilifiers is a tech and growth agency that builds the products, automates the operations, and grows the reach for ambitious small and mid-size businesses. Learn our story, values, and the way we work.",
-  openGraph: {
-    title: "About Auxilifiers",
-    description:
-      "We build the tech, automate the operations, and grow the reach — for businesses ready to scale.",
-    type: "website",
-  },
-};
+export const revalidate = 60;
+
+export async function generateMetadata() {
+  return buildMetadata("/about");
+}
 
 const sectionLabel: React.CSSProperties = {
   fontFamily: "var(--font-mono)",
@@ -94,6 +89,7 @@ const process = [
 export default function AboutPage() {
   return (
     <div className="relative z-10">
+      <PageSeoSchema path="/about" />
       {/* Hero */}
       <section style={{ padding: "clamp(60px, 10vw, 120px) 5vw clamp(40px, 6vw, 60px)", maxWidth: 1400, margin: "0 auto", textAlign: "center" }}>
         <span style={sectionLabel}>About Auxilifiers</span>

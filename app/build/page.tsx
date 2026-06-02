@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
 import PillarPage from "@/components/sections/PillarPage";
+import { buildMetadata } from "@/lib/page-seo";
+import PageSeoSchema from "@/components/PageSeoSchema";
 
-export const metadata: Metadata = {
-  title: "Build — Websites, Apps, Stores & Integrations | Auxilifiers",
-  description:
-    "Custom websites, mobile apps, Shopify stores, and tool integrations. Built to convert, engineered to last. Explore Auxilifiers' Build pillar services.",
-  openGraph: {
-    title: "Build with Auxilifiers",
-    description:
-      "Custom websites, mobile apps, Shopify stores, and integrations built to convert.",
-    type: "website",
-  },
-};
+export const revalidate = 60;
+
+export async function generateMetadata() {
+  return buildMetadata("/build");
+}
 
 export default function BuildPage() {
-  return <PillarPage pillarId="build" />;
+  return (
+    <>
+      <PageSeoSchema path="/build" />
+      <PillarPage pillarId="build" />
+    </>
+  );
 }
